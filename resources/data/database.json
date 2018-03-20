@@ -1,0 +1,131 @@
+{
+  "characters": [
+    {
+      "id": 1,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Maria Gonzales",
+      "type": "maid",
+      "img": "maid.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Carey Mahoney",
+      "type": "police officer",
+      "img": "police.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    }
+  ],
+  "speeches": [
+    {
+      "id":1,
+      "phrase": "Good Morning!"
+    },
+    {
+      "id":2,
+      "phrase": "Good Evening!"
+    },
+    {
+      "id":3,
+      "phrase": "Good Afternoon!"
+    },
+    {
+      "id":4,
+      "phrase": "Good Night!"
+    },
+    {
+      "id":5,
+      "phrase": "How can I help you?"
+    },
+    {
+      "id":6,
+      "phrase": "I found this item!"
+    },
+    {
+      "id":7,
+      "phrase": "Do you want me to analyse it?"
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "name": "Albert Park",
+      "img": "albert_park.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Train Station",
+      "img": "train_station.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Bedroom",
+      "img": "bedroom.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Hotel",
+      "img": "hotel.jpg"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "knife",
+      "img": "knife.jpg"
+    },
+    {
+      "id": 2,
+      "name": "blood",
+      "img": "blood.jpg"
+    },
+    {
+      "id": 3,
+      "name": "cloth",
+      "img": "cloth.jpg"
+    },
+    {
+      "id": 4,
+      "name": "gun",
+      "img": "gun.jpg"
+    },
+    {
+      "id": 5,
+      "name": "finger prints",
+      "img": "finger_prints.jpg"
+    }
+  ]
+}
