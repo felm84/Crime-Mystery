@@ -12,11 +12,13 @@ import { Component } from '@angular/core';
 })
 export class StartMenuComponent {
 
-  text: string;
+  menu: string[] = ["Start", "Option", "Exit"]; 
 
   constructor() {
     console.log('Hello StartMenuComponent Component');
-    this.text = 'Hello World';
   }
 
+  openPage(page) {
+    console.log(page);
+  }
 }

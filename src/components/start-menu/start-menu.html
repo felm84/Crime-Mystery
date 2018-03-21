@@ -1,4 +1,10 @@
 <!-- Generated template for the StartMenuComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-grid>
+  <ion-row>
+    <ion-col></ion-col>
+    <ion-col col-8>
+      <button ion-button block *ngFor="let option of menu" (click)="openPage($event)">{{option}}</button>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+</ion-grid>

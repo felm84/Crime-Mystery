@@ -8,8 +8,9 @@ import { ListNpcPage } from '../../pages/list-npc/list-npc';
   selector: 'tab-menu',
   templateUrl: 'tab-menu.html'
 })
-export class TabMenuComponent {
 
+export class TabMenuComponent {
+  
   items = ListItemsPage;
   locations = ListLocationPage;
   contacts = ListNpcPage;
