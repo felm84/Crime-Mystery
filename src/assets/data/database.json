@@ -51,31 +51,31 @@
   ],
   "speeches": [
     {
-      "id":1,
+      "id": 1,
       "phrase": "Good Morning!"
     },
     {
-      "id":2,
+      "id": 2,
       "phrase": "Good Evening!"
     },
     {
-      "id":3,
+      "id": 3,
       "phrase": "Good Afternoon!"
     },
     {
-      "id":4,
+      "id": 4,
       "phrase": "Good Night!"
     },
     {
-      "id":5,
+      "id": 5,
       "phrase": "How can I help you?"
     },
     {
-      "id":6,
+      "id": 6,
       "phrase": "I found this item!"
     },
     {
-      "id":7,
+      "id": 7,
       "phrase": "Do you want me to analyse it?"
     }
   ],

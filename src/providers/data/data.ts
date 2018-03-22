@@ -1,17 +1,21 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-/*
-  Generated class for the DataProvider provider.
+import { Character } from '../../classes/character';
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class DataProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello DataProvider Provider');
+  dataSrc: string = "../../assets/data/database.json";
+
+  test: any[];
+
+  constructor(private http: HttpClient) {}
+
+  // Fetch the json data to become objects
+  fetchData() {
+    return this.http.get(this.dataSrc).subscribe(data => console.log(data));
   }
+
 
 }

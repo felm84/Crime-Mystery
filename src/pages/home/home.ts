@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DataProvider } from '../../providers/data/data';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -8,7 +9,9 @@ import { NavController } from 'ionic-angular';
 
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {}
-
+  title: any;
+  constructor(data: DataProvider) {
+    data.fetchData();
+  }
 
 }
