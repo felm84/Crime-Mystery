@@ -1,6 +1,7 @@
-import { DataProvider } from '../../providers/data/data';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+
+import { DataProvider } from '../../providers/data/data.service';
 
 @Component({
   selector: 'page-home',
@@ -9,9 +10,8 @@ import { NavController } from 'ionic-angular';
 
 export class HomePage {
 
-  title: any;
   constructor(data: DataProvider) {
-    data.fetchData();
+    data.generateCharacter();
   }
 
 }

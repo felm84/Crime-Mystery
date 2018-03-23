@@ -18,7 +18,7 @@ import { ListLocationPage } from '../pages/list-location/list-location';
 import { ListNpcPage } from '../pages/list-npc/list-npc';
 
 // List of providers - provide services to the app
-import { DataProvider } from '../providers/data/data';
+import { DataProvider } from '../providers/data/data.service';
 
 @NgModule({
   declarations: [
