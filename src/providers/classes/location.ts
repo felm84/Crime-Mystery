@@ -1,4 +1,4 @@
-export class Location {
+export interface ILocation {
     id: number;
     name: string;
     img: string;

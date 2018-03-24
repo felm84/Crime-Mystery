@@ -18,7 +18,11 @@ import { ListLocationPage } from '../pages/list-location/list-location';
 import { ListNpcPage } from '../pages/list-npc/list-npc';
 
 // List of providers - provide services to the app
-import { DataProvider } from '../providers/data/data.service';
+import { DataProvider } from '../providers/services/data.service';
+import { ItemService } from '../providers/services/item.service';
+import { LocationService } from '../providers/services/location.service';
+import { SpeechService } from '../providers/services/speech.service';
+import { CharacterService } from '../providers/services/character.service';
 
 @NgModule({
   declarations: [
@@ -39,19 +43,17 @@ import { DataProvider } from '../providers/data/data.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    CurrentLocationPage,
-    ListItemsPage,
-    ListLocationPage,
-    ListNpcPage,
-    StartMenuComponent,
-    TabMenuComponent
+    HomePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataProvider
+    DataProvider,
+    CharacterService,
+    SpeechService,
+    LocationService,
+    ItemService
   ]
 })
 export class AppModule {}

@@ -8,7 +8,17 @@ import { Component } from '@angular/core';
  */
 @Component({
   selector: 'start-menu',
-  templateUrl: 'start-menu.html'
+  template: `<!-- Main menu to be added into home.html when app is compiled -->
+              <ion-grid>
+                <ion-row>
+                  <ion-col></ion-col>
+                  <ion-col col-8>
+                    <button ion-button block *ngFor="let option of menu" 
+                    (click)="openPage($event)">{{option}}</button>
+                  </ion-col>
+                  <ion-col></ion-col>
+                </ion-row>
+              </ion-grid>`
 })
 export class StartMenuComponent {
 

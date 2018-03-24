@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { DataProvider } from '../../providers/data/data.service';
+import { DataProvider } from '../../providers/services/data.service';
 
 /**
  * Generated class for the NpcListComponent component.

@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "name": "Albert Park",
+      "img": "albert_park.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Train Station",
+      "img": "train_station.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Bedroom",
+      "img": "bedroom.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Hotel",
+      "img": "hotel.jpg"
+    }
+  ]

@@ -1,6 +1,5 @@
-export class Character {
+export interface IItem {
     id: number;
     name: string;
-    type: string;
     img: string;
 }

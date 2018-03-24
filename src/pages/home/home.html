@@ -9,4 +9,9 @@
 <ion-content padding>
   <!-- Main menu from start-menu component -->
   <start-menu></start-menu>
+  <ul>
+    <li *ngFor="let npc of characters" >
+      {{npc.name}}
+    </li>
+  </ul>
 </ion-content>

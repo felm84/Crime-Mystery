@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "knife",
+    "img": "knife.jpg"
+  },
+  {
+    "id": 2,
+    "name": "blood",
+    "img": "blood.jpg"
+  },
+  {
+    "id": 3,
+    "name": "cloth",
+    "img": "cloth.jpg"
+  },
+  {
+    "id": 4,
+    "name": "gun",
+    "img": "gun.jpg"
+  },
+  {
+    "id": 5,
+    "name": "finger prints",
+    "img": "finger_prints.jpg"
+  }
+]

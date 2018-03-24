@@ -1,4 +1,4 @@
-export class Speech {
+export interface ISpeech {
     id: number;
     phrase: string;
 }

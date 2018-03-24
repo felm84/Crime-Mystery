@@ -1,0 +1,50 @@
+[
+    {
+      "id": 1,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Maria Gonzales",
+      "type": "maid",
+      "img": "maid.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Carey Mahoney",
+      "type": "police officer",
+      "img": "police.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    }
+  ]
