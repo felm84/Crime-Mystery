@@ -14,8 +14,6 @@ const httpOptions = {
 @Injectable()
 export class DataProvider {
 
-  private Url: string;
-
   constructor(private http: HttpClient) {}
 
   generateCharacters(url:string): Observable<ICharacter[]> {
@@ -23,15 +21,15 @@ export class DataProvider {
   }
 
   generateSpeeches(url:string): Observable<ISpeech[]> {
-    return this.http.get<ISpeech[]>(this.Url);
+    return this.http.get<ISpeech[]>(url);
   }
 
   generateLocations(url:string): Observable<ILocation[]> {
-    return this.http.get<ILocation[]>(this.Url);
+    return this.http.get<ILocation[]>(url);
   }
 
   generateItems(url:string): Observable<IItem[]> {
-    return this.http.get<IItem[]>(this.Url);
+    return this.http.get<IItem[]>(url);
   }
 
 }
