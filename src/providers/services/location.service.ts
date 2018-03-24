@@ -1,13 +1,21 @@
-import { DataProvider } from './data.service';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+
+import { ILocation } from './../classes/location';
+
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable()
 export class LocationService {
 
-    private locations = [];
-    
-    constructor(data: DataProvider) {
-        data.generateLocations("../../assets/data/locations.json")
-          .subscribe( data => this.locations = data);
-      }
+    private _url = "../../assets/data/locations.json";
+
+    constructor(private http: HttpClient) {}
+
+    getLocations(): Observable<ILocation[]> {
+        return this.http.get<ILocation[]>(this._url);
+    }
 }
