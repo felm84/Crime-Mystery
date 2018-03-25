@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Item List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list inset>
+    <button ion-item *ngFor="let item of items">
+      {{ item.name }}
+    </button> 
+  </ion-list>
+
+</ion-content>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CurrentLocationPage } from './../current-location/current-location';
-import { ListPage } from '../list/list';
+import { ItemListPage } from '../item-list/item-list';
+import { LocationListPage } from '../location-list/location-list';
+import { ContactListPage } from '../contact-list/contact-list';
 
 @Component({
   selector: 'page-tabs',
@@ -21,9 +23,9 @@ export class TabsPage {
 
   constructor() {
     this.home = CurrentLocationPage;
-    this.items = ListPage;
-    this.locations = ListPage;
-    this.contacts = ListPage;
+    this.items = ItemListPage;
+    this.locations = LocationListPage;
+    this.contacts = ContactListPage;
   }
 
 }

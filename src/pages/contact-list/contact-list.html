@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Contact List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list inset>
+      <button ion-item *ngFor="let contact of contacts">
+        {{ contact.name }}
+      </button> 
+    </ion-list>
+</ion-content>

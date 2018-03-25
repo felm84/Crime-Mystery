@@ -3,21 +3,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ItemProvider } from '../../providers/item/item';
 
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html',
+  selector: 'page-item-list',
+  templateUrl: 'item-list.html',
 })
-export class ListPage {
+export class ItemListPage {
 
   public items;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private item: ItemProvider) {
-    this.item.getItems()
-    .subscribe( data => this.items = data);
-  }
+  constructor(private item: ItemProvider) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListPage');
-    
+    this.item.getItems()
+    .subscribe( data => this.items = data);
   }
 
 }

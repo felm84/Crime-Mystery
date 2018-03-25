@@ -9,7 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CurrentLocationPage } from '../pages/current-location/current-location';
-import { ListPage } from '../pages/list/list';
+import { ItemListPage } from '../pages/item-list/item-list';
+import { LocationListPage } from '../pages/location-list/location-list';
+import { ContactListPage } from '../pages/contact-list/contact-list';
 import { MenuPage } from '../pages/menu/menu';
 import { OptionsPage } from '../pages/options/options';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -21,12 +23,15 @@ import { SpeechProvider } from '../providers/speech/speech';
 import { LocationProvider } from '../providers/location/location';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     CurrentLocationPage,
-    ListPage,
+    ItemListPage,
+    LocationListPage,
+    ContactListPage,
     MenuPage,
     OptionsPage,
     TabsPage
@@ -41,7 +46,9 @@ import { LocationProvider } from '../providers/location/location';
     MyApp,
     HomePage,
     CurrentLocationPage,
-    ListPage,
+    ItemListPage,
+    LocationListPage,
+    ContactListPage,
     MenuPage,
     OptionsPage,
     TabsPage
