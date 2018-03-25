@@ -9,7 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CurrentLocationPage } from '../pages/current-location/current-location';
+import { ListPage } from '../pages/list/list';
 import { MenuPage } from '../pages/menu/menu';
+import { OptionsPage } from '../pages/options/options';
 import { TabsPage } from '../pages/tabs/tabs';
 
 // List of providers - provide services to the app
@@ -18,12 +20,15 @@ import { ItemProvider } from '../providers/item/item';
 import { SpeechProvider } from '../providers/speech/speech';
 import { LocationProvider } from '../providers/location/location';
 
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     CurrentLocationPage,
+    ListPage,
     MenuPage,
+    OptionsPage,
     TabsPage
   ],
   imports: [
@@ -36,7 +41,9 @@ import { LocationProvider } from '../providers/location/location';
     MyApp,
     HomePage,
     CurrentLocationPage,
+    ListPage,
     MenuPage,
+    OptionsPage,
     TabsPage
   ],
   providers: [

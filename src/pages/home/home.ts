@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { CharacterProvider } from '../../providers/character/character';
+
+/* import { CharacterProvider } from '../../providers/character/character';
 import { ItemProvider } from '../../providers/item/item';
 import { SpeechProvider } from '../../providers/speech/speech';
-import { LocationProvider } from '../../providers/location/location';
+import { LocationProvider } from '../../providers/location/location'; */
 
 @Component({
   selector: 'page-home',
@@ -12,19 +13,14 @@ import { LocationProvider } from '../../providers/location/location';
 
 export class HomePage {
 
-  public characters;
+/*   public characters;
   public speeches;
   public locations;
-  public items;
+  public items; */
 
-  constructor(
-    private char: CharacterProvider,
-    private speech: SpeechProvider,
-    private location: LocationProvider,
-    private item: ItemProvider
-  ) {}
+  constructor() {}
   
-  ngOnInit() {
+/*   ngOnInit() {
     this.char.getCharacters()
     .subscribe( data => this.characters = data);
     this.speech.getSpeeches()
@@ -33,5 +29,5 @@ export class HomePage {
     .subscribe( data => this.locations = data);
     this.item.getItems()
     .subscribe( data => this.items = data);
-  }
+  } */
 }
