@@ -5,34 +5,26 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
 
-// List of components
+// List of pages (components)
 import { MyApp } from './app.component';
-import { StartMenuComponent } from '../components/start-menu/start-menu';
-import { TabMenuComponent } from '../components/tab-menu/tab-menu';
-
-// List of pages
 import { HomePage } from '../pages/home/home';
 import { CurrentLocationPage } from '../pages/current-location/current-location';
-import { ListItemsPage } from '../pages/list-items/list-items';
-import { ListLocationPage } from '../pages/list-location/list-location';
-import { ListNpcPage } from '../pages/list-npc/list-npc';
+import { MenuPage } from '../pages/menu/menu';
+import { TabsPage } from '../pages/tabs/tabs';
 
 // List of providers - provide services to the app
-import { ItemService } from '../providers/services/item.service';
-import { LocationService } from '../providers/services/location.service';
-import { SpeechService } from '../providers/services/speech.service';
-import { CharacterService } from '../providers/services/character.service';
+import { CharacterProvider } from '../providers/character/character';
+import { ItemProvider } from '../providers/item/item';
+import { SpeechProvider } from '../providers/speech/speech';
+import { LocationProvider } from '../providers/location/location';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     CurrentLocationPage,
-    ListItemsPage,
-    ListLocationPage,
-    ListNpcPage,
-    StartMenuComponent,
-    TabMenuComponent
+    MenuPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -42,16 +34,19 @@ import { CharacterService } from '../providers/services/character.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    CurrentLocationPage,
+    MenuPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CharacterService,
-    SpeechService,
-    LocationService,
-    ItemService
+    CharacterProvider,
+    ItemProvider,
+    SpeechProvider,
+    LocationProvider
   ]
 })
 export class AppModule {}

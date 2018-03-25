@@ -9,13 +9,14 @@ const httpOptions = {
 };
 
 @Injectable()
-export class LocationService {
+export class LocationProvider {
 
-    private _url = "../../assets/data/locations.json";
+  private _url = "../../assets/data/locations.json";
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-    getLocations(): Observable<ILocation[]> {
-        return this.http.get<ILocation[]>(this._url);
-    }
+  getLocations(): Observable<ILocation[]> {
+      return this.http.get<ILocation[]>(this._url);
+  }
+
 }

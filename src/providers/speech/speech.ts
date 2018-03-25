@@ -9,13 +9,13 @@ const httpOptions = {
 };
 
 @Injectable()
-export class SpeechService {
+export class SpeechProvider {
 
-    private _url = "../../assets/data/speeches.json";
+  private _url = "../../assets/data/speeches.json";
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-    getSpeeches(): Observable<ISpeech[]> {
-        return this.http.get<ISpeech[]>(this._url);
-    }
+  getSpeeches(): Observable<ISpeech[]> {
+      return this.http.get<ISpeech[]>(this._url);
+  }
 }

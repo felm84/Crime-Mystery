@@ -9,13 +9,14 @@ const httpOptions = {
 };
 
 @Injectable()
-export class CharacterService {
+export class CharacterProvider {
 
-    private _url = "../../assets/data/characters.json";
+  private _url = "../../assets/data/characters.json";
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-    getCharacters(): Observable<ICharacter[]> {
-        return this.http.get<ICharacter[]>(this._url);
-    }
+  getCharacters(): Observable<ICharacter[]> {
+      return this.http.get<ICharacter[]>(this._url);
+  }
+
 }

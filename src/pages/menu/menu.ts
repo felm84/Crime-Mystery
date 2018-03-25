@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the StartMenuComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
-  selector: 'start-menu',
+  selector: 'page-menu',
   template: `<!-- Main menu to be added into home.html when app is compiled -->
               <ion-grid>
                 <ion-row>
@@ -20,15 +15,15 @@ import { Component } from '@angular/core';
                 </ion-row>
               </ion-grid>`
 })
-export class StartMenuComponent {
+
+export class MenuPage {
 
   menu: string[] = ["Start", "Option", "Exit"]; 
 
-  constructor() {
-    console.log('Hello StartMenuComponent Component');
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  openPage(page) {
-    console.log(page);
+  openPage(event) {
+    console.log(event);
   }
 }
