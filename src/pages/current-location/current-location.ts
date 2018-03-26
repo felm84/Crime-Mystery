@@ -13,9 +13,6 @@ export class CurrentLocationPage {
 
   public localName;
 
-  public felipe;
-  public charactersArray;
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -23,13 +20,6 @@ export class CurrentLocationPage {
   ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CurrentLocationPage');
-    //this.loadGame();
-    this.felipe = this.game.charactersArray;
-
-    for (const npc of this.felipe) {
-      console.log(npc.name);
-    }
-   
+    console.log('ionViewDidLoad CurrentLocationPage');   
   }
 }
