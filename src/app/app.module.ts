@@ -8,7 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 // List of pages (components)
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { PresentationPage } from '../pages/presentation/presentation';
 import { CurrentLocationPage } from '../pages/current-location/current-location';
+import { CurrentNpcPage } from '../pages/current-npc/current-npc';
 import { ItemListPage } from '../pages/item-list/item-list';
 import { LocationListPage } from '../pages/location-list/location-list';
 import { ContactListPage } from '../pages/contact-list/contact-list';
@@ -24,11 +26,14 @@ import { LocationProvider } from '../providers/location/location';
 
 
 
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    PresentationPage,
     CurrentLocationPage,
+    CurrentNpcPage,
     ItemListPage,
     LocationListPage,
     ContactListPage,
@@ -45,7 +50,9 @@ import { LocationProvider } from '../providers/location/location';
   entryComponents: [
     MyApp,
     HomePage,
+    PresentationPage,
     CurrentLocationPage,
+    CurrentNpcPage,
     ItemListPage,
     LocationListPage,
     ContactListPage,

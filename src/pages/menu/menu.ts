@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
+import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { PresentationPage } from '../presentation/presentation';
 import { OptionsPage } from '../options/options';
 
 @Component({
@@ -22,7 +22,42 @@ export class MenuPage {
 
   menu: string[] = ["Start", "Option", "Exit"]; 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public actionSheetCtrl: ActionSheetController
+  ) {}
+
+  /* Slide up an action sheet with 3 options
+   - Start a new game;
+   - Continue the saved check point and;
+   - Cancel or exit from the action sheet */
+  presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'START THE GAME',
+      buttons: [
+        {
+          text: 'New Game',
+          role: 'destructive',
+          handler: () => {
+            this.navCtrl.push(PresentationPage);
+          }
+        },
+        {
+          text: 'Continue',
+          role: 'destructive',
+          handler: () => {
+            console.log('Continue');
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+ 
+    actionSheet.present();
   }
 
   openPage(index) {
@@ -34,7 +69,7 @@ export class MenuPage {
         
         break;
       default:
-        this.navCtrl.push(TabsPage);
+        this.presentActionSheet();
         break;
     }
   }
