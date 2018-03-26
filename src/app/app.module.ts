@@ -23,6 +23,7 @@ import { CharacterProvider } from '../providers/character/character';
 import { ItemProvider } from '../providers/item/item';
 import { SpeechProvider } from '../providers/speech/speech';
 import { LocationProvider } from '../providers/location/location';
+import { GameProvider } from '../providers/game/game';
 
 
 
@@ -67,7 +68,8 @@ import { LocationProvider } from '../providers/location/location';
     CharacterProvider,
     ItemProvider,
     SpeechProvider,
-    LocationProvider
+    LocationProvider,
+    GameProvider
   ]
 })
 export class AppModule {}
