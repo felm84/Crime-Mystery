@@ -6,12 +6,12 @@
 
 </ion-header>
 
-
 <ion-content padding>
 
   <ion-list inset>
-      <button ion-item *ngFor="let contact of contacts">
-        {{ contact.name }}
-      </button> 
-    </ion-list>
+    <a ion-item *ngFor="let item of contacts" (click)="openModal({id: item})">
+      {{item.name}}
+    </a> 
+  </ion-list>
+  
 </ion-content>

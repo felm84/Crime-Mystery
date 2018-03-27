@@ -10,10 +10,13 @@ export class PlayerProvider {
   public locationList = [];
   public contactList = [];
 
+  // Running tests
   constructor(private game: GameProvider) {
     this.playerName = game.charactersArray[0].name;
     this.currentLocation = game.locationsArray[0];
     this.itemList = game.itemsArray;
+    this.addLocation(game.locationsArray[2]);
+    this.contactList = game.charactersArray;
     console.log('Player Loaded.');
   }
 

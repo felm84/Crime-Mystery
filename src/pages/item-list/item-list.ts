@@ -21,6 +21,6 @@ export class ItemListPage {
   openModal(id) {
     let modal = this.modalCtrl.create(ModalContentPage, id);
     modal.present();
- }
+  }
 
 }

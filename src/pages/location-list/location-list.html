@@ -9,10 +9,10 @@
 
 <ion-content padding>
 
-<ion-list inset>
-    <button ion-item *ngFor="let location of locations">
-      {{location.id}} - {{location.name}}
-    </button> 
+  <ion-list inset>
+    <a ion-item *ngFor="let item of locations" (click)="openModal({id: item})">
+      {{item.name}}
+    </a> 
   </ion-list>
 
 </ion-content>
