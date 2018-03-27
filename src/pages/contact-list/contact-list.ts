@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CharacterProvider } from '../../providers/character/character';
+import { PlayerProvider } from '../../providers/player/player';
 
 @Component({
   selector: 'page-contact-list',
@@ -8,14 +8,12 @@ import { CharacterProvider } from '../../providers/character/character';
 })
 export class ContactListPage {
 
-  public contacts: any;
+  public contacts = this.player.contactList;
 
-  constructor(private contact: CharacterProvider) {}
+  constructor(private player: PlayerProvider) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactListPage');
-    this.contact.getCharacters()
-    .subscribe( data => this.contacts = data);
   }
 
 }

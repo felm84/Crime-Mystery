@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ItemProvider } from '../../providers/item/item';
+import { PlayerProvider } from '../../providers/player/player';
 
 @Component({
   selector: 'page-item-list',
@@ -8,14 +8,12 @@ import { ItemProvider } from '../../providers/item/item';
 })
 export class ItemListPage {
 
-  public items;
+  public items = this.player.itemList;
 
-  constructor(private item: ItemProvider) {}
+  constructor(private player: PlayerProvider) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListPage');
-    this.item.getItems()
-    .subscribe( data => this.items = data);
   }
 
 }

@@ -19,11 +19,8 @@ import { OptionsPage } from '../pages/options/options';
 import { TabsPage } from '../pages/tabs/tabs';
 
 // List of providers - provide services to the app
-import { CharacterProvider } from '../providers/character/character';
-import { ItemProvider } from '../providers/item/item';
-import { SpeechProvider } from '../providers/speech/speech';
-import { LocationProvider } from '../providers/location/location';
 import { GameProvider } from '../providers/game/game';
+import { PlayerProvider } from '../providers/player/player';
 
 
 
@@ -65,11 +62,8 @@ import { GameProvider } from '../providers/game/game';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CharacterProvider,
-    ItemProvider,
-    SpeechProvider,
-    LocationProvider,
-    GameProvider
+    GameProvider,
+    PlayerProvider
   ]
 })
 export class AppModule {}

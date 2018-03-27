@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LocationProvider } from '../../providers/location/location';
+import { PlayerProvider } from '../../providers/player/player';
 
 @Component({
   selector: 'page-location-list',
@@ -8,15 +8,13 @@ import { LocationProvider } from '../../providers/location/location';
 })
 export class LocationListPage {
 
-  public locations:any;
+  public locations = this.player.locationList;
 
-  constructor(private location: LocationProvider) {
+  constructor(private player: PlayerProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocationListPage');
-    this.location.getLocations()
-    .subscribe( data => this.locations = data);
   }
 
 }

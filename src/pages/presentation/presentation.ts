@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { CurrentLocationPage } from '../current-location/current-location';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-presentation',
@@ -19,7 +20,7 @@ export class PresentationPage {
   }
 
   investigateCrime() {
-    this.navCtrl.push(CurrentLocationPage);
+    this.navCtrl.push(TabsPage);
   }
 
 }
