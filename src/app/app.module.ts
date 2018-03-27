@@ -17,10 +17,12 @@ import { ContactListPage } from '../pages/contact-list/contact-list';
 import { MenuPage } from '../pages/menu/menu';
 import { OptionsPage } from '../pages/options/options';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ModalContentPage } from '../pages/modal-content/modal-content';
 
 // List of providers - provide services to the app
 import { GameProvider } from '../providers/game/game';
 import { PlayerProvider } from '../providers/player/player';
+
 
 
 
@@ -37,7 +39,8 @@ import { PlayerProvider } from '../providers/player/player';
     ContactListPage,
     MenuPage,
     OptionsPage,
-    TabsPage
+    TabsPage,
+    ModalContentPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { PlayerProvider } from '../providers/player/player';
     ContactListPage,
     MenuPage,
     OptionsPage,
-    TabsPage
+    TabsPage,
+    ModalContentPage
   ],
   providers: [
     StatusBar,

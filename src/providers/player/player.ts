@@ -21,16 +21,37 @@ export class PlayerProvider {
 
   }
 
-  addItem() {}
+  addItem(item) {
+    this.itemList.push(item);
+    console.log(item + 'added.');
+  }
 
-  removeItem() {}
+  removeItem(item) {
+    let start = this.itemList.indexOf(item);
+    this.itemList.slice(start, start + 1);
+    console.log(item + 'removed.')
+  }
 
-  addLocation() {}
+  addLocation(location) {
+    this.locationList.push(location);
+    console.log(location + 'added.');
+  }
 
-  removeLocation() {}
+  removeLocation(location) {
+    let start = this.locationList.indexOf(location);
+    this.locationList.slice(start, start + 1);
+    console.log(location + 'removed.')
+  }
 
-  addContact() {}
+  addContact(contact) {
+    this.contactList.push(contact);
+    console.log(contact + 'added.');
+  }
 
-  removeContact() {}
+  removeContact(contact) {
+    let start = this.contactList.indexOf(contact);
+    this.contactList.slice(start, start + 1);
+    console.log(contact + 'removed.');
+  }
 
 }
