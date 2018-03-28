@@ -20,6 +20,14 @@ export class ModalContentPage {
     console.log(this.item);
     console.log('ionViewDidLoad ModalContentPage');
   }
+  
+  setAction() {
+
+  }
+  
+  doAction() {
+    console.log(0)
+  }
 
   dismiss() {
     this.viewCtrl.dismiss();

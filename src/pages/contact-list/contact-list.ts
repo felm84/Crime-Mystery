@@ -9,16 +9,36 @@ import { ModalContentPage } from '../modal-content/modal-content';
 })
 export class ContactListPage {
 
-  public contacts = this.player.contactList;
+  //#region ContactListPage PROPERTIES
+  public contacts;
 
-  constructor(private player: PlayerProvider, public modalCtrl: ModalController) {}
+  //#endregion
 
+  /* ContactListPage constructor
+   @param player - type from PlayerProvider
+   @param modaCtrl - type from ModalController
+   player provides its contactList property to be looped in
+   contact-list.html.
+   modalCtrl provides modal view when openModal(id) executes */
+  constructor(
+    private player: PlayerProvider, 
+    public modalCtrl: ModalController
+  ) {
+    this.contacts = this.player.contactList;
+  }
+
+  //#region METHODS
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactListPage');
   }
 
+  /* openModal(id) method
+   @param id - type from interface IItem
+   Creates a modal and presents its content in the modal-content-page.html.
+   It also passes the id as parameter to be the content. */
   openModal(id) {
     let modal = this.modalCtrl.create(ModalContentPage, id);
     modal.present();
   }
+  //#endregion
 }

@@ -10,7 +10,6 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PresentationPage } from '../pages/presentation/presentation';
 import { CurrentLocationPage } from '../pages/current-location/current-location';
-import { CurrentNpcPage } from '../pages/current-npc/current-npc';
 import { ItemListPage } from '../pages/item-list/item-list';
 import { LocationListPage } from '../pages/location-list/location-list';
 import { ContactListPage } from '../pages/contact-list/contact-list';
@@ -22,6 +21,7 @@ import { ModalContentPage } from '../pages/modal-content/modal-content';
 // List of providers - provide services to the app
 import { GameProvider } from '../providers/game/game';
 import { PlayerProvider } from '../providers/player/player';
+import { LocationProvider } from '../providers/location/location';
 
 
 
@@ -33,7 +33,6 @@ import { PlayerProvider } from '../providers/player/player';
     HomePage,
     PresentationPage,
     CurrentLocationPage,
-    CurrentNpcPage,
     ItemListPage,
     LocationListPage,
     ContactListPage,
@@ -53,7 +52,6 @@ import { PlayerProvider } from '../providers/player/player';
     HomePage,
     PresentationPage,
     CurrentLocationPage,
-    CurrentNpcPage,
     ItemListPage,
     LocationListPage,
     ContactListPage,
@@ -67,7 +65,8 @@ import { PlayerProvider } from '../providers/player/player';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GameProvider,
-    PlayerProvider
+    PlayerProvider,
+    LocationProvider
   ]
 })
 export class AppModule {}
