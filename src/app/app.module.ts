@@ -19,13 +19,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ModalContentPage } from '../pages/modal-content/modal-content';
 
 // List of providers - provide services to the app
-import { GameProvider } from '../providers/game/game';
+import { DataProvider } from '../providers/data/data';
 import { PlayerProvider } from '../providers/player/player';
 import { LocationProvider } from '../providers/location/location';
-
-
-
-
+import { NpcProvider } from '../providers/npc/npc';
+import { GameProvider } from '../providers/game/game';
 
 @NgModule({
   declarations: [
@@ -64,9 +62,11 @@ import { LocationProvider } from '../providers/location/location';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GameProvider,
+    DataProvider,
     PlayerProvider,
-    LocationProvider
+    LocationProvider,
+    NpcProvider,
+    GameProvider
   ]
 })
 export class AppModule {}

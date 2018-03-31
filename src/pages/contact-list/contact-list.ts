@@ -24,7 +24,7 @@ export class ContactListPage {
     private player: PlayerProvider, 
     public modalCtrl: ModalController
   ) {
-    this.contacts = this.player.contactList;
+    this.contacts = this.player.inventory.items;
   }
 
   //#region METHODS
@@ -33,7 +33,7 @@ export class ContactListPage {
   }
 
   /* openModal(id) method
-   @param id - type from interface IItem
+   @param id - type from interface ICharacter
    Creates a modal and presents its content in the modal-content-page.html.
    It also passes the id as parameter to be the content. */
   openModal(id) {

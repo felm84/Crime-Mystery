@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { GameProvider } from '../providers/game/game';
+import { DataProvider } from '../providers/data/data';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +16,7 @@ export class MyApp {
     platform: Platform,
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
-    game: GameProvider
+    data: DataProvider
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -27,7 +27,7 @@ export class MyApp {
     /* When the app is loaded
      it will load all the contents
      to be ready to play */
-    game.loadGameContent();
+    data.loadContent();
   }
 }
 

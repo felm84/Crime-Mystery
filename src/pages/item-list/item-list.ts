@@ -10,7 +10,7 @@ import { ModalContentPage } from '../modal-content/modal-content';
 })
 export class ItemListPage {
 
-  public items = this.player.itemList;
+  public items = this.player.inventory.items;
 
   constructor(private player: PlayerProvider, public modalCtrl: ModalController) {}
 
@@ -18,6 +18,10 @@ export class ItemListPage {
     console.log('ionViewDidLoad ItemListPage');
   }
 
+  /* openModal(id) method
+   @param id - type from interface IItem
+   Creates a modal and presents its content in the modal-content-page.html.
+   It also passes the id as parameter to be the content. */
   openModal(id) {
     let modal = this.modalCtrl.create(ModalContentPage, id);
     modal.present();
