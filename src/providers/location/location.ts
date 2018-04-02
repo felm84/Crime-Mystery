@@ -1,18 +1,14 @@
 import { Injectable } from '@angular/core';
 import { DataProvider } from '../data/data';
-import { NpcProvider } from '../npc/npc';
-
 
 @Injectable()
 export class LocationProvider {
 
-  public location; //Initial location
-  public nonPlayer; //Get player accordingly to current location
-  public itemList = []; //Get item list accordingly to current location
-
+  public location; //Holds current location
+  public npc; //Holds npc for current location
+  
   constructor(
     private data: DataProvider, 
-    private npc: NpcProvider
   ) { console.log('Hello LocationProvider Provider'); }
 
   /* changeLocation(id) method

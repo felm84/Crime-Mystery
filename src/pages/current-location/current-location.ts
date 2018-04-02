@@ -14,8 +14,8 @@ import { GameProvider } from '../../providers/game/game';
 export class CurrentLocationPage {
 
   public name; //Name to be loaded accordingly to location in LocationProvider;
-  public nonPlayer; //A ICharacter to be loaded accordingly to current location
-  //public items; //Array to be loaded accordingly to list of items in LocationProvider;
+  public npc; //A ICharacter to be loaded accordingly to current location
+  public items; //Array to be loaded accordingly to list of items in LocationProvider;
 
   constructor(
     public navCtrl: NavController, 
@@ -25,6 +25,11 @@ export class CurrentLocationPage {
 
   ionViewDidLoad() {
     this.name = this.game.location.location.name;
+    this.items = this.game.location.location.items;
     console.log('ionViewDidLoad CurrentLocationPage - ' + this.name);
+  }
+
+  loadItemList() {
+    
   }
 }

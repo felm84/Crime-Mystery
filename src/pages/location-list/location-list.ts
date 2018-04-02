@@ -23,8 +23,8 @@ export class LocationListPage {
    @param id - type from interface ILocation
    Creates a modal and presents its content in the modal-content-page.html.
    It also passes the id as parameter to be the content. */
-  openModal(id) {
-    let modal = this.modalCtrl.create(ModalContentPage, id);
+  openModal(id, page) {
+    let modal = this.modalCtrl.create(ModalContentPage, id, page);
     modal.present();
   }
 }
