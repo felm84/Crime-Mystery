@@ -6,7 +6,7 @@ export class PlayerProvider {
 
   //#region PlayerProvider PROPERTIES
   public player;
-  public currentLocation;
+  //public currentLocation;
   public inventory = {
     'items': [],
     'locations': [],
@@ -20,6 +20,7 @@ export class PlayerProvider {
    Data will provide all the database, such as, list of characters,
    items, locations and speeches, then loadPlayer() will be loaded. */
   constructor(private data: DataProvider) {
+    console.log('Hello PlayerProvider Provider');
   }
 
   //#region METHODS
@@ -29,11 +30,11 @@ export class PlayerProvider {
    selects new data, then add to its list the initial location
    and an assistent */
   loadPlayer() {
-    this.player = this.data.charactersArray[0];
-    this.currentLocation = this.data.locationsArray[0];
-    this.addLocation(this.currentLocation);
+    //this.player = this.data.charactersArray[0];
+    //this.currentLocation = this.data.locationsArray[0];
+    this.addLocation(this.data.locationsArray[0]);
     this.addContact(this.data.charactersArray[1]);
-    console.log('Player Loaded. - ' + this.currentLocation);
+    console.log('Player Loaded. - ' + this.player);
   }
 
   /* addItem(item) method

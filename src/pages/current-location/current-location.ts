@@ -20,14 +20,10 @@ export class CurrentLocationPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private game: GameProvider,
-    private player: PlayerProvider,
-    private npc: NpcProvider,
-    private location: LocationProvider
+    private game: GameProvider
   ) {}
 
   ionViewDidLoad() {
-    //this.game.loadGame();
     this.name = this.game.location.location.name;
     console.log('ionViewDidLoad CurrentLocationPage - ' + this.name);
   }

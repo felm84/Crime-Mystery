@@ -9,6 +9,7 @@ import { ModalContentPage } from '../modal-content/modal-content';
 })
 export class LocationListPage {
 
+  // locations[] holds the player list of visited locations
   public locations = this.player.inventory.locations;
 
   constructor(private player: PlayerProvider, public modalCtrl: ModalController) {

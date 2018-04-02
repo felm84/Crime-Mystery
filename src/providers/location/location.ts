@@ -6,10 +6,9 @@ import { NpcProvider } from '../npc/npc';
 @Injectable()
 export class LocationProvider {
 
-  public location = this.data.locationsArray[0];
-  public nonPlayer; //Get player accordingly to current location selected
-  public itemList = []; //Get item list accordingly to current location selected
-  public visited = false; //Changes when player visit the location
+  public location; //Initial location
+  public nonPlayer; //Get player accordingly to current location
+  public itemList = []; //Get item list accordingly to current location
 
   constructor(
     private data: DataProvider, 
@@ -25,5 +24,9 @@ export class LocationProvider {
     this.location = this.data.locationsArray.find(
       (location) => location.id == id);
     console.log('New location - ' + this.location.name);
+  }
+
+  releaseItem() {
+    
   }
 }

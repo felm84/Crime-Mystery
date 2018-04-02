@@ -10,7 +10,8 @@ import { ModalContentPage } from '../modal-content/modal-content';
 export class ContactListPage {
 
   //#region ContactListPage PROPERTIES
-  public contacts;
+  // contacts[] holds the player list of contacts
+  public contacts = this.player.inventory.contacts;
 
   //#endregion
 
@@ -20,12 +21,7 @@ export class ContactListPage {
    player provides its contactList property to be looped in
    contact-list.html.
    modalCtrl provides modal view when openModal(id) executes */
-  constructor(
-    private player: PlayerProvider, 
-    public modalCtrl: ModalController
-  ) {
-    this.contacts = this.player.inventory.items;
-  }
+  constructor(private player: PlayerProvider, public modalCtrl: ModalController) {}
 
   //#region METHODS
   ionViewDidLoad() {

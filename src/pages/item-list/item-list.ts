@@ -10,6 +10,7 @@ import { ModalContentPage } from '../modal-content/modal-content';
 })
 export class ItemListPage {
 
+  // items[] holds the player list of collected items
   public items = this.player.inventory.items;
 
   constructor(private player: PlayerProvider, public modalCtrl: ModalController) {}
