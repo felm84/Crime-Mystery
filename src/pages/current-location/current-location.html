@@ -1,14 +1,24 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>{{name}}</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar>
+    <ion-title>{{game.location.location.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <p>Current page</p>
-  <ul>
-    <li *ngFor="let item of items" >{{item}}</li>
-  </ul>
+<ion-content padding (tap)="addCard()">
+  <ion-list id="chatCards">
+    <ion-card>
+      <ion-card-header>
+        {{game.npc.npc.name}}
+      </ion-card-header>
+      <ion-card-content>
+        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+      </ion-card-content>
+    </ion-card>
+    
+  </ion-list>
 </ion-content>

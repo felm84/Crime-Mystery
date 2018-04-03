@@ -5,7 +5,6 @@ import { DataProvider } from '../data/data';
 export class LocationProvider {
 
   public location; //Holds current location
-  public npc; //Holds npc for current location
   
   constructor(
     private data: DataProvider, 
