@@ -7,21 +7,21 @@
     },
     {
       "id": 2,
+      "name": "Dr. Watson",
+      "type": "assistant",
+      "img": "assistant.jpg"
+    },
+    {
+      "id": 3,
       "name": "Maria Gonzales",
       "type": "maid",
       "img": "maid.jpg"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "Carey Mahoney",
       "type": "police officer",
       "img": "police.jpg"
-    },
-    {
-      "id": 4,
-      "name": "Sherlock Holmes",
-      "type": "detective",
-      "img": "detective.jpg"
     },
     {
       "id": 5,
@@ -43,6 +43,12 @@
     },
     {
       "id": 8,
+      "name": "Sherlock Holmes",
+      "type": "detective",
+      "img": "detective.jpg"
+    },
+    {
+      "id": 9,
       "name": "Sherlock Holmes",
       "type": "detective",
       "img": "detective.jpg"

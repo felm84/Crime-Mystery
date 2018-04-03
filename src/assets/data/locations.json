@@ -1,22 +1,37 @@
 [
-    {
+  {
       "id": 1,
-      "name": "Albert Park",
-      "img": "albert_park.jpg"
+      "name": "Detective's Office",
+      "img": "detective_office.jpg",
+      "npc": 2,
+      "items": [1, 2, 3, 4]
     },
     {
       "id": 2,
-      "name": "Train Station",
-      "img": "train_station.jpg"
+      "name": "Albert Park",
+      "img": "albert_park.jpg",
+      "npc": 3,
+      "items": [1, 2, 3, 4]
     },
     {
       "id": 3,
-      "name": "Bedroom",
-      "img": "bedroom.jpg"
+      "name": "Train Station",
+      "img": "train_station.jpg",
+      "npc": 4,
+      "items": [1, 2, 3, 4]
     },
     {
       "id": 4,
+      "name": "Bedroom",
+      "img": "bedroom.jpg",
+      "npc": 4,
+      "items": [1, 2, 3, 4]
+    },
+    {
+      "id": 5,
       "name": "Hotel",
-      "img": "hotel.jpg"
+      "img": "hotel.jpg",
+      "npc": 4,
+      "items": [1, 2, 3, 4]
     }
   ]
