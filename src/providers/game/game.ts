@@ -25,10 +25,10 @@ export class GameProvider {
     ]; //Dr. Watson
     this.player.addLocation(this.location.location);
     this.player.addContact(this.npc.npc);
-    for (const item of this.location.location.items) {
+    /* for (const item of this.location.location.items) {
       this.player.addItem(this.data.itemsArray[this.findElement(item)]);
       console.log(this.data.itemsArray[this.findElement(item)]);
-    }
+    } */
   }
 
   findElement(id) {

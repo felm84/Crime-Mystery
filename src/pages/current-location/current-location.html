@@ -10,15 +10,16 @@
 </ion-header>
 
 <ion-content padding (tap)="addCard()">
-  <ion-list id="chatCards">
+  <ion-list id="chat">
     <ion-card>
       <ion-card-header>
         {{game.npc.npc.name}}
       </ion-card-header>
       <ion-card-content>
-        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+        {{npcPhrase}}
       </ion-card-content>
     </ion-card>
-    
+
+
   </ion-list>
 </ion-content>

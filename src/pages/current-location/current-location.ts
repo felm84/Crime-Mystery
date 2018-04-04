@@ -10,6 +10,8 @@ import { GameProvider } from '../../providers/game/game';
 export class CurrentLocationPage {
 
   public chat = [];
+  public npcPhrase;
+  public playerPhrase;
 
   constructor(
     public navCtrl: NavController, 
@@ -22,8 +24,9 @@ export class CurrentLocationPage {
   }
 
   addCard() {
-    let card = document.createElement("page-card");
-    document.getElementById("chatCards").appendChild(card);
+    let p = document.createElement("p");
+    p.innerHTML = "Felipe"
+    document.getElementById("chat").appendChild(p);
   }
 
 }

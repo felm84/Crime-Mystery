@@ -17,7 +17,6 @@ import { MenuPage } from '../pages/menu/menu';
 import { OptionsPage } from '../pages/options/options';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ModalContentPage } from '../pages/modal-content/modal-content';
-import { CardPage } from '../pages/card/card';
 
 // List of providers - provide services to the app
 import { DataProvider } from '../providers/data/data';
@@ -38,8 +37,7 @@ import { GameProvider } from '../providers/game/game';
     MenuPage,
     OptionsPage,
     TabsPage,
-    ModalContentPage,
-    CardPage
+    ModalContentPage
   ],
   imports: [
     BrowserModule,
@@ -58,8 +56,7 @@ import { GameProvider } from '../providers/game/game';
     MenuPage,
     OptionsPage,
     TabsPage,
-    ModalContentPage,
-    CardPage
+    ModalContentPage
   ],
   providers: [
     StatusBar,
