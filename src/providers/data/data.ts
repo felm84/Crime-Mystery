@@ -21,7 +21,7 @@ export class DataProvider {
   //#endregion
 
   //#region GameProvider PROPERTY ARRAYS
-  public charactersArray;
+  public charactersArray: ICharacter[];
   public speechesArray;
   public locationsArray;
   public itemsArray;
@@ -32,7 +32,9 @@ export class DataProvider {
    http provides all the get, set, put, delete in a HTTP request.
    HttpClient is a module provide by Angular and it only works
    when HttpClientModule is declared in app.module.ts */
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) { 
+    this.loadContent();
+    console.log('DataProvider') };
 
   //#region METHODS
   /* loadContent() method
@@ -40,7 +42,7 @@ export class DataProvider {
    It gets all Characters, Speeches, Locations and Items
    from ICharacter, ISpeech, ILocation, IItem interfaces
    and assign their data to specified properties */
-  loadContent(){
+  loadContent(): void{
     this.getCharacters().subscribe(data => this.charactersArray = data);
     this.getSpeeches().subscribe(data => this.speechesArray = data);
     this.getLocations().subscribe(data => this.locationsArray = data);

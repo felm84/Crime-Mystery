@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
-import { CurrentLocationPage } from '../current-location/current-location';
 import { TabsPage } from '../tabs/tabs';
+import { GameProvider } from '../../providers/game/game';
 
 @Component({
   selector: 'page-presentation',
@@ -12,7 +12,8 @@ export class PresentationPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    private game: GameProvider
   ) {}
 
   ionViewDidLoad() {
@@ -20,6 +21,7 @@ export class PresentationPage {
   }
 
   investigateCrime() {
+    this.game.loadNewGame();
     this.navCtrl.push(TabsPage);
   }
 

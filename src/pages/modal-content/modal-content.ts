@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, NavParams, ViewController, NavController } from 'ionic-angular';
+import { Platform, NavParams, ViewController } from 'ionic-angular';
 import { GameProvider } from '../../providers/game/game';
 import { TabsPage } from '../tabs/tabs';
 
@@ -16,7 +16,6 @@ export class ModalContentPage {
   constructor(
     public navParams: NavParams, 
     public viewCtrl: ViewController,
-    public navCtrl: NavController,
     private game: GameProvider
   ) {
     this.item = this.navParams.get('id');
@@ -31,13 +30,13 @@ export class ModalContentPage {
   setButton() {
     switch (this.option) {
       case 'item':
-        this.button = 'Analyse'
+        this.button = 'Analyse';
         break;
       case 'location':
-        this.button = 'Go to'
+        this.button = 'Set Location';
         break;
       default:
-        this.button = 'Chat History'
+        this.button = 'Chat History';
         break;
     }
   }
@@ -61,8 +60,7 @@ export class ModalContentPage {
   }
 
   moveTo() {
-    this.game.location.changeLocation(this.item.id);
-    this.navCtrl.push(TabsPage);
+    this.game.locationPvd.changeLocation(this.item.id);
     console.log('moved');
   }
 

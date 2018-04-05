@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+
 import { GameProvider } from '../../providers/game/game';
+import { PlayerProvider } from '../../providers/player/player';
+
+declare var $: any;
 
 @Component({
   selector: 'page-current-location',
@@ -16,17 +20,25 @@ export class CurrentLocationPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private game: GameProvider
-  ) {}
+    private game: GameProvider,
+  ) {
+    
+    console.log('From Game - ' + this.game.playerPvd.player);
+  };
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CurrentLocationPage - ' + this.game.location.location.name);
+    console.log('ionViewDidLoad CurrentLocationPage');
   }
 
   addCard() {
-    let p = document.createElement("p");
-    p.innerHTML = "Felipe"
-    document.getElementById("chat").appendChild(p);
+    // $('#chat').slideToggle();
+    $('#npcChat').text('Testsss');
+    console.log('tapped');
+  }
+
+  clearChat() {
+    $('#chat').empty();
+    console.log('chat cleared');
   }
 
 }

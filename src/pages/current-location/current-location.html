@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{game.location.location.name}}</ion-title>
+    <ion-title>{{game.locationPvd.location.name}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only>
         <ion-icon name="more"></ion-icon>
@@ -10,16 +10,23 @@
 </ion-header>
 
 <ion-content padding (tap)="addCard()">
-  <ion-list id="chat">
-    <ion-card>
-      <ion-card-header>
-        {{game.npc.npc.name}}
-      </ion-card-header>
-      <ion-card-content>
-        {{npcPhrase}}
-      </ion-card-content>
-    </ion-card>
 
+  <ion-card>
+    <ion-card-header>
+      {{game.npcPvd.npc.name}}
+    </ion-card-header>
+    <ion-card-content id="npcChat">
+      
+    </ion-card-content>
+  </ion-card>
 
-  </ion-list>
+  <ion-card>
+    <ion-card-header>
+      {{game.playerPvd.player.name}}
+    </ion-card-header>
+    <ion-card-content id="playerChat">
+
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
