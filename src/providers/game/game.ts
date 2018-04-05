@@ -30,12 +30,25 @@ export class GameProvider {
     console.log(this.locationPvd.location);
 
     this.playerPvd.addLocation(this.locationPvd.location);
+    this.playerPvd.addLocation(this.data.locationsArray[1]);
     this.playerPvd.addContact(this.npcPvd.npc);
 
     /* for (const item of this.location.location.items) {
       this.player.addItem(this.data.itemsArray[this.findElement(item)]);
       console.log(this.data.itemsArray[this.findElement(item)]);
     } */
+  }
+
+  /* changeLocation(location) method
+   @param location - type from interface ILocation
+   location will be used to setLocation in LocationProvider
+   and location.npc to setNpc in NpcProvider, then the new
+   npc can be added into PlayerProvider invetory contacts list. */
+  changeLocation(location) {
+    this.locationPvd.setLocation(location);
+    this.npcPvd.setNpc(location.npc);
+
+    this.playerPvd.addContact(this.npcPvd.npc);
   }
 
   /* findElement(id) {
