@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DataProvider } from '../data/data';
 import { ICharacter } from '../interface/character';
 
 @Injectable()
