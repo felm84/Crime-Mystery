@@ -47,7 +47,7 @@ export class ModalContentPage {
         this.checkItem();
         break;
       case 'location':
-        this.moveTo();        
+        this.setLocation();        
         break;
       default:
         this.checkChat();
@@ -59,9 +59,10 @@ export class ModalContentPage {
     console.log('Item');
   }
 
-  moveTo() {
-    this.game.locationPvd.changeLocation(this.item.id);
-    console.log('moved');
+  setLocation() {
+    this.game.changeLocation(this.item);
+    this.dismiss();
+    console.log('Moved...');
   }
 
   checkChat() {

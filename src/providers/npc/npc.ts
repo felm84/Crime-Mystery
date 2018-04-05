@@ -11,6 +11,10 @@ export class NpcProvider {
     console.log('NpcProvider');
   }
 
+  setNpc(npcId) {
+    this.npc = this.data.charactersArray[this.findNpc(npcId)];
+    console.log('New Npc - ' + this.npc.name );
+  }
   
   findNpc(id) {
     let index = this.data.charactersArray.findIndex((element) => element.id === id);
