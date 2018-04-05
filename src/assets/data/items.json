@@ -2,26 +2,31 @@
   {
     "id": 1,
     "name": "knife",
+    "description": "descripton about the item",
     "img": "knife.jpg"
   },
   {
     "id": 2,
     "name": "blood",
+    "description": "descripton about the item",
     "img": "blood.jpg"
   },
   {
     "id": 3,
     "name": "cloth",
+    "description": "descripton about the item",
     "img": "cloth.jpg"
   },
   {
     "id": 4,
     "name": "gun",
+    "description": "descripton about the item",
     "img": "gun.jpg"
   },
   {
     "id": 5,
     "name": "finger prints",
+    "description": "descripton about the item",
     "img": "finger_prints.jpg"
   }
 ]
