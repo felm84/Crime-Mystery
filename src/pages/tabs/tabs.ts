@@ -7,24 +7,24 @@ import { ContactListPage } from '../contact-list/contact-list';
 @Component({
   selector: 'page-tabs',
   template: `<ion-tabs>
-              <ion-tab tabIcon="home" tabTitle="Home" [root]="home"></ion-tab>
+              <ion-tab tabIcon="pin" tabTitle="Location" [root]="location"></ion-tab>
               <ion-tab tabIcon="briefcase" tabTitle="Items" [root]="items"></ion-tab>
-              <ion-tab tabIcon="pin" tabTitle="Locations" [root]="locations"></ion-tab>
+              <ion-tab tabIcon="map" tabTitle="Maps" [root]="maps"></ion-tab>
               <ion-tab tabIcon="people" tabTitle="Contacts" [root]="contacts"></ion-tab>
             </ion-tabs>`
 })
 
 export class TabsPage {
 
-  home: any;
+  location: any;
   items: any;
-  locations:any;
+  maps:any;
   contacts:any;
 
   constructor() {
-    this.home = CurrentLocationPage;
+    this.location = CurrentLocationPage;
     this.items = ItemListPage;
-    this.locations = LocationListPage;
+    this.maps = LocationListPage;
     this.contacts = ContactListPage;
   }
 
