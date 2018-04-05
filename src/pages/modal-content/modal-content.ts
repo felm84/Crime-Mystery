@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Platform, NavParams, ViewController } from 'ionic-angular';
 import { GameProvider } from '../../providers/game/game';
-import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-modal-content',
