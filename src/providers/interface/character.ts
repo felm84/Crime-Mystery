@@ -3,4 +3,5 @@ export interface ICharacter {
     name: string;
     type: string;
     img: string;
+    speeches: number[];
 }
