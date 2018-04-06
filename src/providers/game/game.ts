@@ -15,28 +15,32 @@ export class GameProvider {
   ) {
     console.log('Hello GameProvider Provider');
   }
-    
 
   loadNewGame() {
     this.locationPvd.location = this.data.locationsArray[0]; //Detective's office
+    this.locationPvd.feedList();
     this.playerPvd.player = this.data.charactersArray[0]; //Sherlock Holmes
 
-    this.npcPvd.npc = this.data.charactersArray[
-      this.npcPvd.findNpc(this.locationPvd.location.npc)
-    ];//Dr. Watson
+    this.npcPvd.setNpc(this.locationPvd.location.npc);
 
-    console.log(this.playerPvd.player);
-    console.log(this.npcPvd.npc);
-    console.log(this.locationPvd.location);
+    /* this.npcPvd.npc = this.data.charactersArray[
+      this.npcPvd.findNpc(this.locationPvd.location.npc)
+    ]; */ //Dr. Watson
+    this.npcPvd.feedSpeeches();
 
     this.playerPvd.addLocation(this.locationPvd.location);
     this.playerPvd.addLocation(this.data.locationsArray[1]);
+
     this.playerPvd.addContact(this.npcPvd.npc);
 
-    /* for (const item of this.location.location.items) {
-      this.player.addItem(this.data.itemsArray[this.findElement(item)]);
-      console.log(this.data.itemsArray[this.findElement(item)]);
-    } */
+    console.log(this.playerPvd);
+    console.log(this.npcPvd);
+    console.log(this.locationPvd);
+  }
+
+  // Get data form localstorage
+  loadContinueGame() {
+
   }
 
   /* changeLocation(location) method
@@ -47,17 +51,7 @@ export class GameProvider {
   changeLocation(location) {
     this.locationPvd.setLocation(location);
     this.npcPvd.setNpc(location.npc);
-
     this.playerPvd.addContact(this.npcPvd.npc);
-  }
-
-  /* findElement(id) {
-    let index = this.data.itemsArray.findIndex((element) => element.id === id);
-    return index;
-  } */
-
-  // Get data form localstorage
-  loadContinueGame() {
-
+    console.log(this.npcPvd);
   }
 }
