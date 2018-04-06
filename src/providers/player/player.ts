@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ICharacter } from '../interface/character';
+import { DataProvider } from '../data/data';
 
 @Injectable()
 export class PlayerProvider {
@@ -13,17 +14,23 @@ export class PlayerProvider {
     'contacts': []
   };
 
+  public currentSpeech: string = 'Good....';
+
   //#endregion
 
   /* PlayerProvider constructor
    @param data - type from DataProvider
    Data will provide all the database, such as, list of characters,
    items, locations and speeches, then loadPlayer() will be loaded. */
-  constructor() {
+  constructor(private data: DataProvider) {
     console.log('PlayerProvider');
   }
 
   //#region METHODS
+
+  setCurrentSpeech(npcSpeechId) {
+
+  }
 
   /* addItem(item) method
    @param item - type from interface IItem

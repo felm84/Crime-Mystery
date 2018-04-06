@@ -9,24 +9,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding (tap)="addCard()">
+<ion-content padding>
 
-  <ion-card>
+  <ion-card (tap)="showNpcSpeech()">
     <ion-card-header>
       {{game.npcPvd.npc.name}}
     </ion-card-header>
     <ion-card-content id="npcChat">
-      
+      {{game.npcPvd.currentSpeech}}
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
-    <ion-card-header>
+  <ion-card (tap)="showPlayerSpeech()">
+    <ion-card-header end>
       {{game.playerPvd.player.name}}
     </ion-card-header>
     <ion-card-content id="playerChat">
-
+      {{game.playerPvd.currentSpeech}}
     </ion-card-content>
   </ion-card>
+
+  <!-- <button ion-button block *ngIf="isButton" (click)="test()">Answer NPC</button> -->
 
 </ion-content>

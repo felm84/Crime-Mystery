@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { GameProvider } from '../../providers/game/game';
-import { PlayerProvider } from '../../providers/player/player';
 
 declare var $: any;
 
@@ -14,15 +13,12 @@ declare var $: any;
 export class CurrentLocationPage {
 
   public chat = [];
-  public npcPhrase;
-  public playerPhrase;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private game: GameProvider,
   ) {
-    
     console.log('From Game - ' + this.game.playerPvd.player);
   };
 
@@ -30,10 +26,16 @@ export class CurrentLocationPage {
     console.log('ionViewDidLoad CurrentLocationPage');
   }
 
-  addCard() {
-    // $('#chat').slideToggle();
-    $('#npcChat').text('Testsss');
-    console.log('tapped');
+  showNpcSpeech() {
+    $('#playerChat').fadeOut();
+    $('#npcChat').fadeIn();
+    console.log('NPC speech...');
+  }
+
+  showPlayerSpeech() {
+    $('#npcChat').fadeOut();
+    $('#playerChat').fadeIn();
+    console.log('Player speech...');
   }
 
   clearChat() {
