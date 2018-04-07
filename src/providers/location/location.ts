@@ -7,13 +7,34 @@ import { DataProvider } from '../data/data';
 @Injectable()
 export class LocationProvider {
   
-  public location: ILocation;
+  private _location: ILocation;
 
-  public items: IItem[] = [];
+  private _items: IItem[] = [];
 
   constructor(private data: DataProvider) {
     console.log('LocationProvider');
   }
+
+  //#region ENCAPSULATION
+  
+  public get location() : ILocation {
+    return this._location;
+  }
+  
+  public set location(v : ILocation) {
+    this._location = v;
+    this.feedItemsList();
+  }
+  
+  public get items() : IItem[] {
+    return this._items;
+  }
+  
+  public set items(v : IItem[]) {
+    this._items = v;
+  }
+    
+  //#endregion
 
   /* changeLocation(id) method
    @param id - type from number
@@ -25,16 +46,18 @@ export class LocationProvider {
     console.log('New location - ' + this.location.name );
   }
 
-  findIndex(id) {
-    let index = this.data.itemsArray.findIndex((element) => element.id === id);
-    return index;
+  findItem(id: number): IItem {
+    return this.data.itemsArray[
+      this.data.itemsArray.findIndex(location => location.id === id)
+    ];
   }
 
-  feedList() {
+  feedItemsList() {
+    let value: IItem[] = [];
     for (const item of this.location.items) {
-      this.items.push(this.data.itemsArray[this.findIndex(item)]);
-      console.log(this.data.itemsArray[this.findIndex(item)]);
+      value.push(this.findItem(item));
     }
+    this.items = value;
   }
 
   releaseItem() {

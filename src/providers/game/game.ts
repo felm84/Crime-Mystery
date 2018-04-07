@@ -18,15 +18,10 @@ export class GameProvider {
 
   loadNewGame() {
     this.locationPvd.location = this.data.locationsArray[0]; //Detective's office
-    this.locationPvd.feedList();
+    
     this.playerPvd.player = this.data.charactersArray[0]; //Sherlock Holmes
 
-    this.npcPvd.setNpc(this.locationPvd.location.npc);
-
-    /* this.npcPvd.npc = this.data.charactersArray[
-      this.npcPvd.findNpc(this.locationPvd.location.npc)
-    ]; */ //Dr. Watson
-    this.npcPvd.feedSpeeches();
+    this.npcPvd.npc = this.npcPvd.findNpc(this.locationPvd.location.npc);
 
     this.playerPvd.addLocation(this.locationPvd.location);
     this.playerPvd.addLocation(this.data.locationsArray[1]);
@@ -49,9 +44,10 @@ export class GameProvider {
    and location.npc to setNpc in NpcProvider, then the new
    npc can be added into PlayerProvider invetory contacts list. */
   changeLocation(location) {
-    this.locationPvd.setLocation(location);
-    this.npcPvd.setNpc(location.npc);
+    this.locationPvd.location = location;
+    this.npcPvd.npc = this.npcPvd.findNpc(location.npc);
     this.playerPvd.addContact(this.npcPvd.npc);
+    console.log(this.locationPvd);
     console.log(this.npcPvd);
   }
 }

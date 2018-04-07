@@ -6,36 +6,62 @@ import { ISpeech } from '../interface/speech';
 @Injectable()
 export class NpcProvider {
   
-  public npc: ICharacter;
-  public speeches: ISpeech[] = [];
-
-  public currentSpeech: string = '';
+  private _npc: ICharacter;
+  private _speeches: ISpeech[] = [];
+  private _currentSpeech: string = '';
 
   constructor(private data: DataProvider) {
     console.log('NpcProvider');
   }
 
-  setNpc(npcId) {
-    this.npc = this.data.charactersArray[this.findNpc(npcId)];
-    this.feedSpeeches();
+  //#region ENCAPSULATION 
+  public get npc() : ICharacter {
+    return this._npc;
+  }
+  
+  public set npc(v : ICharacter) {
+    this._npc = v;
+    this.feedSpeechesList();
     this.currentSpeech = this.greetPlayer();
     console.log('New Npc - ' + this.npc );
   }
-
-  feedSpeeches() {
-    for (const speech of this.npc.speeches) {
-      this.speeches.push(this.data.speechesArray[this.findSpeech(speech)]);
-    }
-  }
-
-  findSpeech(id) {
-    let index = this.data.speechesArray.findIndex((element) => element.id === id);
-    return index;
+  
+  public get speeches() : ISpeech[] {
+    return this._speeches;
   }
   
-  findNpc(id) {
-    let index = this.data.charactersArray.findIndex((element) => element.id === id);
-    return index;
+  
+  public set speeches(v : ISpeech[]) {
+    this._speeches = v;
+  }
+  
+  public get currentSpeech() : string {
+    return this._currentSpeech;
+  }
+   
+  public set currentSpeech(v : string) {
+    this._currentSpeech = v;
+  }
+  //#endregion
+
+  findSpeech(id: number): ISpeech {
+    return this.data.speechesArray[
+      this.data.speechesArray.findIndex(speech => speech.id === id)
+    ];
+  }
+
+  feedSpeechesList() {
+    let value: ISpeech[] = [];
+    for (const speech of this.npc.speeches) {
+      value.push(this.findSpeech(speech));
+    }
+    this.speeches = value;
+  }
+  
+  findNpc(id: number): ICharacter {
+    return this.data.charactersArray[
+      this.data.charactersArray.findIndex((element) => element.id === id)
+    ];
   }
 
   greetPlayer() {

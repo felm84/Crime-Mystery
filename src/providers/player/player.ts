@@ -6,15 +6,16 @@ import { DataProvider } from '../data/data';
 export class PlayerProvider {
 
   //#region PlayerProvider PROPERTIES
-  public player: ICharacter;
+  private _player: ICharacter;
 
+  //item IItem[], locations ILocation[], contacts ICharacter[]
   public inventory = {
     'items': [],
     'locations': [],
     'contacts': []
   };
 
-  public currentSpeech: string = 'Good....';
+  private _currentSpeech: string = '';
 
   //#endregion
 
@@ -26,18 +27,33 @@ export class PlayerProvider {
     console.log('PlayerProvider');
   }
 
-  //#region METHODS
-
-  setCurrentSpeech(npcSpeechId) {
-
+  //#region ENCAPSULATION
+  
+  public get player() : ICharacter {
+    return this._player;
   }
+  
+  public set player(v : ICharacter) {
+    this._player = v;
+  }
+  
+  public get currentSpeech() : string {
+    return this._currentSpeech;
+  }
+  
+  public set currentSpeech(v : string) {
+    this._currentSpeech = v;
+  }
+  //#endregion
+
+  //#region METHODS  
 
   /* addItem(item) method
    @param item - type from interface IItem
    Adds a found item to player's itemList[]. This list is 
    displayed in the item-list.html  */
   addItem(item) {
-    const found = this.inventory.items.find((element) => element.id === item.id);
+    const found = this.inventory.items.find(element => element.id === item.id);
     if (found === undefined) {
       this.inventory.items.push(item);
       console.log(item.name + ' - added.');
@@ -62,7 +78,7 @@ export class PlayerProvider {
    It runs a find method to check if the same location already exit
    in the list, if not, it will be pushed to the list. */
   addLocation(location) {
-    const found = this.inventory.locations.find((element) => element.id === location.id);
+    const found = this.inventory.locations.find(element => element.id === location.id);
     if (found === undefined) {
       this.inventory.locations.push(location);
       console.log(location.name + ' - added.');
