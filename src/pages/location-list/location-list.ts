@@ -9,7 +9,7 @@ import { ModalContentPage } from '../modal-content/modal-content';
 })
 export class LocationListPage {
 
-  // locations[] holds the player list of visited locations
+  // locations: ILocation[] holds the player list of visited locations
   public locations = this.player.inventory.locations;
 
   constructor(private player: PlayerProvider, public modalCtrl: ModalController) {
@@ -21,6 +21,7 @@ export class LocationListPage {
 
   /* openModal(id) method
    @param id - type from interface ILocation
+   @param page - type from string
    Creates a modal and presents its content in the modal-content-page.html.
    It also passes the id as parameter to be the content. */
   openModal(id, page) {

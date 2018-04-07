@@ -29,12 +29,14 @@ export class CurrentLocationPage {
   showNpcSpeech() {
     $('#playerChat').fadeOut();
     $('#npcChat').fadeIn();
+    this.game.npcPvd.nextSpeech();
     console.log('NPC speech...');
   }
 
   showPlayerSpeech() {
     $('#npcChat').fadeOut();
     $('#playerChat').fadeIn();
+    this.game.playerPvd.currentSpeech = '';
     console.log('Player speech...');
   }
 
