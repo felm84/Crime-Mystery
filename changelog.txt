@@ -1,0 +1,98 @@
+Crime Mystery Version 1.0 19/03/2018
+
+######### CHANGELOG #########
+
+19/03/2018
+----------
+ - Project Initialized - [author: Felipe Menezes Silva]
+
+20/03/2018
+----------
+ - Initial mock data developed - [author: Felipe Menezes Silva]
+ - Angular CLI installed - [author: Felipe Menezes Silva]
+
+21/03/2018
+----------
+ - Added pages and moved the data location - [author: Felipe Menezes Silva]
+ - Added pages and menu components - [author: Felipe Menezes Silva]
+ - Added main menu component into home - [author: Felipe Menezes Silva]
+
+22/03/2018
+----------
+ - Implemented data fetching from json file - [author: Felipe Menezes Silva]
+
+23/03/2018
+----------
+ - Added classes to be instantiated - [author: Felipe Menezes Silva]
+
+24/03/2018
+----------
+ - All services alocated to specific service class - [author: Felipe Menezes Silva]
+ - Fixed url error in data.service.ts - [author: Felipe Menezes Silva]
+ - Divided database and added individual services - [author: Felipe Menezes Silva]
+
+25/03/2018
+----------
+ - Adapted code to Ionic standards - [author: Felipe Menezes Silva]
+ - Adding navigation and tabs - [author: Felipe Menezes Silva]
+ - All lists linked to the tabs menu - [author: Felipe Menezes Silva]
+
+26/03/2018
+----------
+ - Added presentation page and action sheet - [author: Felipe Menezes Silva]
+ - Adding game functionality - [author: Felipe Menezes Silva]
+ - Small Tests - [author: Felipe Menezes Silva]
+
+27/03/2018
+----------
+ - Cleaned up the code - [author: Felipe Menezes Silva]
+ - Adding Modal to all taps list - [author: Felipe Menezes Silva]
+ - Modal added - [author: Felipe Menezes Silva]
+
+28/03/2018
+----------
+ - Adding comments - [author: Felipe Menezes Silva]
+
+31/03/2018
+----------
+ - Reorganizing code - [author: Felipe Menezes Silva]
+
+02/04/2018
+----------
+ - Reorganizing Code - [author: Felipe Menezes Silva]
+ - Adding modal content fuctionality - [author: Felipe Menezes Silva]
+
+03/04/2018
+----------
+ - Database glitch fixed - [author: Felipe Menezes Silva]
+ - Small changes - [author: Felipe Menezes Silva]
+
+04/04/2018
+----------
+ - JQuery plugin installed - [author: Felipe Menezes Silva]
+
+05/04/2018
+----------
+ - Fixed bugs - [author: Felipe Menezes Silva]
+ - Added set methods - [author: Felipe Menezes Silva]
+ - Changed icon and title in Tab - [author: Felipe Menezes Silva]
+ - Removed DataProvider (not in use) - [author: Felipe Menezes Silva]
+ - Added changeLocation method - [author: Felipe Menezes Silva]
+ - Removed TabsPage (not in use) - [author: Felipe Menezes Silva]
+ - Updated items database - [author: Felipe Menezes Silva]
+ - Updated characters database - [author: Felipe Menezes Silva]
+ - Added speeches[] to NpcProvider - [author: Felipe Menezes Silva]
+ - Added items[] to LocationProvider - [author: Felipe Menezes Silva]
+
+06/04/2018
+----------
+ - Fixed speeches database - [author: Felipe Menezes Silva]
+ - Updated ICharacter interface - [author: Felipe Menezes Silva]
+ - Adding speeches to npc and player - [author: Felipe Menezes Silva]
+ - Changed style - [author: Felipe Menezes Silva]
+ - Cleaning and fixing code - [author: Felipe Menezes Silva]
+
+07/04/2018
+----------
+ - Added encapsulation - [author: Felipe Menezes Silva]
+ - Fixed code - [author: Felipe Menezes Silva]
