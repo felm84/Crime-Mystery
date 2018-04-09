@@ -1,0 +1,34 @@
+Crime Mystery Version 1.0 19/03/2018
+
+Licenses:
+---------
+NodeJs  Framework v6.11.0
+https://github.com/nodejs/node/blob/master/LICENSE
+https://nodejs.org/en/
+
+- All modules located at node_module folder
+-------------------------------------------
+
+Angular Framework v5.6.0
+https://github.com/angular/angular.js/blob/master/LICENSE
+https://angular.io/
+
+- All modules located at node_module folder
+-------------------------------------------
+
+Ionic Framework v3.20.0
+https://github.com/ionic-team/ionic/blob/master/LICENSE
+https://ionicframework.com/
+
+- All modules located at node_module folder
+-------------------------------------------
+
+JQuery Library v3.3.1
+http://jquery.org/license
+http://jquery.com/download/
+
+- All modules located at node_module folder
+-------------------------------------------
+
+All algorithms functionality have been fully created 
+by Felipe Menezes Silva.
