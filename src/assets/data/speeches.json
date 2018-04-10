@@ -26,5 +26,9 @@
     {
       "id": 7,
       "phrase": "Do you want me to analyse it?"
+    },
+    {
+      "id": 8,
+      "phrase": "No more speech."
     }
   ]
