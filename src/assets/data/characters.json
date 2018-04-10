@@ -11,55 +11,63 @@
       "name": "Dr. Watson",
       "type": "assistant",
       "img": "assistant.jpg",
-      "speeches": [1, 2, 3, 4, 5]
+      "speeches": [1, 2, 3, 4, 5],
+      "history": []
     },
     {
       "id": 3,
       "name": "Maria Gonzales",
       "type": "maid",
       "img": "maid.jpg",
-      "speeches": [1, 2, 3, 4, 5]
+      "speeches": [1, 2, 3, 4, 5],
+      "history": []
     },
     {
       "id": 4,
       "name": "Carey Mahoney",
       "type": "police officer",
       "img": "police.jpg",
-      "speeches": [1, 2, 3, 4, 5]
+      "speeches": [1, 2, 3, 4, 5],
+      "history": []
     },
     {
       "id": 5,
       "name": "Sherlock Holmes",
       "type": "detective",
       "img": "detective.jpg",
-      "speeches": [1, 2, 3, 4, 5]
+      "speeches": [1, 2, 3, 4, 5],
+      "history": []
     },
     {
       "id": 6,
       "name": "Sherlock Holmes",
       "type": "detective",
       "img": "detective.jpg",
-      "speeches": [1, 2, 3, 4, 5]
+      "speeches": [1, 2, 3, 4, 5],
+      "history": []
     },
     {
       "id": 7,
       "name": "Sherlock Holmes",
       "type": "detective",
       "img": "detective.jpg",
-      "speeches": [1, 2, 3, 4, 5]
+      "speeches": [1, 2, 3, 4, 5],
+      "history": []
     },
     {
       "id": 8,
       "name": "Sherlock Holmes",
       "type": "detective",
       "img": "detective.jpg",
-      "speeches": [1, 2, 3, 4, 5]
+      "speeches": [1, 2, 3, 4, 5],
+      "history": []
     },
     {
       "id": 9,
       "name": "Sherlock Holmes",
       "type": "detective",
       "img": "detective.jpg",
-      "speeches": [1, 2, 3, 4, 5]
+      "speeches": [1, 2, 3, 4, 5],
+      "history": []
     }
   ]
