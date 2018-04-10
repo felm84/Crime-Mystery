@@ -16,16 +16,16 @@
       {{game.npcPvd.npc.name}}
     </ion-card-header>
     <ion-card-content id="npcChat">
-      {{game.npcPvd.currentSpeech}}
+      {{game.npcPvd.currentSpeech.phrase}}
     </ion-card-content>
   </ion-card>
 
   <ion-card (tap)="showPlayerSpeech()">
-    <ion-card-header end>
+    <ion-card-header>
       {{game.playerPvd.player.name}}
     </ion-card-header>
     <ion-card-content id="playerChat">
-      {{game.playerPvd.currentSpeech}}
+      {{game.playerPvd.currentSpeech.phrase}}
     </ion-card-content>
   </ion-card>
 

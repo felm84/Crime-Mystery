@@ -18,10 +18,10 @@ export class GameProvider {
 
   loadNewGame() {
     this.locationPvd.location = this.data.locationsArray[0]; //Detective's office
+    this.npcPvd.npc = this.npcPvd.findNpc(this.locationPvd.location.npc);
     
     this.playerPvd.player = this.data.charactersArray[0]; //Sherlock Holmes
-
-    this.npcPvd.npc = this.npcPvd.findNpc(this.locationPvd.location.npc);
+    this.playerPvd.currentSpeech = this.npcPvd.currentSpeech;
 
     this.playerPvd.addLocation(this.locationPvd.location);
     this.playerPvd.addLocation(this.data.locationsArray[1]);
@@ -40,7 +40,7 @@ export class GameProvider {
 
   /* changeLocation(location) method
    @param location - type from interface ILocation
-   location will be used to setLocation in LocationProvider
+   location will be assigned to location property in LocationProvider
    and location.npc to setNpc in NpcProvider, then the new
    npc can be added into PlayerProvider invetory contacts list. */
   changeLocation(location) {

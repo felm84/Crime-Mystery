@@ -15,9 +15,9 @@
   <ion-list>
       <ion-item>
         <ion-avatar item-start>
-          <img src="{{item.img}}">
+          <img src="{{element.img}}">
         </ion-avatar>
-        <h2>{{item.name}}</h2>
+        <h2>{{element.name}}</h2>
       </ion-item>
       <ion-item>
         Found at:
@@ -27,13 +27,33 @@
       </ion-item>
   </ion-list>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col></ion-col>
-      <ion-col col-8>
-          <button class="modal" ion-button (click)="doAction()">{{button}}</button>
-      </ion-col>
-      <ion-col></ion-col>
-    </ion-row>
-  </ion-grid>
+  <div [ngSwitch]="page" >
+    <ion-grid *ngSwitchCase="'item'">
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col col-8>
+            <button class="modal" ion-button (click)="doAction()">{{button}}</button>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngSwitchCase="'location'">
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col col-8>
+            <button class="modal" ion-button (click)="doAction()">{{button}}</button>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-list inset *ngSwitchCase="'contact'">
+      <p *ngFor="let chat of game.npcPvd.npc.history" >{{chat}}</p>
+    </ion-list>
+
+  </div>
+
+  
+  
 </ion-content>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ICharacter } from '../interface/character';
 import { DataProvider } from '../data/data';
+import { ISpeech } from '../interface/speech';
 
 @Injectable()
 export class PlayerProvider {
@@ -15,7 +16,7 @@ export class PlayerProvider {
     'contacts': []
   };
 
-  private _currentSpeech: string = '';
+  private _currentSpeech: ISpeech;
 
   //#endregion
 
@@ -37,16 +38,30 @@ export class PlayerProvider {
     this._player = v;
   }
   
-  public get currentSpeech() : string {
+  public get currentSpeech() : ISpeech {
     return this._currentSpeech;
   }
   
-  public set currentSpeech(v : string) {
+  public set currentSpeech(v : ISpeech) {
     this._currentSpeech = v;
   }
   //#endregion
 
   //#region METHODS  
+
+  answerNpc(speech: ISpeech) {
+    switch (speech.id) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+        this.currentSpeech = speech;        
+        break;
+    
+      default:
+        break;
+    }
+  }
 
   /* addItem(item) method
    @param item - type from interface IItem
@@ -120,6 +135,8 @@ export class PlayerProvider {
     this.inventory.contacts.slice(start, start + 1);
     console.log(contact.name + ' - removed.');
   }
+
+
   //#endregion
 
 }

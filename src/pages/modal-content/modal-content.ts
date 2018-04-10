@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController } from 'ionic-angular';
 import { GameProvider } from '../../providers/game/game';
 
 @Component({
@@ -8,17 +8,17 @@ import { GameProvider } from '../../providers/game/game';
 })
 export class ModalContentPage {
 
-  private item;
-  private option;
-  private button;
+  private element;
+  private page;
+  private button: string;
 
   constructor(
     public navParams: NavParams, 
     public viewCtrl: ViewController,
     private game: GameProvider
   ) {
-    this.item = this.navParams.get('id');
-    this.option = this.navParams.get('option');
+    this.element = this.navParams.get('element');
+    this.page = this.navParams.get('page');
   }
 
   ionViewDidLoad() {
@@ -27,28 +27,27 @@ export class ModalContentPage {
   }
   
   setButton() {
-    switch (this.option) {
+    switch (this.page) {
       case 'item':
         this.button = 'Analyse';
         break;
       case 'location':
         this.button = 'Set Location';
         break;
-      default:
+      case 'contact':
         this.button = 'Chat History';
         break;
     }
   }
   
   doAction() {
-    switch (this.option) {
+    switch (this.page) {
       case 'item':
         this.checkItem();
         break;
       case 'location':
-        this.game.changeLocation(this.item);
+        this.game.changeLocation(this.element);
         this.dismiss();
-        console.log('Moved...');
         break;
       default:
         this.checkChat();

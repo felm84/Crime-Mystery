@@ -8,7 +8,7 @@ export class NpcProvider {
   
   private _npc: ICharacter;
   private _speeches: ISpeech[] = [];
-  private _currentSpeech: string = '';
+  private _currentSpeech: ISpeech;
 
   constructor(private data: DataProvider) {
     console.log('NpcProvider');
@@ -35,11 +35,11 @@ export class NpcProvider {
     this._speeches = v;
   }
   
-  public get currentSpeech() : string {
+  public get currentSpeech() : ISpeech {
     return this._currentSpeech;
   }
    
-  public set currentSpeech(v : string) {
+  public set currentSpeech(v : ISpeech) {
     this._currentSpeech = v;
   }
   //#endregion
@@ -64,25 +64,29 @@ export class NpcProvider {
     ];
   }
 
-  greetPlayer() {
-    let greet = '';
+  greetPlayer(): ISpeech {
+    let greet: ISpeech = this.data.speechesArray[3];
+
     let date = new Date();
     let hour = date.getHours();
-    if (hour >= 6 && hour <= 12) {
-      greet = this.speeches[0].phrase;
-    } else if (hour >= 13 && hour <= 17){
-      greet = this.speeches[1].phrase;
+
+    if (hour >= 5 && hour <= 11) {
+      greet = this.data.speechesArray[0]
+    } else if (hour >= 12 && hour <= 17){
+      greet = this.data.speechesArray[1];
     } else if (hour >= 18 && hour <= 19) {
-      greet = this.speeches[2].phrase;
-    } else {
-      greet = this.speeches[3].phrase;
+      greet = this.data.speechesArray[2];
     }
-    console.log(greet);
+
     return greet;
   }
 
   nextSpeech() {
-    
+    if (this.speeches.length != 0) {
+      this.currentSpeech = this.speeches.shift();
+    } else {
+      this.currentSpeech = this.data.speechesArray[7];
+    } 
   }
 
 }

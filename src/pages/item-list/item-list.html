@@ -10,7 +10,7 @@
 <ion-content padding>
 
   <ion-list inset>
-    <a ion-item *ngFor="let item of items" (click)="openModal({id: item, option: 'item'})">
+    <a ion-item *ngFor="let item of items" (click)="openModal({element: item, page: 'item'})">
       {{item.name}}
     </a> 
   </ion-list>

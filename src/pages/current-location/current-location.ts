@@ -12,7 +12,8 @@ declare var $: any;
 
 export class CurrentLocationPage {
 
-  public chat = [];
+  private npcSpeak: boolean = true;
+  private playerSpeak: boolean = false;
 
   constructor(
     public navCtrl: NavController, 
@@ -27,17 +28,34 @@ export class CurrentLocationPage {
   }
 
   showNpcSpeech() {
-    $('#playerChat').fadeOut();
-    $('#npcChat').fadeIn();
-    this.game.npcPvd.nextSpeech();
-    console.log('NPC speech...');
+    if (this.npcSpeak) {
+      this.npcSpeak = false;
+      this.playerSpeak = true;
+
+      $('#playerChat').fadeOut();
+      $('#npcChat').fadeIn();
+
+      this.game.npcPvd.npc.history.push(
+        this.game.npcPvd.npc.name + " - " + this.game.npcPvd.currentSpeech.phrase);
+
+      this.game.playerPvd.answerNpc(this.game.npcPvd.currentSpeech);
+    }
+    
   }
 
   showPlayerSpeech() {
-    $('#npcChat').fadeOut();
-    $('#playerChat').fadeIn();
-    this.game.playerPvd.currentSpeech = '';
-    console.log('Player speech...');
+    if (this.playerSpeak) {
+      this.playerSpeak = false;
+      this.npcSpeak = true;
+
+      this.game.npcPvd.npc.history.push(
+        this.game.playerPvd.player.name + " - " + this.game.playerPvd.currentSpeech.phrase);
+
+      $('#npcChat').fadeOut();
+      $('#playerChat').fadeIn();
+      
+      this.game.npcPvd.nextSpeech();
+    }
   }
 
   clearChat() {
