@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ICharacter } from '../interface/character';
-import { DataProvider } from '../data/data';
 import { ISpeech } from '../interface/speech';
 
 @Injectable()
@@ -20,16 +19,11 @@ export class PlayerProvider {
 
   //#endregion
 
-  /* PlayerProvider constructor
-   @param data - type from DataProvider
-   Data will provide all the database, such as, list of characters,
-   items, locations and speeches, then loadPlayer() will be loaded. */
-  constructor(private data: DataProvider) {
+  constructor() {
     console.log('PlayerProvider');
   }
 
   //#region ENCAPSULATION
-  
   public get player() : ICharacter {
     return this._player;
   }
@@ -49,6 +43,10 @@ export class PlayerProvider {
 
   //#region METHODS  
 
+  /* answerNpc(speech)
+   @param speech - type from ISpeech
+   answers the npc accordingly to what npc currentSpeech is
+   passed as speech parameter */
   answerNpc(speech: ISpeech) {
     switch (speech.id) {
       case 1:

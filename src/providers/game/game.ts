@@ -7,6 +7,15 @@ import { NpcProvider } from '../npc/npc';
 @Injectable()
 export class GameProvider {
 
+  /* GameProvider constructor
+   @param data - type from DataProvider
+   @param locationPvd - type from LocationProvider
+   @param npcPvd - type from NpcProvider
+   @param playerPvd - type from PlayerProvider
+   data provides all Characters, Items, Locations and Speeches when the app
+   was opened.
+   locationPvd, npcPvd, playerPvd provide all their methods and properties to be used in the app
+   through the GameProvider. */
   constructor(
     public data: DataProvider,
     public locationPvd: LocationProvider,
@@ -16,6 +25,10 @@ export class GameProvider {
     console.log('Hello GameProvider Provider');
   }
 
+  /* loadNewGame() method
+   Assigns initial location, npc accordingly to location, player, 
+   and player's first response, add the initial location and contact
+   into player's inventory location and contact */
   loadNewGame() {
     this.locationPvd.location = this.data.locationsArray[0]; //Detective's office
     this.npcPvd.npc = this.npcPvd.findNpc(this.locationPvd.location.npc);
@@ -28,6 +41,7 @@ export class GameProvider {
 
     this.playerPvd.addContact(this.npcPvd.npc);
 
+    //TODO - delete once is tested
     console.log(this.playerPvd);
     console.log(this.npcPvd);
     console.log(this.locationPvd);
@@ -47,6 +61,8 @@ export class GameProvider {
     this.locationPvd.location = location;
     this.npcPvd.npc = this.npcPvd.findNpc(location.npc);
     this.playerPvd.addContact(this.npcPvd.npc);
+
+    //TODO - delete once is tested
     console.log(this.locationPvd);
     console.log(this.npcPvd);
   }

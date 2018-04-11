@@ -16,11 +16,15 @@ import { ContactListPage } from '../contact-list/contact-list';
 
 export class TabsPage {
 
+  /* location, items, maps, contacts, hold all the pages to be loaded
+   when user selects one of the tabs option */
   location: any;
   items: any;
   maps:any;
   contacts:any;
 
+  /* TabsPage constructor
+   initiates all the pages, so they are ready to be open */
   constructor() {
     this.location = CurrentLocationPage;
     this.items = ItemListPage;

@@ -41,7 +41,7 @@ export class DataProvider {
    Calls all the gets HTTP request in the bellow list.
    It gets all Characters, Speeches, Locations and Items
    from ICharacter, ISpeech, ILocation, IItem interfaces
-   and assign their data to specified properties */
+   and assign their data to their specified properties */
   loadContent(): void{
     this.getCharacters().subscribe(data => this.charactersArray = data);
     this.getSpeeches().subscribe(data => this.speechesArray = data);

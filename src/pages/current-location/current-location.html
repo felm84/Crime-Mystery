@@ -11,7 +11,7 @@
 
 <ion-content padding>
 
-  <ion-card (tap)="showNpcSpeech()">
+  <ion-card (tap)="showSpeech('npc')">
     <ion-card-header>
       {{game.npcPvd.npc.name}}
     </ion-card-header>
@@ -20,7 +20,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card (tap)="showPlayerSpeech()">
+  <ion-card (tap)="showSpeech('player')">
     <ion-card-header>
       {{game.playerPvd.player.name}}
     </ion-card-header>

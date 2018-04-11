@@ -8,10 +8,18 @@ import { GameProvider } from '../../providers/game/game';
 })
 export class ModalContentPage {
 
+  //#region PROPERTIES
   private element;
   private page;
-  private button: string;
+  //#endregion
 
+  /* ModalContentPage constructor
+   @param navParams - type from NavParams
+   @param viewCtrl - type from ViewController
+   @param game - type from GameProvider
+   navParams gets information from openModal method and assigns
+   both element and page to their properties.
+   game provides all informations to be used in this class */
   constructor(
     public navParams: NavParams, 
     public viewCtrl: ViewController,
@@ -23,23 +31,11 @@ export class ModalContentPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalContentPage');
-    this.setButton();
   }
   
-  setButton() {
-    switch (this.page) {
-      case 'item':
-        this.button = 'Analyse';
-        break;
-      case 'location':
-        this.button = 'Set Location';
-        break;
-      case 'contact':
-        this.button = 'Chat History';
-        break;
-    }
-  }
-  
+  /* doAction() method
+   It will execute another method based on the seleted tab option,
+   the swtich statement checks page property */
   doAction() {
     switch (this.page) {
       case 'item':
@@ -63,6 +59,8 @@ export class ModalContentPage {
     console.log('Chat');
   }
 
+  /* dismiss() method
+   Closes the modal contents page */
   dismiss() {
     this.viewCtrl.dismiss();
   }

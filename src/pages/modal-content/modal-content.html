@@ -32,7 +32,7 @@
       <ion-row>
         <ion-col></ion-col>
         <ion-col col-8>
-            <button class="modal" ion-button (click)="doAction()">{{button}}</button>
+            <button class="modal" ion-button (click)="doAction()">Analyse</button>
         </ion-col>
         <ion-col></ion-col>
       </ion-row>
@@ -42,14 +42,14 @@
       <ion-row>
         <ion-col></ion-col>
         <ion-col col-8>
-            <button class="modal" ion-button (click)="doAction()">{{button}}</button>
+            <button class="modal" ion-button (click)="doAction()">Set Location</button>
         </ion-col>
         <ion-col></ion-col>
       </ion-row>
     </ion-grid>
 
     <ion-list inset *ngSwitchCase="'contact'">
-      <p *ngFor="let chat of game.npcPvd.npc.history" >{{chat}}</p>
+      <p *ngFor="let chat of element.history" >{{chat}}</p>
     </ion-list>
 
   </div>

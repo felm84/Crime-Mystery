@@ -23,7 +23,6 @@ export class NpcProvider {
     this._npc = v;
     this.feedSpeechesList();
     this.currentSpeech = this.greetPlayer();
-    console.log('New Npc - ' + this.npc );
   }
   
   public get speeches() : ISpeech[] {
@@ -43,13 +42,19 @@ export class NpcProvider {
     this._currentSpeech = v;
   }
   //#endregion
-
+  /* findSpeech(id): ISpeech method
+   @param id - type from number
+   searches for the index number that has the same speech id
+   as the id passed as a parameter, then it returns an ICharacter */
   findSpeech(id: number): ISpeech {
     return this.data.speechesArray[
       this.data.speechesArray.findIndex(speech => speech.id === id)
     ];
   }
 
+  /* feedSpeechesList() method
+   runs a loop in npc.speeches, finds each item, then pushes it
+   into a temp value[] variable to be assigned in speeches[] property */
   feedSpeechesList() {
     let value: ISpeech[] = [];
     for (const speech of this.npc.speeches) {
@@ -58,12 +63,20 @@ export class NpcProvider {
     this.speeches = value;
   }
   
+  /* findNpc(id): ICharacter method
+   @param id - type from number
+   searches for the index number that has the same character id
+   as the id passed as a parameter, then it returns an ICharacter */
   findNpc(id: number): ICharacter {
     return this.data.charactersArray[
       this.data.charactersArray.findIndex((element) => element.id === id)
     ];
   }
 
+  /* greetPlayer(): ISpeech
+   gets the current hour of the day to then assign a
+   speech to greet variable. After that it returns an
+   ISpeech value. */
   greetPlayer(): ISpeech {
     let greet: ISpeech = this.data.speechesArray[3];
 
@@ -81,6 +94,7 @@ export class NpcProvider {
     return greet;
   }
 
+  // TODO - fix code: else last speechesArray
   nextSpeech() {
     if (this.speeches.length != 0) {
       this.currentSpeech = this.speeches.shift();

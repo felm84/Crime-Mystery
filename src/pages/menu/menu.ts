@@ -20,7 +20,8 @@ import { OptionsPage } from '../options/options';
 
 export class MenuPage {
 
-  menu: string[] = ["Start", "Option", "Exit"]; 
+  // menu[] holds all menu options to be looped into the template 
+  private menu: string[] = ["Start", "Option", "Exit"]; 
 
   constructor(
     public navCtrl: NavController, 
@@ -28,7 +29,8 @@ export class MenuPage {
     public actionSheetCtrl: ActionSheetController
   ) {}
 
-  /* Slide up an action sheet with 3 options
+  /* presentActionSheet() method
+   Slide up an action sheet with 3 options
    - Start a new game;
    - Continue the saved check point and;
    - Cancel or exit from the action sheet */
@@ -60,6 +62,9 @@ export class MenuPage {
     actionSheet.present();
   }
 
+  /* openPage(index) method
+   @param index - type from number
+   Open a page or present an action sheet according to the index number */
   openPage(index) {
     switch (index) {
       case 1:
