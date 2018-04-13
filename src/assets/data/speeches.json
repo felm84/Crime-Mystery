@@ -17,18 +17,270 @@
     },
     {
       "id": 5,
-      "phrase": "How can I help you?"
+      "phrase": "Nice to see you again, what can I do for you?"
     },
     {
       "id": 6,
-      "phrase": "I found this item!"
+      "phrase": "How can I help you?"
     },
     {
       "id": 7,
-      "phrase": "Do you want me to analyse it?"
+      "phrase": "What do you do here?"
     },
     {
       "id": 8,
-      "phrase": "No more speech."
+      "phrase": "Do you mind if I take a look around?"
+    },
+    {
+      "id": 9,
+      "phrase": "Do you have a search warrant?"
+    },
+    {
+      "id": 10,
+      "phrase": "Where did you find it?"
+    },
+    {
+      "id": 11,
+      "phrase": "What item is it?"
+    },
+    {
+      "id": 12,
+      "phrase": "What item was he looking for?"
+    },
+    {
+      "id": 13,
+      "phrase": "What item was she looking for?"
+    },
+    {
+      "id": 14,
+      "phrase": "How did you find it?"
+    },
+    {
+      "id": 15,
+      "phrase": "Who's sent you here?"
+    },
+    {
+      "id": 16,
+      "phrase": "Do you want me to analyse it?"
+    },
+    {
+      "id": 17,
+      "phrase": "I'm investigating a crime, have you seen anything or anyone suspecious?"
+    },
+    {
+      "id": 18,
+      "phrase": "What sort of crime detective?"
+    },
+    {
+      "id": 19,
+      "phrase": "I'm afraid I can't give any detailed about it."
+    },
+    {
+      "id": 20,
+      "phrase": "A sequence of robberies took place in the city last night"
+    },
+    {
+      "id": 21,
+      "phrase": "A murder last night happened at the Big House"
+    },
+    {
+      "id": 22,
+      "phrase": "I found this item!"
+    },
+    {
+      "id": 23,
+      "phrase": "If I see someone or something, I'll let you know."
+    },
+    {
+      "id": 24,
+      "phrase": "Last night I heard a noise."
+    },
+    {
+      "id": 25,
+      "phrase": "It was like footsteps."
+    },
+    {
+      "id": 26,
+      "phrase": "A man came here last week asking for one of my items"
+    },
+    {
+      "id": 27,
+      "phrase": "A woman came here last week asking for one of my items"
+    },
+    {
+      "id": 28,
+      "phrase": "I have a CCTV camera at the place"
+    },
+    {
+      "id": 29,
+      "phrase": "Yes, I have it!"
+    },
+    {
+      "id": 30,
+      "phrase": "No, I don't have it!"
+    },
+    {
+      "id": 31,
+      "phrase": "I come back latter for more questions."
+    },
+    {
+      "id": 32,
+      "phrase": "Am I being investigated?"
+    },
+    {
+      "id": 33,
+      "phrase": "No, I only have some question"
+    },
+    {
+      "id": 34,
+      "phrase": "What sort of questions?"
+    },
+    {
+      "id": 35,
+      "phrase": "Where were you last night?"
+    },
+    {
+      "id": 36,
+      "phrase": "I was at my home."
+    },
+    {
+      "id": 37,
+      "phrase": "I worked until late."
+    },
+    {
+      "id": 38,
+      "phrase": "I was out of the city."
+    },
+    {
+      "id": 39,
+      "phrase": "Let's catch the suspect!"
+    },
+    {
+      "id": 40,
+      "phrase": "We are very close to find the suspect!"
+    },
+    {
+      "id": 41,
+      "phrase": "We are still far from finding the suspect!"
+    },
+    {
+      "id": 42,
+      "phrase": "I'm sure we will solve this crime."
+    },
+    {
+      "id": 43,
+      "phrase": "Someone left this in here."
+    },
+    {
+      "id": 44,
+      "phrase": "Do you someone who might have it?"
+    },
+    {
+      "id": 45,
+      "phrase": "Do you know someone who can help me with this?"
+    },
+    {
+      "id": 46,
+      "phrase": "I know someone who can help you!"
+    },
+    {
+      "id": 47,
+      "phrase": "Who is this person?"
+    },
+    {
+      "id": 48,
+      "phrase": "Where is this person located?"
+    },
+    {
+      "id": 49,
+      "phrase": "It's located at the Big House."
+    },
+    {
+      "id": 50,
+      "phrase": "It's located at the park."
+    },
+    {
+      "id": 51,
+      "phrase": "It's located at the pharmacy."
+    },
+    {
+      "id": 52,
+      "phrase": "It's located at the train station."
+    },
+    {
+      "id": 53,
+      "phrase": "It's located at the police station."
+    },
+    {
+      "id": 54,
+      "phrase": "It's located at the pawnshop."
+    },
+    {
+      "id": 55,
+      "phrase": "It's located at the mall."
+    },
+    {
+      "id": 56,
+      "phrase": "It's located in downtown."
+    },
+    {
+      "id": 57,
+      "phrase": "It's located at the petrol station."
+    },
+    {
+      "id": 58,
+      "phrase": "Hi detective, how is the investigation going?"
+    },
+    {
+      "id": 59,
+      "phrase": "Nice to see you again, what can I do for you?"
+    },
+    {
+      "id": 60,
+      "phrase": "I've just finished to analyse this item!"
+    },
+    {
+      "id": 61,
+      "phrase": "What did you find about it?"
+    },
+    {
+      "id": 62,
+      "phrase": "Take a look in your invetory, it has some details about the item."
+    },
+    {
+      "id": 63,
+      "phrase": "Thank you very much for you help."
+    },
+    {
+      "id": 64,
+      "phrase": "Anytime you need!"
+    },
+    {
+      "id": 65,
+      "phrase": "I am the maid supervisor for the Big House for over 10 years. This house is always clean"
+    },
+    {
+      "id": 66,
+      "phrase": "I am the manager's pawnshop. Do you want to buy or sell anything?"
+    },
+    {
+      "id": 67,
+      "phrase": "I am the mall security. I keep eyes on everything, nothing get away when I'm in charge"
+    },
+    {
+      "id": 68,
+      "phrase": "I am the gardner responsable for this beautiful place, it looks like the Garden of Eden"
+    },
+    {
+      "id": 69,
+      "phrase": "I am the train operator. I don't see much travelling the same way."
+    },
+    {
+      "id": 70,
+      "phrase": "I am the pharmacist. I feel we have some chemistry going on."
+    },
+    {
+      "id": 71,
+      "phrase": "I am just a homeless. Give me some change and I answer you question."
     }
   ]
