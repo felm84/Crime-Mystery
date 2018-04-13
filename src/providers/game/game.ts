@@ -34,7 +34,6 @@ export class GameProvider {
     this.npcPvd.npc = this.npcPvd.findNpc(this.locationPvd.location.npc);
     
     this.playerPvd.player = this.data.charactersArray[0]; //Sherlock Holmes
-    this.playerPvd.currentSpeech = this.npcPvd.currentSpeech;
 
     this.playerPvd.addLocation(this.locationPvd.location);
     this.playerPvd.addLocation(this.data.locationsArray[1]);

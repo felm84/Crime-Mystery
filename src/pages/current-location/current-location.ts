@@ -23,6 +23,11 @@ export class CurrentLocationPage {
     private game: GameProvider,
   ) {};
 
+  ionViewDidLeave(){
+    this.speak = false;
+    this.clearChat();
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CurrentLocationPage');
   }
@@ -34,6 +39,13 @@ export class CurrentLocationPage {
   showSpeech(element) {
     if (this.speak === false && element === 'npc') {
       this.speak = true;
+
+      if (!this.game.npcPvd.greeted) {
+        this.game.npcPvd.currentSpeech = this.game.npcPvd.greetPlayer();
+        this.game.npcPvd.greeted = true;
+      } else {
+        this.game.npcPvd.answerPlayer(this.game.playerPvd.currentSpeech);
+      }
       
       $('#playerChat').fadeOut();
       $('#npcChat').fadeIn();
@@ -41,26 +53,25 @@ export class CurrentLocationPage {
       this.game.npcPvd.npc.history.push(
         this.game.npcPvd.npc.name + " - " + this.game.npcPvd.currentSpeech.phrase);
 
-      // Set players next speech
-      this.game.playerPvd.answerNpc(this.game.npcPvd.currentSpeech);
     } else if (this.speak && element === 'player') {
       this.speak = false;
-      // Push player currentSpeech into current npcs history[]
-      this.game.npcPvd.npc.history.push(
-        this.game.playerPvd.player.name + " - " + this.game.playerPvd.currentSpeech.phrase);
+
+      this.game.playerPvd.answerNpc(this.game.npcPvd.currentSpeech);
 
       $('#npcChat').fadeOut();
       $('#playerChat').fadeIn();
       
-      // Set npc next speech
-      this.game.npcPvd.nextSpeech();
+      // Push player currentSpeech into current npcs history[]
+      this.game.npcPvd.npc.history.push(
+        this.game.playerPvd.player.name + " - " + this.game.playerPvd.currentSpeech.phrase);
     }    
   }
 
   /* clearChat() method
    Clear npc and player card-content */
   clearChat() {
-
+    $('#npcChat').fadeOut();
+    $('#playerChat').fadeOut();
   }
 
 }

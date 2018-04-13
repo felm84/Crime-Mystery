@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ICharacter } from '../interface/character';
 import { ISpeech } from '../interface/speech';
+import { DataProvider } from '../data/data';
 
 @Injectable()
 export class PlayerProvider {
@@ -19,7 +20,7 @@ export class PlayerProvider {
 
   //#endregion
 
-  constructor() {
+  constructor(private data: DataProvider) {
     console.log('PlayerProvider');
   }
 
@@ -30,6 +31,7 @@ export class PlayerProvider {
   
   public set player(v : ICharacter) {
     this._player = v;
+    this._currentSpeech = this.data.speechesArray[0];
   }
   
   public get currentSpeech() : ISpeech {
@@ -41,7 +43,7 @@ export class PlayerProvider {
   }
   //#endregion
 
-  //#region METHODS  
+  //#region METHODS
 
   /* answerNpc(speech)
    @param speech - type from ISpeech
@@ -55,7 +57,9 @@ export class PlayerProvider {
       case 4:
         this.currentSpeech = speech;        
         break;
-    
+      case 5:
+        this.currentSpeech = this.data.speechesArray[5];        
+        break;
       default:
         break;
     }
@@ -133,8 +137,6 @@ export class PlayerProvider {
     this.inventory.contacts.slice(start, start + 1);
     console.log(contact.name + ' - removed.');
   }
-
-
   //#endregion
 
 }

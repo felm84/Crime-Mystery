@@ -9,6 +9,7 @@ export class NpcProvider {
   private _npc: ICharacter;
   private _speeches: ISpeech[] = [];
   private _currentSpeech: ISpeech;
+  private _greeted: boolean = false;
 
   constructor(private data: DataProvider) {
     console.log('NpcProvider');
@@ -22,7 +23,7 @@ export class NpcProvider {
   public set npc(v : ICharacter) {
     this._npc = v;
     this.feedSpeechesList();
-    this.currentSpeech = this.greetPlayer();
+    this._currentSpeech = this.greetPlayer();
   }
   
   public get speeches() : ISpeech[] {
@@ -41,7 +42,19 @@ export class NpcProvider {
   public set currentSpeech(v : ISpeech) {
     this._currentSpeech = v;
   }
+ 
+  public get greeted() : boolean {
+    return this._greeted;
+  }
+  
+  public set greeted(v : boolean) {
+    this._greeted = v;
+  }
+  
+  
   //#endregion
+
+  //#region METHODS
   /* findSpeech(id): ISpeech method
    @param id - type from number
    searches for the index number that has the same speech id
@@ -80,17 +93,20 @@ export class NpcProvider {
   greetPlayer(): ISpeech {
     let greet: ISpeech = this.data.speechesArray[3];
 
-    let date = new Date();
-    let hour = date.getHours();
+    if (this.npc.history.length === 0) {
+      let date = new Date();
+      let hour = date.getHours();
 
-    if (hour >= 5 && hour <= 11) {
-      greet = this.data.speechesArray[0]
-    } else if (hour >= 12 && hour <= 17){
-      greet = this.data.speechesArray[1];
-    } else if (hour >= 18 && hour <= 19) {
-      greet = this.data.speechesArray[2];
+      if (hour >= 5 && hour <= 11) {
+        greet = this.data.speechesArray[0]
+      } else if (hour >= 12 && hour <= 17){
+        greet = this.data.speechesArray[1];
+      } else if (hour >= 18 && hour <= 19) {
+        greet = this.data.speechesArray[2];
+      }
+    } else {
+      greet = this.data.speechesArray[9];
     }
-
     return greet;
   }
 
@@ -98,9 +114,37 @@ export class NpcProvider {
   nextSpeech() {
     if (this.speeches.length != 0) {
       this.currentSpeech = this.speeches.shift();
+
+      let index = this.data.charactersArray.findIndex((element) => element.id === this.npc.id)
+
+      this.data.charactersArray[index].speeches.shift();
     } else {
       this.currentSpeech = this.data.speechesArray[7];
     } 
   }
+
+  answerPlayer(speech: ISpeech) {
+    //let answer: ISpeech = this.data.speechesArray[4];
+    switch (speech.id) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+        this.currentSpeech = this.data.speechesArray[4];
+        break;
+      case 5:
+        
+        break;
+      case 6:
+        
+        break;
+      case 7:
+        
+        break;
+      default:
+        break;
+    }
+  }
+  //#endregion
 
 }
