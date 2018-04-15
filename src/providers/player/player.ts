@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import { LoadingController, AlertController } from 'ionic-angular';
+import { DataProvider } from '../data/data';
 import { ICharacter } from '../interface/character';
 import { ISpeech } from '../interface/speech';
-import { DataProvider } from '../data/data';
+import { IItem } from '../interface/item';
+import { LocationProvider } from '../location/location';
 
 @Injectable()
 export class PlayerProvider {
@@ -20,7 +23,12 @@ export class PlayerProvider {
 
   //#endregion
 
-  constructor(private data: DataProvider) {
+  constructor(
+    private data: DataProvider, 
+    public loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private location: LocationProvider
+  ) {
     console.log('PlayerProvider');
   }
 
@@ -54,7 +62,8 @@ export class PlayerProvider {
   answerNpc(speech: ISpeech) {
     switch (speech.id) {
       case 1: case 2: case 3: case 4:
-        this.currentSpeech = speech;        
+        this.currentSpeech = speech;
+        this.searchArea();
         break;
       case 6:
         this.currentSpeech = this.data.speechesArray[
@@ -85,18 +94,42 @@ export class PlayerProvider {
         this.currentSpeech = this.data.speechesArray[
           this.data.speechesArray.findIndex(x => x.id === 63)
         ];
-        // seachArea()  method
+        this.searchArea();
         break;
       default:
         break;
     }
   }
 
+  searchArea() {
+    let loading = this.loadingCtrl.create({
+      content: 'Searching area...',
+      duration: 6000,
+      dismissOnPageChange: true
+    });
+    //call a method
+    loading.onDidDismiss(() => this.presentAlert());
+    loading.present();
+  }
+
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Item found',
+      message: 'You have found a new item. Please, check you bag of items.',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => this.addItem(this.location.releaseItem())
+        }
+      ]
+    });
+    alert.present();
+  }
   /* addItem(item) method
    @param item - type from interface IItem
    Adds a found item to player's itemList[]. This list is 
    displayed in the item-list.html  */
-  addItem(item) {
+  addItem(item: IItem) {
     const found = this.inventory.items.find(element => element.id === item.id);
     if (found === undefined) {
       this.inventory.items.push(item);

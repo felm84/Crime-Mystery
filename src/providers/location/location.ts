@@ -61,11 +61,12 @@ export class LocationProvider {
 
   /* releaseItem() method
    removes the first item in the location.items list. */
-  releaseItem() {
+  releaseItem(): IItem {
     this.location.items.shift();
     this.data.locationsArray[
       this.data.locationsArray.findIndex(x => x.id === this._location.id)
     ].items.shift();
+    return this._items.shift();
   }
   //#endregion
 }
