@@ -31,7 +31,9 @@ export class PlayerProvider {
   
   public set player(v : ICharacter) {
     this._player = v;
-    this._currentSpeech = this.data.speechesArray[0];
+    this._currentSpeech = this.data.speechesArray[
+      this.data.speechesArray.findIndex(x => x.id === 1)
+    ];
   }
   
   public get currentSpeech() : ISpeech {
@@ -51,14 +53,39 @@ export class PlayerProvider {
    passed as speech parameter */
   answerNpc(speech: ISpeech) {
     switch (speech.id) {
-      case 1:
-      case 2:
-      case 3:
-      case 4:
+      case 1: case 2: case 3: case 4:
         this.currentSpeech = speech;        
         break;
-      case 5:
-        this.currentSpeech = this.data.speechesArray[5];        
+      case 6:
+        this.currentSpeech = this.data.speechesArray[
+          this.data.speechesArray.findIndex(x => x.id === 17)
+        ];        
+        break;
+      case 18:
+        this.currentSpeech = this.data.speechesArray[
+          this.data.speechesArray.findIndex(x => x.id === 19)
+        ];        
+        break;
+      case 59:
+        this.currentSpeech = this.data.speechesArray[
+          this.data.speechesArray.findIndex(x => x.id === 7)
+        ];        
+        break;
+      case 65: case 66: case 67: case 68: case 69: case 70: case 71:
+        this.currentSpeech = this.data.speechesArray[
+          this.data.speechesArray.findIndex(x => x.id === 8)
+        ];        
+        break;
+      case 9:
+        this.currentSpeech = this.data.speechesArray[
+          this.data.speechesArray.findIndex(x => x.id === 73)
+        ];
+        break;
+      case 72:
+        this.currentSpeech = this.data.speechesArray[
+          this.data.speechesArray.findIndex(x => x.id === 63)
+        ];
+        // seachArea()  method
         break;
       default:
         break;

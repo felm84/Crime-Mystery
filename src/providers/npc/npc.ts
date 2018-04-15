@@ -73,7 +73,7 @@ export class NpcProvider {
     for (const speech of this.npc.speeches) {
       value.push(this.findSpeech(speech));
     }
-    this.speeches = value;
+    this._speeches = value;
   }
   
   /* findNpc(id): ICharacter method
@@ -91,21 +91,31 @@ export class NpcProvider {
    speech to greet variable. After that it returns an
    ISpeech value. */
   greetPlayer(): ISpeech {
-    let greet: ISpeech = this.data.speechesArray[3];
+    let greet: ISpeech = this._speeches[
+      this._speeches.findIndex(x => x.id === 4)
+    ];
 
     if (this.npc.history.length === 0) {
       let date = new Date();
       let hour = date.getHours();
 
       if (hour >= 5 && hour <= 11) {
-        greet = this.data.speechesArray[0]
+        greet = this._speeches[
+          this._speeches.findIndex(x => x.id === 1)
+        ]
       } else if (hour >= 12 && hour <= 17){
-        greet = this.data.speechesArray[1];
+        greet = this._speeches[
+          this._speeches.findIndex(x => x.id === 2)
+        ];
       } else if (hour >= 18 && hour <= 19) {
-        greet = this.data.speechesArray[2];
+        greet = this._speeches[
+          this._speeches.findIndex(x => x.id === 3)
+        ];
       }
     } else {
-      greet = this.data.speechesArray[9];
+      greet = this._speeches[
+        this._speeches.findIndex(x => x.id === 5)
+      ];
     }
     return greet;
   }
@@ -124,22 +134,37 @@ export class NpcProvider {
   }
 
   answerPlayer(speech: ISpeech) {
-    //let answer: ISpeech = this.data.speechesArray[4];
     switch (speech.id) {
       case 1:
       case 2:
       case 3:
       case 4:
-        this.currentSpeech = this.data.speechesArray[4];
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 6)
+        ];
         break;
-      case 5:
-        
+      case 17:
+      this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 18)
+        ];
         break;
-      case 6:
-        
+      case 19: case 20:
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 59)
+        ];
         break;
       case 7:
-        
+        this.currentSpeech = this._speeches[0];
+        break;
+      case 8:
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 9)
+        ];
+        break;
+      case 73:
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 74)
+        ];
         break;
       default:
         break;
