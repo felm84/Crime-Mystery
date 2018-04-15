@@ -63,7 +63,6 @@ export class PlayerProvider {
     switch (speech.id) {
       case 1: case 2: case 3: case 4:
         this.currentSpeech = speech;
-        this.searchArea();
         break;
       case 6:
         this.currentSpeech = this.data.speechesArray[
