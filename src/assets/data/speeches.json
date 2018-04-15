@@ -65,7 +65,7 @@
     },
     {
       "id": 17,
-      "phrase": "I'm investigating a crime, have you seen anything or anyone suspecious?"
+      "phrase": "I'm investigating a crime, have you seen anything or anyone suspicious?"
     },
     {
       "id": 18,
@@ -73,7 +73,7 @@
     },
     {
       "id": 19,
-      "phrase": "I'm afraid I can't give any detailed about it."
+      "phrase": "I'm afraid I can't give any detailed about it right now."
     },
     {
       "id": 20,
@@ -233,7 +233,7 @@
     },
     {
       "id": 59,
-      "phrase": "Nice to see you again, what can I do for you?"
+      "phrase": "Is there anything I can do to help you?"
     },
     {
       "id": 60,
@@ -249,7 +249,7 @@
     },
     {
       "id": 63,
-      "phrase": "Thank you very much for you help."
+      "phrase": "Thank you very much for your help."
     },
     {
       "id": 64,
@@ -257,19 +257,19 @@
     },
     {
       "id": 65,
-      "phrase": "I am the maid supervisor for the Big House for over 10 years. This house is always clean"
+      "phrase": "I am the maid supervisor for the Mansion for over 10 years. This house is always clean."
     },
     {
       "id": 66,
-      "phrase": "I am the manager's pawnshop. Do you want to buy or sell anything?"
+      "phrase": "I am the manager's pawnshop. If you come to buy or sell something you are welcome."
     },
     {
       "id": 67,
-      "phrase": "I am the mall security. I keep eyes on everything, nothing get away when I'm in charge"
+      "phrase": "I am the mall security. I keep eyes on everything, nothing gets away from me when I'm in charge."
     },
     {
       "id": 68,
-      "phrase": "I am the gardner responsable for this beautiful place, it looks like the Garden of Eden"
+      "phrase": "I am the gardner responsable for this beautiful place, it looks like the Garden of Eden."
     },
     {
       "id": 69,
@@ -282,5 +282,21 @@
     {
       "id": 71,
       "phrase": "I am just a homeless. Give me some change and I answer you question."
+    },
+    {
+      "id": 72,
+      "phrase": "Yes, feel free to search around!"
+    },
+    {
+      "id": 73,
+      "phrase": "No, but I can get one in 30 minutes!"
+    },
+    {
+      "id": 74,
+      "phrase": "No problem, I'll see you next time!"
+    },
+    {
+      "id": 75,
+      "phrase": "I am just an immigrant working hard to achieve my dream."
     }
   ]

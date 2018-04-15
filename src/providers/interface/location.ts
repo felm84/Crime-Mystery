@@ -3,5 +3,6 @@ export interface ILocation {
     name: string;
     img: string;
     npc: number;
+    description: string;
     items: number[];
 }

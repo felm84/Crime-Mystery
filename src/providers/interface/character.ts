@@ -3,6 +3,7 @@ export interface ICharacter {
     name: string;
     type: string;
     img: string;
+    description: string;
     speeches: number[];
     history: string[];
 }

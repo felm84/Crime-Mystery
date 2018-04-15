@@ -20,9 +20,9 @@
         <h2>{{element.name}}</h2>
       </ion-item>
       <ion-item>
-        Found at:
+        Description:
         <ion-note item-end>
-          Albert Park
+          {{element.description}}
         </ion-note>
       </ion-item>
   </ion-list>
@@ -48,7 +48,10 @@
       </ion-row>
     </ion-grid>
 
-    <ion-list inset *ngSwitchCase="'contact'">
+    <ion-list *ngSwitchCase="'contact'">
+      <ion-list-header>
+        Chat History
+      </ion-list-header>
       <p *ngFor="let chat of element.history" >{{chat}}</p>
     </ion-list>
 
