@@ -9,7 +9,7 @@ export class NpcProvider {
   private _npc: ICharacter;
   private _speeches: ISpeech[] = [];
   private _currentSpeech: ISpeech;
-  private _greeted: boolean = false;
+  private _greeted: boolean;
 
   constructor(private data: DataProvider) {
     console.log('NpcProvider');
@@ -23,6 +23,7 @@ export class NpcProvider {
   public set npc(v : ICharacter) {
     this._npc = v;
     this.feedSpeechesList();
+    this._greeted = false;
     this._currentSpeech = this.greetPlayer();
   }
   
@@ -157,9 +158,15 @@ export class NpcProvider {
         this.currentSpeech = this._speeches[0];
         break;
       case 8:
-        this.currentSpeech = this._speeches[
-          this._speeches.findIndex(x => x.id === 9)
-        ];
+        if (this._speeches.findIndex(x => x.id === 9) === -1) {
+          this.currentSpeech = this._speeches[
+            this._speeches.findIndex(x => x.id === 72)
+          ];
+        } else {
+          this.currentSpeech = this._speeches[
+            this._speeches.findIndex(x => x.id === 9)
+          ];
+        }
         break;
       case 73:
         this.currentSpeech = this._speeches[
