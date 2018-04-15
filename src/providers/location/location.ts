@@ -37,6 +37,7 @@ export class LocationProvider {
   //#endregion
 
   //#region METHODS
+
   /* findItem(id): IItem method
    @param id - type from number
    searches for the index number that has the same location id
@@ -62,6 +63,9 @@ export class LocationProvider {
    removes the first item in the location.items list. */
   releaseItem() {
     this.location.items.shift();
+    this.data.locationsArray[
+      this.data.locationsArray.findIndex(x => x.id === this._location.id)
+    ].items.shift();
   }
   //#endregion
 }
