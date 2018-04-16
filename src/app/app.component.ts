@@ -22,12 +22,12 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      splashScreen.show();
+      splashScreen.hide();
+      /* When the app is loaded
+      it will load all the contents
+      to be ready to play */
+      data.loadContent();
     });
-    /* When the app is loaded
-     it will load all the contents
-     to be ready to play */
-    data.loadContent();
   }
 }
 
