@@ -23,7 +23,7 @@ export class ModalContentPage {
   constructor(
     public navParams: NavParams, 
     public viewCtrl: ViewController,
-    private game: GameProvider
+    private _game: GameProvider
   ) {
     this._element = this.navParams.get('element');
     this._page = this.navParams.get('page');
@@ -34,11 +34,14 @@ export class ModalContentPage {
   }
 
   setLocation() {
-    this.game.changeLocation(this._element);
+    this._game.locationProvider.location = this._element;
+    this._game.npcProvider.npc = this._game.npcProvider.findNpc(this._element.npc);
+    this._game.playerProvider.addContact(this._game.npcProvider.npc);
     this.viewCtrl.dismiss(this._element);
   }
 
   analyseItem() {
+    this._game.itemProvider.analyseItem(this._element);
     this.viewCtrl.dismiss(this._element);
   }
 

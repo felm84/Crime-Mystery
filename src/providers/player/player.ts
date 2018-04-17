@@ -5,6 +5,7 @@ import { ICharacter } from '../interface/character';
 import { ISpeech } from '../interface/speech';
 import { IItem } from '../interface/item';
 import { LocationProvider } from '../location/location';
+import { ILocation } from '../interface/location';
 
 @Injectable()
 export class PlayerProvider {
@@ -24,10 +25,9 @@ export class PlayerProvider {
   //#endregion
 
   constructor(
-    private data: DataProvider, 
     public loadingCtrl: LoadingController,
-    private alertCtrl: AlertController,
-    private location: LocationProvider
+    private _data: DataProvider,
+    private alertCtrl: AlertController
   ) {
     console.log('PlayerProvider');
   }
@@ -39,9 +39,12 @@ export class PlayerProvider {
   
   public set player(v : ICharacter) {
     this._player = v;
-    this._currentSpeech = this.data.speechesArray[
-      this.data.speechesArray.findIndex(x => x.id === 1)
+    this._currentSpeech = this._data.speechesArray[
+      this._data.speechesArray.findIndex(x => x.id === 1)
     ];
+    for (const location of this._data.locationsArray) {
+      this.addLocation(location);
+    }
   }
   
   public get currentSpeech() : ISpeech {
@@ -65,33 +68,33 @@ export class PlayerProvider {
         this.currentSpeech = speech;
         break;
       case 6:
-        this.currentSpeech = this.data.speechesArray[
-          this.data.speechesArray.findIndex(x => x.id === 17)
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 17)
         ];        
         break;
       case 18:
-        this.currentSpeech = this.data.speechesArray[
-          this.data.speechesArray.findIndex(x => x.id === 19)
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 19)
         ];        
         break;
       case 59:
-        this.currentSpeech = this.data.speechesArray[
-          this.data.speechesArray.findIndex(x => x.id === 7)
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 7)
         ];        
         break;
       case 65: case 66: case 67: case 68: case 69: case 70: case 71:
-        this.currentSpeech = this.data.speechesArray[
-          this.data.speechesArray.findIndex(x => x.id === 8)
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 8)
         ];        
         break;
       case 9:
-        this.currentSpeech = this.data.speechesArray[
-          this.data.speechesArray.findIndex(x => x.id === 73)
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 73)
         ];
         break;
       case 72:
-        this.currentSpeech = this.data.speechesArray[
-          this.data.speechesArray.findIndex(x => x.id === 63)
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 63)
         ];
         this.searchArea();
         break;
@@ -103,11 +106,14 @@ export class PlayerProvider {
   searchArea() {
     let loading = this.loadingCtrl.create({
       content: 'Searching area...',
-      duration: 6000,
+      duration: 5000,
       dismissOnPageChange: true
     });
     //call a method
-    loading.onDidDismiss(() => this.presentAlert());
+    loading.onDidDismiss(() => {
+      //this.addItem(this.location.releaseItem());
+      this.presentAlert();
+    });
     loading.present();
   }
 
@@ -117,13 +123,13 @@ export class PlayerProvider {
       message: 'You have found a new item. Please, check you bag of items.',
       buttons: [
         {
-          text: 'OK',
-          handler: () => this.addItem(this.location.releaseItem())
+          text: 'OK'
         }
       ]
     });
     alert.present();
   }
+
   /* addItem(item) method
    @param item - type from interface IItem
    Adds a found item to player's itemList[]. This list is 
@@ -141,7 +147,7 @@ export class PlayerProvider {
    Removes the selected item from player's itemList[].
    It first identify the item index in the list then
    slice it off from. */
-  removeItem(item) {
+  removeItem(item: IItem) {
     let start = this.inventory.items.indexOf(item);
     this.inventory.items.slice(start, start + 1);
     console.log(item.name + ' - removed.')
@@ -153,7 +159,7 @@ export class PlayerProvider {
    displayed in the location-list.html
    It runs a find method to check if the same location already exit
    in the list, if not, it will be pushed to the list. */
-  addLocation(location) {
+  addLocation(location: ILocation) {
     const found = this.inventory.locations.find(element => element.id === location.id);
     if (found === undefined) {
       this.inventory.locations.push(location);
@@ -166,7 +172,7 @@ export class PlayerProvider {
    Removes the selected location from player's locationList[].
    It first identify the location index in the list then
    slice it off from. */
-  removeLocation(location) {
+  removeLocation(location: ILocation) {
     let start = this.inventory.locations.indexOf(location);
     this.inventory.locations.slice(start, start + 1);
     console.log(location + ' - removed.')
@@ -178,7 +184,7 @@ export class PlayerProvider {
    displayed in the contact-list.html
    It runs a find method to check if the same contact already exit
    in the list, if not, it will be pushed to the list. */
-  addContact(contact) {
+  addContact(contact: ICharacter) {
     const found = this.inventory.contacts.find((element) => element.id === contact.id);
     if (found === undefined) {
       this.inventory.contacts.push(contact);
@@ -191,7 +197,7 @@ export class PlayerProvider {
    Removes the selected contact from player's contactList[].
    It first identify the contact index in the list then
    slice it off from. */
-  removeContact(contact) {
+  removeContact(contact: ICharacter) {
     let start = this.inventory.contacts.indexOf(contact);
     this.inventory.contacts.slice(start, start + 1);
     console.log(contact.name + ' - removed.');

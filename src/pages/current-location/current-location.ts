@@ -19,16 +19,17 @@ export class CurrentLocationPage {
 
   constructor( 
     public navParams: NavParams,
-    private game: GameProvider,
+    private _game: GameProvider
   ) {};
 
   ionViewDidLeave(){
     this.speak = false;
     this.clearChat();
   }
-
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad CurrentLocationPage');
+    
   }
 
   /* showSpeech(element) method
@@ -39,30 +40,30 @@ export class CurrentLocationPage {
     if (this.speak === false && element === 'npc') {
       this.speak = true;
 
-      if (!this.game.npcPvd.greeted) {
-        this.game.npcPvd.currentSpeech = this.game.npcPvd.greetPlayer();
-        this.game.npcPvd.greeted = true;
+      if (!this._game.npcProvider.greeted) {
+        this._game.npcProvider.currentSpeech = this._game.npcProvider.greetPlayer();
+        this._game.npcProvider.greeted = true;
       } else {
-        this.game.npcPvd.answerPlayer(this.game.playerPvd.currentSpeech);
+        this._game.npcProvider.answerPlayer(this._game.playerProvider.currentSpeech);
       }
       
       $('#playerChat').fadeOut();
       $('#npcChat').fadeIn();
       // Push npc currentSpeech into its history[]
-      this.game.npcPvd.npc.history.push(
-        this.game.npcPvd.npc.name + " - " + this.game.npcPvd.currentSpeech.phrase);
+      this._game.npcProvider.npc.history.push(
+        this._game.npcProvider.npc.name + " - " + this._game.npcProvider.currentSpeech.phrase);
 
     } else if (this.speak && element === 'player') {
       this.speak = false;
 
-      this.game.playerPvd.answerNpc(this.game.npcPvd.currentSpeech);
+      this._game.playerProvider.answerNpc(this._game.npcProvider.currentSpeech);
 
       $('#npcChat').fadeOut();
       $('#playerChat').fadeIn();
       
       // Push player currentSpeech into current npcs history[]
-      this.game.npcPvd.npc.history.push(
-        this.game.playerPvd.player.name + " - " + this.game.playerPvd.currentSpeech.phrase);
+      this._game.npcProvider.npc.history.push(
+        this._game.playerProvider.player.name + " - " + this._game.playerProvider.currentSpeech.phrase);
     }    
   }
 

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { ILocation } from '../interface/location';
 import { IItem } from '../interface/item';
 import { DataProvider } from '../data/data';
@@ -13,7 +12,9 @@ export class LocationProvider {
   /* LocationProvider constructor
    @param data - type from DataProvider
    data will be needed to access itemsArray[] and locationArray[] properties */
-  constructor(private data: DataProvider) {
+  constructor(
+    private _data: DataProvider
+  ) {
     console.log('LocationProvider');
   }
 
@@ -43,8 +44,8 @@ export class LocationProvider {
    searches for the index number that has the same location id
    as the id passed as a parameter, then it returns an IItem */
   findItem(id: number): IItem {
-    return this.data.itemsArray[
-      this.data.itemsArray.findIndex(location => location.id === id)
+    return this._data.itemsArray[
+      this._data.itemsArray.findIndex(location => location.id === id)
     ];
   }
 
@@ -63,8 +64,8 @@ export class LocationProvider {
    removes the first item in the location.items list. */
   releaseItem(): IItem {
     this.location.items.shift();
-    this.data.locationsArray[
-      this.data.locationsArray.findIndex(x => x.id === this._location.id)
+    this._data.locationsArray[
+      this._data.locationsArray.findIndex(x => x.id === this._location.id)
     ].items.shift();
     return this._items.shift();
   }

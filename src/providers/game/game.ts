@@ -3,6 +3,7 @@ import { PlayerProvider } from '../player/player';
 import { LocationProvider } from '../location/location';
 import { DataProvider } from '../data/data';
 import { NpcProvider } from '../npc/npc';
+import { ItemProvider } from '../item/item';
 
 @Injectable()
 export class GameProvider {
@@ -18,9 +19,10 @@ export class GameProvider {
    through the GameProvider. */
   constructor(
     public data: DataProvider,
-    public locationPvd: LocationProvider,
-    public npcPvd: NpcProvider,
-    public playerPvd: PlayerProvider
+    public locationProvider: LocationProvider,
+    public npcProvider: NpcProvider,
+    public playerProvider: PlayerProvider,
+    public itemProvider: ItemProvider
   ) {
     console.log('Hello GameProvider Provider');
   }
@@ -30,20 +32,14 @@ export class GameProvider {
    and player's first response, add the initial location and contact
    into player's inventory location and contact */
   loadNewGame() {
-    this.locationPvd.location = this.data.locationsArray[0]; //Detective's office
-    this.npcPvd.npc = this.npcPvd.findNpc(this.locationPvd.location.npc);
-    
-    this.playerPvd.player = this.data.charactersArray[0]; //Sherlock Holmes
-
-    this.playerPvd.addLocation(this.locationPvd.location);
-    this.playerPvd.addLocation(this.data.locationsArray[1]);
-
-    this.playerPvd.addContact(this.npcPvd.npc);
+    this.locationProvider.location = this.data.locationsArray[0]; //Detective's office
+    this.npcProvider.npc  = this.npcProvider.findNpc(this.locationProvider.location.npc);
+    this.playerProvider.player = this.data.charactersArray[0]; //Sherlock Holmes
 
     //TODO - delete once is tested
-    console.log(this.playerPvd);
-    console.log(this.npcPvd);
-    console.log(this.locationPvd);
+    console.log(this.playerProvider);
+    console.log(this.npcProvider);
+    console.log(this.locationProvider);
   }
 
   // Get data form localstorage
@@ -57,12 +53,12 @@ export class GameProvider {
    and location.npc to setNpc in NpcProvider, then the new
    npc can be added into PlayerProvider invetory contacts list. */
   changeLocation(location) {
-    this.locationPvd.location = location;
-    this.npcPvd.npc = this.npcPvd.findNpc(location.npc);
-    this.playerPvd.addContact(this.npcPvd.npc);
+    this.locationProvider.location = location;
+    this.npcProvider.npc = this.npcProvider.findNpc(location.npc);
+    this.playerProvider.addContact(this.npcProvider.npc);
 
     //TODO - delete once is tested
-    console.log(this.locationPvd);
-    console.log(this.npcPvd);
+    console.log(this.locationProvider);
+    console.log(this.npcProvider);
   }
 }

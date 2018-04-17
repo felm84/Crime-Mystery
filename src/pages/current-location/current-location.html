@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{game.locationPvd.location.name}}</ion-title>
+    <ion-title>{{_game.locationProvider.location.name}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only>
         <ion-icon name="more"></ion-icon>
@@ -13,22 +13,20 @@
 
   <ion-card (tap)="showSpeech('npc')">
     <ion-card-header>
-      {{game.npcPvd.npc.name}}
+      {{_game.npcProvider.npc.name}}
     </ion-card-header>
     <ion-card-content id="npcChat">
-      {{game.npcPvd.currentSpeech.phrase}}
+      {{_game.npcProvider.currentSpeech.phrase}}
     </ion-card-content>
   </ion-card>
 
   <ion-card (tap)="showSpeech('player')">
     <ion-card-header>
-      {{game.playerPvd.player.name}}
+      {{_game.playerProvider.player.name}}
     </ion-card-header>
     <ion-card-content id="playerChat">
-      {{game.playerPvd.currentSpeech.phrase}}
+      {{_game.playerProvider.currentSpeech.phrase}}
     </ion-card-content>
   </ion-card>
-
-  <!-- <button ion-button block *ngIf="isButton" (click)="test()">Answer NPC</button> -->
 
 </ion-content>

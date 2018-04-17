@@ -11,7 +11,7 @@ export class NpcProvider {
   private _currentSpeech: ISpeech;
   private _greeted: boolean;
 
-  constructor(private data: DataProvider) {
+  constructor(private _data: DataProvider) {
     console.log('NpcProvider');
   }
 
@@ -61,8 +61,8 @@ export class NpcProvider {
    searches for the index number that has the same speech id
    as the id passed as a parameter, then it returns an ICharacter */
   findSpeech(id: number): ISpeech {
-    return this.data.speechesArray[
-      this.data.speechesArray.findIndex(speech => speech.id === id)
+    return this._data.speechesArray[
+      this._data.speechesArray.findIndex(speech => speech.id === id)
     ];
   }
 
@@ -82,8 +82,8 @@ export class NpcProvider {
    searches for the index number that has the same character id
    as the id passed as a parameter, then it returns an ICharacter */
   findNpc(id: number): ICharacter {
-    return this.data.charactersArray[
-      this.data.charactersArray.findIndex((element) => element.id === id)
+    return this._data.charactersArray[
+      this._data.charactersArray.findIndex((element) => element.id === id)
     ];
   }
 
@@ -121,19 +121,6 @@ export class NpcProvider {
     return greet;
   }
 
-  // TODO - fix code: else last speechesArray
-  nextSpeech() {
-    if (this.speeches.length != 0) {
-      this.currentSpeech = this.speeches.shift();
-
-      let index = this.data.charactersArray.findIndex((element) => element.id === this.npc.id)
-
-      this.data.charactersArray[index].speeches.shift();
-    } else {
-      this.currentSpeech = this.data.speechesArray[7];
-    } 
-  }
-
   answerPlayer(speech: ISpeech) {
     switch (speech.id) {
       case 1:
@@ -167,6 +154,11 @@ export class NpcProvider {
             this._speeches.findIndex(x => x.id === 9)
           ];
         }
+        break;
+      case 63:
+        console.log(this._speeches[
+          this._speeches.findIndex(x => x.id === 80)
+        ]);
         break;
       case 73:
         this.currentSpeech = this._speeches[
