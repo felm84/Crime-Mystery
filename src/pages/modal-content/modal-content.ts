@@ -9,8 +9,8 @@ import { GameProvider } from '../../providers/game/game';
 export class ModalContentPage {
 
   //#region PROPERTIES
-  private element;
-  private page;
+  private _element;
+  private _page;
   //#endregion
 
   /* ModalContentPage constructor
@@ -25,34 +25,21 @@ export class ModalContentPage {
     public viewCtrl: ViewController,
     private game: GameProvider
   ) {
-    this.element = this.navParams.get('element');
-    this.page = this.navParams.get('page');
+    this._element = this.navParams.get('element');
+    this._page = this.navParams.get('page');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalContentPage');
   }
-  
-  /* doAction() method
-   It will execute another method based on the seleted tab option,
-   the swtich statement checks page property */
-  doAction() {
-    switch (this.page) {
-      case 'item':
-        this.checkItem();
-        break;
-      case 'location':
-        this.game.changeLocation(this.element);
-        this.dismiss();
-        break;
-      default:
-        this.checkChat();
-        break;
-    }
+
+  setLocation() {
+    this.game.changeLocation(this._element);
+    this.viewCtrl.dismiss(this._element);
   }
 
-  checkItem() {
-    console.log('Item');
+  analyseItem() {
+    this.viewCtrl.dismiss(this._element);
   }
 
   checkChat() {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { ModalController, NavController } from 'ionic-angular';
 
 import { PlayerProvider } from '../../providers/player/player';
 import { ModalContentPage } from '../modal-content/modal-content';
@@ -13,7 +13,11 @@ export class ItemListPage {
   // items[] holds the player inventory list of collected items
   public items = this.player.inventory.items;
 
-  constructor(private player: PlayerProvider, public modalCtrl: ModalController) {}
+  constructor(
+    private player: PlayerProvider, 
+    public modalCtrl: ModalController,
+    public navCtrl: NavController
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ItemListPage');
@@ -27,6 +31,11 @@ export class ItemListPage {
    openModal(element, page) {
     let modal = this.modalCtrl.create(ModalContentPage, element, page);
     modal.present();
+    modal.onDidDismiss((data) => {
+      if (data !== undefined) {
+        this.navCtrl.parent.select(0);
+      }
+    });
   }
 
 }

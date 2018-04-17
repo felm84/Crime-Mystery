@@ -9,7 +9,7 @@ import { ContactListPage } from '../contact-list/contact-list';
   template: `<ion-tabs>
               <ion-tab tabIcon="pin" tabTitle="Location" [root]="location"></ion-tab>
               <ion-tab tabIcon="briefcase" tabTitle="Items" [root]="items"></ion-tab>
-              <ion-tab tabIcon="map" tabTitle="Maps" [root]="maps"></ion-tab>
+              <ion-tab tabIcon="map" tabTitle="Map" [root]="maps"></ion-tab>
               <ion-tab tabIcon="people" tabTitle="Contacts" [root]="contacts"></ion-tab>
             </ion-tabs>`
 })

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 import { GameProvider } from '../../providers/game/game';
 
 // $ declared to be used as jquery
@@ -17,8 +17,7 @@ export class CurrentLocationPage {
   private speak: boolean = false;
   //#endregion
 
-  constructor(
-    public navCtrl: NavController, 
+  constructor( 
     public navParams: NavParams,
     private game: GameProvider,
   ) {};

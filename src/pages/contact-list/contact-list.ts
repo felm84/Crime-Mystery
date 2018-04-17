@@ -21,7 +21,10 @@ export class ContactListPage {
    player provides its contactList property to be looped in
    contact-list.html.
    modalCtrl provides modal view when openModal(element, page) executes */
-  constructor(private player: PlayerProvider, private modalCtrl: ModalController) {}
+  constructor(
+    private player: PlayerProvider,
+    private modalCtrl: ModalController
+  ) {}
 
   //#region METHODS
   ionViewDidLoad() {
