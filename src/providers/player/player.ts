@@ -6,6 +6,7 @@ import { ISpeech } from '../interface/speech';
 import { IItem } from '../interface/item';
 import { LocationProvider } from '../location/location';
 import { ILocation } from '../interface/location';
+import { ItemProvider } from '../item/item';
 
 @Injectable()
 export class PlayerProvider {
@@ -27,9 +28,10 @@ export class PlayerProvider {
   constructor(
     public loadingCtrl: LoadingController,
     private _data: DataProvider,
+    private _itemProvider: ItemProvider,
     private alertCtrl: AlertController
   ) {
-    console.log('PlayerProvider');
+    console.log('PlayerProvider******');
   }
 
   //#region ENCAPSULATION
@@ -96,31 +98,17 @@ export class PlayerProvider {
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 63)
         ];
-        this.searchArea();
+        //this.searchArea();
         break;
       default:
         break;
     }
   }
 
-  searchArea() {
-    let loading = this.loadingCtrl.create({
-      content: 'Searching area...',
-      duration: 5000,
-      dismissOnPageChange: true
-    });
-    //call a method
-    loading.onDidDismiss(() => {
-      //this.addItem(this.location.releaseItem());
-      this.presentAlert();
-    });
-    loading.present();
-  }
-
-  presentAlert() {
+  presentAlert(title: string, message: string) {
     let alert = this.alertCtrl.create({
-      title: 'Item found',
-      message: 'You have found a new item. Please, check you bag of items.',
+      title: title,
+      message: message,
       buttons: [
         {
           text: 'OK'
@@ -128,18 +116,6 @@ export class PlayerProvider {
       ]
     });
     alert.present();
-  }
-
-  /* addItem(item) method
-   @param item - type from interface IItem
-   Adds a found item to player's itemList[]. This list is 
-   displayed in the item-list.html  */
-  addItem(item: IItem) {
-    const found = this.inventory.items.find(element => element.id === item.id);
-    if (found === undefined) {
-      this.inventory.items.push(item);
-      console.log(item.name + ' - added.');
-    }
   }
 
   /* removeItem(item) method

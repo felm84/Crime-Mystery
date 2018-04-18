@@ -2,20 +2,23 @@ import { Injectable } from '@angular/core';
 import { ILocation } from '../interface/location';
 import { IItem } from '../interface/item';
 import { DataProvider } from '../data/data';
+import { ItemProvider } from '../item/item';
 
 @Injectable()
 export class LocationProvider {
   
   private _location: ILocation;
   private _items: IItem[] = [];
+  private _needWarrant: boolean = true;
 
   /* LocationProvider constructor
    @param data - type from DataProvider
    data will be needed to access itemsArray[] and locationArray[] properties */
   constructor(
-    private _data: DataProvider
+    private _data: DataProvider,
+    private _itemProvider: ItemProvider
   ) {
-    console.log('LocationProvider');
+    console.log('LocationProvider******');
   }
 
   //#region ENCAPSULATION
@@ -35,6 +38,15 @@ export class LocationProvider {
   public set items(v : IItem[]) {
     this._items = v;
   }
+
+  public get needWarrant() : boolean {
+    return this._needWarrant;
+  }
+  
+  public set needWarrant(v : boolean) {
+    this._needWarrant = v;
+  }
+  
   //#endregion
 
   //#region METHODS
@@ -61,13 +73,16 @@ export class LocationProvider {
   }
 
   /* releaseItem() method
-   removes the first item in the location.items list. */
-  releaseItem(): IItem {
-    this.location.items.shift();
+   return all items from items[] property, and empty all
+   currently location items[], so it cannot load them again. */
+  releaseItems(): IItem[] {
+    let tempArray = this._items;
+    this._items = [];
+    this.location.items = [];
     this._data.locationsArray[
       this._data.locationsArray.findIndex(x => x.id === this._location.id)
-    ].items.shift();
-    return this._items.shift();
+    ].items = [];
+    return tempArray;
   }
   //#endregion
 }

@@ -28,5 +28,11 @@
     "name": "finger prints",
     "description": "descripton about the item",
     "img": "finger_prints.jpg"
+  },
+  {
+    "id": 100,
+    "name": "warrant",
+    "description": "descripton about the item",
+    "img": "warrant.jpg"
   }
 ]

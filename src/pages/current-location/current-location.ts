@@ -42,8 +42,10 @@ export class PlusMenu {
   }
 
   getWarrant() {
-    this._game.changeLocation(this._game.data.locationsArray[0]);
-    //TODO add further functionalities.
+    let warrant = this._game.itemProvider.findItem(100);
+    this._game.itemProvider.presentAlert('Search warrant', 'It will take up to 30 minutes to be done.');
+    this._game.itemProvider.analyseItem(warrant);
+    //this._game.itemProvider.startTimer(1);
     this.close();
   }
 
@@ -61,7 +63,7 @@ export class PlusMenu {
     loading.present();
     this.close();
   }
-  
+
   close() {
     this.viewCtrl.dismiss();
   }
