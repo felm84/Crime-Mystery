@@ -12,7 +12,7 @@ export class NpcProvider {
   private _greeted: boolean;
 
   constructor(private _data: DataProvider) {
-    console.log('NpcProvider');
+    console.log('NpcProvider******');
   }
 
   //#region ENCAPSULATION 

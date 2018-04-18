@@ -24,7 +24,7 @@ export class GameProvider {
     public playerProvider: PlayerProvider,
     public itemProvider: ItemProvider
   ) {
-    console.log('Hello GameProvider Provider');
+    console.log('GameProvider******');
   }
 
   /* loadNewGame() method
@@ -35,7 +35,7 @@ export class GameProvider {
     this.locationProvider.location = this.data.locationsArray[0]; //Detective's office
     this.npcProvider.npc  = this.npcProvider.findNpc(this.locationProvider.location.npc);
     this.playerProvider.player = this.data.charactersArray[0]; //Sherlock Holmes
-
+    this.playerProvider.addContact(this.npcProvider.npc);
     //TODO - delete once is tested
     console.log(this.playerProvider);
     console.log(this.npcProvider);

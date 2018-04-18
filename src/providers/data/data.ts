@@ -34,7 +34,7 @@ export class DataProvider {
    when HttpClientModule is declared in app.module.ts */
   constructor(public http: HttpClient) { 
     this.loadContent();
-    console.log('DataProvider') };
+    console.log('DataProvider******') };
 
   //#region METHODS
   /* loadContent() method

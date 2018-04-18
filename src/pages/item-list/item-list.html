@@ -9,9 +9,13 @@
 
 <ion-content padding>
 
+  <p>Test - {{test}}</p>
   <ion-list inset>
+    <!-- <a ion-item *ngFor="let item of analysing" (click)="openModal({element: item, page: 'item'})">
+      {{item.item.name | uppercase}} : {{item.finish}}
+    </a> -->
     <a ion-item *ngFor="let item of items" (click)="openModal({element: item, page: 'item'})">
-      {{item.name}}
+      {{item.name | uppercase}}
     </a> 
   </ion-list>
 

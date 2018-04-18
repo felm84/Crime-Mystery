@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ModalController, NavController } from 'ionic-angular';
-
 import { PlayerProvider } from '../../providers/player/player';
 import { ModalContentPage } from '../modal-content/modal-content';
+import { ItemProvider } from '../../providers/item/item';
 
 @Component({
   selector: 'page-item-list',
@@ -10,11 +10,11 @@ import { ModalContentPage } from '../modal-content/modal-content';
 })
 export class ItemListPage {
 
-  // items[] holds the player inventory list of collected items
-  public items = this.player.inventory.items;
+  // items[] holds the player's list of collected items
+  public items = this._items.items;
 
   constructor(
-    private player: PlayerProvider, 
+    private _items: ItemProvider, 
     public modalCtrl: ModalController,
     public navCtrl: NavController
   ) {}
