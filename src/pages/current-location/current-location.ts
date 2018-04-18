@@ -1,13 +1,66 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, PopoverController, ViewController } from 'ionic-angular';
 import { GameProvider } from '../../providers/game/game';
 
 // $ declared to be used as jquery
 declare var $: any;
+@Component({
+  template: `<ion-list>
+      <button ion-item icon-lef (click)="chat()">
+        <ion-icon name="chatbubbles"></ion-icon>
+        Chat
+      </button>
+
+      <button ion-item icon-lef (click)="getWarrant()">
+        <ion-icon name="document"></ion-icon>
+        Get Warrant
+      </button>
+ 
+      <button ion-item icon-lef (click)="searchArea()">
+        <ion-icon name="search"></ion-icon>
+        Search Area
+      </button>
+
+      <button ion-item icon-lef (click)="close()">
+        <ion-icon name="close-circle"></ion-icon>
+        Close
+      </button>
+
+  </ion-list>`
+})
+
+export class PlusMenu {
+
+  constructor(
+    public viewCtrl: ViewController,
+    private _game: GameProvider
+  ) {};
+
+  chat() {
+    this.close();
+  }
+
+  getWarrant() {
+    this._game.changeLocation(this._game.data.locationsArray[0]);
+    //TODO add further functionalities.
+    this.close();
+  }
+
+  //Working
+  searchArea() {
+    let items = this._game.locationProvider.releaseItems();
+    this._game.itemProvider.searchArea(items);
+    this.close();
+  }
+
+  close() {
+    this.viewCtrl.dismiss();
+  }
+}
 
 @Component({
   selector: 'page-current-location',
-  templateUrl: 'current-location.html',
+  templateUrl: 'current-location.html'
 })
 
 export class CurrentLocationPage {
@@ -19,6 +72,7 @@ export class CurrentLocationPage {
 
   constructor( 
     public navParams: NavParams,
+    private popoverCtrl: PopoverController,
     private _game: GameProvider
   ) {};
 
@@ -28,8 +82,12 @@ export class CurrentLocationPage {
   }
   
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CurrentLocationPage');
-    
+    console.log('ionViewDidLoad CurrentLocationPage'); 
+  }
+
+  presentPopover(ev) {
+    let popover = this.popoverCtrl.create(PlusMenu);
+    popover.present({ev: ev});
   }
 
   /* showSpeech(element) method

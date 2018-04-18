@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>{{_game.locationProvider.location.name}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="more"></ion-icon>
       </button>
     </ion-buttons>
@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding>
-
+  
   <ion-card (tap)="showSpeech('npc')">
     <ion-card-header>
       {{_game.npcProvider.npc.name}}
@@ -27,6 +27,6 @@
     <ion-card-content id="playerChat">
       {{_game.playerProvider.currentSpeech.phrase}}
     </ion-card-content>
-  </ion-card>
+  </ion-card>  
 
 </ion-content>

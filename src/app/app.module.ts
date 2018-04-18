@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PresentationPage } from '../pages/presentation/presentation';
-import { CurrentLocationPage } from '../pages/current-location/current-location';
+import { CurrentLocationPage, PlusMenu } from '../pages/current-location/current-location';
 import { ItemListPage } from '../pages/item-list/item-list';
 import { LocationListPage } from '../pages/location-list/location-list';
 import { ContactListPage } from '../pages/contact-list/contact-list';
@@ -32,6 +32,7 @@ import { ItemProvider } from '../providers/item/item';
     HomePage,
     PresentationPage,
     CurrentLocationPage,
+    PlusMenu,
     ItemListPage,
     LocationListPage,
     ContactListPage,
@@ -51,6 +52,7 @@ import { ItemProvider } from '../providers/item/item';
     HomePage,
     PresentationPage,
     CurrentLocationPage,
+    PlusMenu,
     ItemListPage,
     LocationListPage,
     ContactListPage,
