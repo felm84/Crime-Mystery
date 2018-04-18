@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, PopoverController, ViewController } from 'ionic-angular';
+import { NavParams, PopoverController, ViewController, LoadingController } from 'ionic-angular';
 import { GameProvider } from '../../providers/game/game';
 
 // $ declared to be used as jquery
@@ -33,6 +33,7 @@ export class PlusMenu {
 
   constructor(
     public viewCtrl: ViewController,
+    public loadingCtrl: LoadingController,
     private _game: GameProvider
   ) {};
 
@@ -49,10 +50,18 @@ export class PlusMenu {
   //Working
   searchArea() {
     let items = this._game.locationProvider.releaseItems();
-    this._game.itemProvider.searchArea(items);
+    let loading = this.loadingCtrl.create({
+      content: 'Searching area...',
+      duration: 5000,
+      dismissOnPageChange: true
+    });
+    loading.onDidDismiss(() => {
+      this._game.itemProvider.addItems(items);
+    });
+    loading.present();
     this.close();
   }
-
+  
   close() {
     this.viewCtrl.dismiss();
   }
