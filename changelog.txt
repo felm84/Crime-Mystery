@@ -96,3 +96,44 @@ Crime Mystery Version 1.0 19/03/2018
 ----------
  - Added encapsulation - [author: Felipe Menezes Silva]
  - Fixed code - [author: Felipe Menezes Silva]
+
+10/04/2018
+----------
+ - Added history[] to track conversation - [author: Felipe Menezes Silva]
+ - Speech test - [author: Felipe Menezes Silva]
+ - Changed param names - [author: Felipe Menezes Silva]
+ - Removed unused code - [author: Felipe Menezes Silva]
+ - Fixed code - [author: Felipe Menezes Silva]
+
+ 11/04/2018
+----------
+ - Added comments - [author: Felipe Menezes Silva]
+
+ 13/04/2018
+----------
+ - Chat fixed - [author: Felipe Menezes Silva]
+ - Readme updated - [author: Felipe Menezes Silva]
+ - Added more speeches - [author: Felipe Menezes Silva]
+ - Added padding to modal-content style - [author: Felipe Menezes Silva]
+
+15/04/2018
+----------
+ - Added description and speeches - [author: Felipe Menezes Silva]
+ - Added releaseItem() method - [author: Felipe Menezes Silva]
+ - Speech options added - [author: Felipe Menezes Silva]
+ - Bug fixed - [author: Felipe Menezes Silva]
+ - Added release item method - [author: Felipe Menezes Silva]
+ - Test removed - [author: Felipe Menezes Silva]
+
+ 17/04/2018
+----------
+ - Hide splash screen when app is fully loaded - [author: Felipe Menezes Silva]
+ - Data return from modal implemented - [author: Felipe Menezes Silva]
+ - ItemProvider implemented - [author: Felipe Menezes Silva]
+ - Code rearranged - [author: Felipe Menezes Silva]
+
+ 18/04/2018
+----------
+ - Added popover menu - [author: Felipe Menezes Silva]
+ - searchAread() done - [author: Felipe Menezes Silva]
+ - Adding warrant functionality - [author: Felipe Menezes Silva]

@@ -30,5 +30,11 @@ http://jquery.com/download/
 - All modules located at node_module folder
 -------------------------------------------
 
+Sherlock Holmes Vector Image
+https://www.flickr.com/photos/vectorportal/6695890353/in/photostream
+
+- Located at src/assets/imgs
+-------------------------------------------
+
 All algorithms functionality have been fully created 
 by Felipe Menezes Silva.
