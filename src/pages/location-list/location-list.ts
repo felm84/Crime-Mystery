@@ -32,8 +32,8 @@ export class LocationListPage {
   openModal(element, page) {
     let modal = this.modalCtrl.create(ModalContentPage, element, page);
     modal.present();
-    modal.onDidDismiss((data) => {
-      if (data !== undefined) {
+    modal.onDidDismiss(data => {
+      if (data) {
         this.navCtrl.parent.select(0);
       }
     });

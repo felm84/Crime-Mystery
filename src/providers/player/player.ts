@@ -13,6 +13,8 @@ export class PlayerProvider {
 
   //#region PlayerProvider PROPERTIES
   private _player: ICharacter;
+  private _currentLocation: ILocation;
+  private _currentSpeech: ISpeech;
 
   //item IItem[], locations ILocation[], contacts ICharacter[]
   public inventory = {
@@ -21,8 +23,7 @@ export class PlayerProvider {
     'contacts': []
   };
 
-  private _currentSpeech: ISpeech;
-
+  public hasWarrant: boolean = false;
   //#endregion
 
   constructor(
@@ -48,6 +49,15 @@ export class PlayerProvider {
       this.addLocation(location);
     }
   }
+  
+  public get currentLocation() : ILocation {
+    return this._currentLocation;
+  }
+  
+  public set currentLocation(v : ILocation) {
+    this._currentLocation = v;
+  }
+  
   
   public get currentSpeech() : ISpeech {
     return this._currentSpeech;

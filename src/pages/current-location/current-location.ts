@@ -42,25 +42,35 @@ export class PlusMenu {
   }
 
   getWarrant() {
-    let warrant = this._game.itemProvider.findItem(100);
-    this._game.itemProvider.presentAlert('Search warrant', 'It will take up to 30 minutes to be done.');
-    this._game.itemProvider.analyseItem(warrant);
-    //this._game.itemProvider.startTimer(1);
+    if (!this._game.itemProvider.warrantInProcess) {
+      let warrant = this._game.itemProvider.findItem(100);
+      this._game.itemProvider.presentAlert('Search warrant', 'It will take up to 30 minutes to be done.');
+      this._game.itemProvider.analyseItem(warrant);
+      this._game.itemProvider.warrantInProcess = true;
+    } else {
+      this._game.itemProvider.presentAlert('Search warrant', 'You already have one in process, check you bag of items.');
+    }
     this.close();
   }
 
   //Working
   searchArea() {
-    let items = this._game.locationProvider.releaseItems();
-    let loading = this.loadingCtrl.create({
-      content: 'Searching area...',
-      duration: 5000,
-      dismissOnPageChange: true
-    });
-    loading.onDidDismiss(() => {
-      this._game.itemProvider.addItems(items);
-    });
-    loading.present();
+    if (!this._game.playerProvider.currentLocation.require_warrant || this._game.playerProvider.hasWarrant) {
+      if (this._game.playerProvider.hasWarrant) this._game.playerProvider.hasWarrant = false;
+      let items = this._game.locationProvider.releaseItems();
+      let loading = this.loadingCtrl.create({
+        content: 'Searching area...',
+        duration: 5000,
+        dismissOnPageChange: true
+      });
+      loading.onDidDismiss(() => {
+        this._game.itemProvider.addItemsToColletion(items);
+      });
+      loading.present();      
+    } else {
+      this._game.itemProvider.presentAlert('Search Warrant', `Search warrant is required for this location. 
+      Please, select <b>Get Warrant</b> in the header menu.`);
+    }
     this.close();
   }
 
