@@ -35,6 +35,7 @@ export class GameProvider {
     this.locationProvider.location = this.data.locationsArray[0]; //Detective's office
     this.npcProvider.npc  = this.npcProvider.findNpc(this.locationProvider.location.npc);
     this.playerProvider.player = this.data.charactersArray[0]; //Sherlock Holmes
+    this.playerProvider.currentLocation = this.data.locationsArray[0];
     this.playerProvider.addContact(this.npcProvider.npc);
     //TODO - delete once is tested
     console.log(this.playerProvider);
@@ -45,20 +46,5 @@ export class GameProvider {
   // Get data form localstorage
   loadContinueGame() {
 
-  }
-
-  /* changeLocation(location) method
-   @param location - type from interface ILocation
-   location will be assigned to location property in LocationProvider
-   and location.npc to setNpc in NpcProvider, then the new
-   npc can be added into PlayerProvider invetory contacts list. */
-  changeLocation(location) {
-    this.locationProvider.location = location;
-    this.npcProvider.npc = this.npcProvider.findNpc(location.npc);
-    this.playerProvider.addContact(this.npcProvider.npc);
-
-    //TODO - delete once is tested
-    console.log(this.locationProvider);
-    console.log(this.npcProvider);
   }
 }
