@@ -6,17 +6,51 @@
 
 </ion-header>
 
-
 <ion-content padding>
+  <ion-card *ngIf="_items.collectedItems.length == 0 && 
+  _items.analysingItems.length == 0 && 
+  _items.itemsReady.length == 0">
+    <ion-card-header>
+      Nothing Collected
+    </ion-card-header>
+    <ion-card-content>
+      Please, you must select a location in your <b>Map tab</b> option, then select <b>Search Area</b> in the header menu. 
+    </ion-card-content>
+  </ion-card>
 
-  <p>Test - {{test}}</p>
   <ion-list inset>
-    <!-- <a ion-item *ngFor="let item of analysing" (click)="openModal({element: item, page: 'item'})">
-      {{item.item.name | uppercase}} : {{item.finish}}
-    </a> -->
-    <a ion-item *ngFor="let item of items" (click)="openModal({element: item, page: 'item'})">
-      {{item.name | uppercase}}
-    </a> 
+
+    <ion-list-header *ngIf="_items.collectedItems.length > 0">
+      Collected
+    </ion-list-header>
+    <a ion-item *ngFor="let item of _items.collectedItems" (click)="openModal({element: item, page: 'item'})">
+      <ion-avatar item-start>
+        <img src="{{item.img}}">
+      </ion-avatar>
+      <h2>{{item.name | uppercase}}</h2>
+    </a>
+
+    <ion-list-header *ngIf="_items.analysingItems.length > 0">
+      Analysing
+    </ion-list-header>
+    <ion-item *ngFor="let item of _items.analysingItems">
+      <ion-avatar item-start>
+        <img src="{{item.item.img}}">
+      </ion-avatar>
+      <h2>{{item.item.name | uppercase}}</h2>
+      <p>Ready in: {{item.counter}}</p>
+    </ion-item>
+
+    <ion-list-header *ngIf="_items.itemsReady.length > 0">
+      Ready
+    </ion-list-header>
+    <a ion-item *ngFor="let item of _items.itemsReady" (click)="openModal({element: item, page: 'ready'})">
+      <ion-avatar item-start>
+        <img src="{{item.img}}">
+      </ion-avatar>
+      <h2>{{item.name | uppercase}}</h2>
+      <p>{{item.description}}</p>
+    </a>
   </ion-list>
 
 </ion-content>

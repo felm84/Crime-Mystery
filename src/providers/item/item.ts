@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subscription } from 'rxjs/Rx';
 import { IItem } from '../interface/item';
 import { AlertController, LoadingController } from 'ionic-angular';
 import { LocationProvider } from '../location/location';
@@ -7,18 +8,10 @@ import { DataProvider } from '../data/data';
 @Injectable()
 export class ItemProvider {
 
-  public items: IItem[] = [];
-  public itemsAnalysing: any[] = [];
-  private _item;
-  private _startTime;
-  private _finishTime;
-  private _itemsDone: any[] = [];
-
-  private _itemClass = {
-    item: this._item,
-    start: this._startTime,
-    finish: this._finishTime,
-  }
+  public collectedItems: IItem[] = [];
+  public analysingItems: any[] = [];
+  public itemsReady: any[] = [];
+  public warrantInProcess: boolean = false;
 
   constructor(
     public loadingCtrl: LoadingController,
@@ -32,11 +25,11 @@ export class ItemProvider {
    @param item - type from interface IItem
    Adds found items to player's itemList[]. This list is 
    displayed in the item-list.html  */
-  addItems(itemsArray: IItem[]) {
+  addItemsToColletion(itemsArray: IItem[]) {
     if (itemsArray.length === 0) {
       this.presentAlert('No more items', 'No more items in this area, please try another location.');
     } else {
-      this.items = this.items.concat(itemsArray);
+      this.collectedItems = this.collectedItems.concat(itemsArray);
       this.presentAlert('Items found', 'You have found some items. Please, check you bag of items.');
     }
   }
@@ -54,30 +47,52 @@ export class ItemProvider {
     alert.present();
   }
 
-  startTimer(minutes: number) {
-    let seconds = 0;
-    let counter = setInterval(() => {
-      if (seconds === 0 && minutes > 0) {
-        minutes--;
-        seconds = 59;
-      } else if ( seconds === 0 && minutes === 0) {
-        clearTimeout(counter);
-      }else {
-        seconds--;
-      }
-      console.log(minutes + " : " + seconds);
-    }, 1000);
+  convertDate(time: number): string {
+    let days = Math.floor(time / 86400);
+    time -= days * 86400;
+    let hours = Math.floor(time / 3600) % 24;
+    time -= hours * 3600;
+    let minutes = Math.floor(time / 60) % 60;
+    time -= minutes * 60;
+    let seconds = time % 60;
+    return [
+      days + 'd',
+      hours + 'h',
+      minutes + 'm',
+      seconds + 's'
+    ].join(' ');;
   }
 
-  // Testing
+  // DONE and WORKING
   analyseItem(item: IItem): boolean {
-    this._itemClass = {
+    let finish = Date.now() + (item.analyse_time * 60000);
+    let counter = new Observable<number>();
+    let subscription = new Subscription();
+
+    let tempItem = {
       item: item,
-      start: 0,
-      finish: 30
+      finish: finish,
+      counter: ''
     }
-    this.itemsAnalysing.push(this._itemClass)
-    //this.startTimer(1);
+
+    counter = Observable.interval(1000).map(x => {
+      return Math.floor((finish - new Date().getTime()) / 1000);
+    });
+    subscription = counter.subscribe(x => {
+      if (x >= 0) {
+        tempItem.counter = this.convertDate(x)
+      } else {
+        subscription.unsubscribe();
+        let index = this.analysingItems.findIndex(x => x.item.id === item.id);
+        let ready = this.analysingItems.splice(index, 1);
+        this.itemsReady.push(ready[0].item);
+      }
+    });
+
+    this.analysingItems.push(tempItem);
+    this.removeItem(item);
+
+    console.log(tempItem);
     return true;
   }
 
@@ -85,9 +100,20 @@ export class ItemProvider {
    @param id - type from number
    searches for the index number that has the same item id
    as the id passed as a parameter, then it returns an IItem */
-   findItem(id: number): IItem {
+  findItem(id: number): IItem {
     return this._data.itemsArray[
       this._data.itemsArray.findIndex(item => item.id === id)
     ];
+  }
+
+  /* removeItem(item) method
+   @param item - type from interface IItem
+   Removes the selected item from player's itemList[].
+   It first identify the item index in the list then
+   slice it off from. */
+  removeItem(item: IItem) {
+    let index = this.collectedItems.indexOf(item);
+    this.collectedItems.splice(index, 1);
+    console.log(item.name + ' - removed.')
   }
 }
