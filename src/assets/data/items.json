@@ -3,36 +3,42 @@
     "id": 1,
     "name": "knife",
     "description": "descripton about the item",
+    "analyse_time": 30,
     "img": "knife.jpg"
   },
   {
     "id": 2,
     "name": "blood",
     "description": "descripton about the item",
+    "analyse_time": 1440,
     "img": "blood.jpg"
   },
   {
     "id": 3,
     "name": "cloth",
     "description": "descripton about the item",
+    "analyse_time": 240,
     "img": "cloth.jpg"
   },
   {
     "id": 4,
     "name": "gun",
     "description": "descripton about the item",
+    "analyse_time": 2880,
     "img": "gun.jpg"
   },
   {
     "id": 5,
     "name": "finger prints",
     "description": "descripton about the item",
+    "analyse_time": 1440,
     "img": "finger_prints.jpg"
   },
   {
     "id": 100,
     "name": "warrant",
     "description": "descripton about the item",
+    "analyse_time": 30,
     "img": "warrant.jpg"
   }
 ]
