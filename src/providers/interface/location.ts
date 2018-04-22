@@ -3,6 +3,7 @@ export interface ILocation {
     name: string;
     img: string;
     npc: number;
+    require_warrant: boolean;
     description: string;
     items: number[];
 }
