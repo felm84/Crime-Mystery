@@ -12,52 +12,100 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <div [ngSwitch]="_page" >
 
-    <ion-card>
+    <ion-card *ngSwitchCase="'item'">
       <img src="{{_element.img}}"/>
       <ion-card-content>
         <ion-card-title>
-            {{_element.name}}
-          </ion-card-title>
+          {{_element.name}}
+        </ion-card-title>
         <p>
-            {{_element.description}}
+          You must send this item for analyse to get more details.
         </p>
       </ion-card-content>
       
-      <div [ngSwitch]="_page" >
-        <ion-grid *ngSwitchCase="'item'">
-          <ion-row>
-            <ion-col></ion-col>
-            <ion-col col-8>
-              <button ion-button icon-left block (click)="analyseItem()">
-                <ion-icon name="search"></ion-icon>
-                Analyse
-              </button>
-            </ion-col>
-            <ion-col></ion-col>
-          </ion-row>
-        </ion-grid>
-    
-        <ion-grid *ngSwitchCase="'location'">
-          <ion-row>
-            <ion-col></ion-col>
-            <ion-col col-8>
-              <button ion-button icon-left block (click)="setLocation()">
-                <ion-icon name="pin"></ion-icon>
-                Set Location
-              </button>
-            </ion-col>
-            <ion-col></ion-col>
-          </ion-row>
-        </ion-grid>
-    
-        <ion-list *ngSwitchCase="'contact'">
-          <ion-list-header>
-            Chat History
-          </ion-list-header>
-          <p *ngFor="let chat of _element.history" >{{chat}}</p>
-        </ion-list>
-    
-      </div>
-    </ion-card>  
+      <ion-grid>
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col col-8>
+            <button ion-button icon-left block (click)="analyseItem()">
+              <ion-icon name="search"></ion-icon>
+              Analyse
+            </button>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card *ngSwitchCase="'ready'">
+      <img src="{{_element.img}}"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{_element.name}}
+        </ion-card-title>
+        <p>
+          {{_element.description}}
+        </p>
+      </ion-card-content>
+
+      <ion-grid *ngIf="_element.id === 100" >
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col col-8>
+            <button ion-button icon-left block (click)="useItem()">
+              <ion-icon name="document"></ion-icon>
+              Use Item
+            </button>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card *ngSwitchCase="'location'">
+      <img src="{{_element.img}}"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{_element.name}}
+        </ion-card-title>
+        <p>
+          {{_element.description}}
+        </p>
+      </ion-card-content>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col col-8>
+            <button ion-button icon-left block (click)="setLocation()">
+              <ion-icon name="pin"></ion-icon>
+              Set Location
+            </button>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  
+    <ion-card *ngSwitchCase="'contact'">
+      <img src="{{_element.img}}"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{_element.name}}
+        </ion-card-title>
+        <p>
+          {{_element.description}}
+        </p>
+      </ion-card-content>
+      <ion-list>
+        <ion-list-header *ngIf="_element.history.length > 0" >
+          Chat History
+        </ion-list-header>
+        <p *ngFor="let chat of _element.history" >{{chat}}</p>
+      </ion-list>
+    </ion-card>
+
+  </div>
 </ion-content>

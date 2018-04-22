@@ -33,8 +33,14 @@ export class ModalContentPage {
     console.log('ionViewDidLoad ModalContentPage');
   }
 
+  useItem() {
+    this._game.playerProvider.hasWarrant = true;
+    this.viewCtrl.dismiss(this._element);
+  }
+
   setLocation() {
     this._game.locationProvider.location = this._element;
+    this._game.playerProvider.currentLocation = this._element;
     this._game.npcProvider.npc = this._game.npcProvider.findNpc(this._element.npc);
     this._game.playerProvider.addContact(this._game.npcProvider.npc);
     this.viewCtrl.dismiss(this._element);
