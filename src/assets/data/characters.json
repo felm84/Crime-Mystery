@@ -5,7 +5,7 @@
       "type": "detective",
       "img": "detective.jpg",
       "description": "Very competent detective, who has a number of distinction for solving crimes in the city.",
-      "speeches": [1, 2, 3, 4, 7, 8, 17, 19, 20, 63, 73]
+      "speeches": [1, 2, 3, 4, 7, 8, 17, 19, 20, 22, 63, 73]
     },
     {
       "id": 2,
@@ -22,7 +22,7 @@
       "type": "maid",
       "img": "maid.jpg",
       "description": "Maid supervisor in the Mansion for over 10 years. Black long hair, short and overweight, brown skin, wears black all the time and is a bit grumpy",
-      "speeches": [65, 1, 2, 3, 4, 5, 6, 9, 18, 59, 74],
+      "speeches": [65, 1, 2, 3, 4, 5, 6, 9, 18, 59, 74, 76],
       "history": []
     },
     {
@@ -31,7 +31,7 @@
       "type": "mall security",
       "img": "security.jpg",
       "description": "Security mall in the East-Gate Mall. Tall, bald with a moustache, islander body type, brown skin, wears uniform at work and hawaiian cothes in day offs",
-      "speeches": [67, 1, 2, 3, 4, 5, 6, 9, 18, 59, 74],
+      "speeches": [67, 1, 2, 3, 4, 5, 6, 9, 18, 59, 74, 76],
       "history": []
     },
     {
@@ -40,7 +40,7 @@
       "type": "gardner",
       "img": "gardner.jpg",
       "description": "Gardner at South Garden. Black skin, slim build, tall, wears a sombrero and dark green clothes at the garden, has some scars in his hands, and is humorous.",
-      "speeches": [68, 1, 2, 3, 4, 5, 6, 18, 59, 72],
+      "speeches": [68, 1, 2, 3, 4, 5, 6, 18, 59, 64, 72, 76],
       "history": []
     },
     {
@@ -49,7 +49,7 @@
       "type": "train_operator",
       "img": "train_operator.jpg",
       "description": "Train operator for the same route in the past 5 years. He wears a blue and white striped hat, blue shirt and jeans, short and overweight, has a long beard, and is bored most of the day.",
-      "speeches": [69, 1, 2, 3, 4, 5, 6, 9, 18, 59, 74],
+      "speeches": [69, 1, 2, 3, 4, 5, 6, 9, 18, 59, 74, 76],
       "history": []
     },
     {
@@ -58,7 +58,7 @@
       "type": "homeless",
       "img": "homeless.jpg",
       "description": "Homer is one of the city's homeless, skinny guy wearing dirty and old clothes, white skin, doesn't like to have showers, stinky and he has a dog. He's always aking for money.",
-      "speeches": [71, 1, 2, 3, 4, 5, 6, 18, 59, 72],
+      "speeches": [71, 1, 2, 3, 4, 5, 6, 18, 59, 64, 72, 76],
       "history": []
     },
     {
@@ -67,7 +67,7 @@
       "type": "manager",
       "img": "manager.jpg",
       "description": "Manager at the Pawnshop for over a year. He has white skin, red hair, wears jeans and a white shirt with red tie, smokes cigar and change his homour everyday.",
-      "speeches": [66, 1, 2, 3, 4, 5, 6, 9, 18, 59, 74],
+      "speeches": [66, 1, 2, 3, 4, 5, 6, 9, 18, 59, 74, 76],
       "history": []
     },
     {
@@ -76,7 +76,7 @@
       "type": "pharmacist",
       "img": "pharmacist.jpg",
       "description": "Pharmacist at the BB Pharmacy. She is blond, wears white dress, shirt and high heels, perfumed, and sometimes flirts with some people, she is a lovely person",
-      "speeches": [70, 1, 2, 3, 4, 5, 6, 9, 18, 59, 74],
+      "speeches": [70, 1, 2, 3, 4, 5, 6, 9, 18, 59, 74, 76],
       "history": []
     },
     {
@@ -85,7 +85,7 @@
       "type": "cashier_station",
       "img": "cashier_station.jpg",
       "description": "An immigrant who owns mutiple petrol stations around the city. He has dark skin, tall, has a long beard, wears a turban, and white clothes, very friendly ",
-      "speeches": [75, 1, 2, 3, 4, 5, 6, 18, 59, 72],
+      "speeches": [75, 1, 2, 3, 4, 5, 6, 18, 59, 64, 72, 76],
       "history": []
     }
   ]

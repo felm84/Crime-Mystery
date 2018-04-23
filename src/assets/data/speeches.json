@@ -85,7 +85,7 @@
     },
     {
       "id": 22,
-      "phrase": "I found this item!"
+      "phrase": "I found some items in this place, they may help me to catch the suspect!"
     },
     {
       "id": 23,
@@ -298,5 +298,9 @@
     {
       "id": 75,
       "phrase": "I am just an immigrant working hard to achieve my dream."
+    },
+    {
+      "id": 76,
+      "phrase": "You are welcome!"
     }
   ]
