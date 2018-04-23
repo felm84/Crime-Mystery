@@ -7,6 +7,7 @@ import { IItem } from '../interface/item';
 import { LocationProvider } from '../location/location';
 import { ILocation } from '../interface/location';
 import { ItemProvider } from '../item/item';
+import { NpcProvider } from '../npc/npc';
 
 @Injectable()
 export class PlayerProvider {
@@ -74,10 +75,21 @@ export class PlayerProvider {
    @param speech - type from ISpeech
    answers the npc accordingly to what npc currentSpeech is
    passed as speech parameter */
-  answerNpc(speech: ISpeech) {
-    switch (speech.id) {
+  answer(npc: NpcProvider, location: ILocation): ISpeech {
+    if (location.items.length === 0) {
+      this.currentSpeech = this._data.speechesArray[
+        this._data.speechesArray.findIndex(x => x.id === 22)
+      ];
+    } else {
+      this.currentSpeech = this.performFirstQuestions(npc, location)
+    }
+    return this.currentSpeech;
+  }
+
+  performFirstQuestions(npc: NpcProvider, location: ILocation): ISpeech {
+    switch (npc.currentSpeech.id) {
       case 1: case 2: case 3: case 4:
-        this.currentSpeech = speech;
+        this.currentSpeech = npc.currentSpeech;
         break;
       case 6:
         this.currentSpeech = this._data.speechesArray[
@@ -94,7 +106,7 @@ export class PlayerProvider {
           this._data.speechesArray.findIndex(x => x.id === 7)
         ];        
         break;
-      case 65: case 66: case 67: case 68: case 69: case 70: case 71:
+        case 5: case 65: case 66: case 67: case 68: case 69: case 70: case 71:
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 8)
         ];        
@@ -108,11 +120,10 @@ export class PlayerProvider {
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 63)
         ];
-        //this.searchArea();
-        break;
       default:
         break;
     }
+    return this.currentSpeech;
   }
 
   presentAlert(title: string, message: string) {

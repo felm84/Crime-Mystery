@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { DataProvider } from '../data/data';
 import { ICharacter } from '../interface/character';
 import { ISpeech } from '../interface/speech';
+import { ILocation } from '../interface/location';
+import { PlayerProvider } from '../player/player';
 
 @Injectable()
 export class NpcProvider {
@@ -10,6 +12,7 @@ export class NpcProvider {
   private _speeches: ISpeech[] = [];
   private _currentSpeech: ISpeech;
   private _greeted: boolean;
+  public canSearch: boolean = false;
 
   constructor(private _data: DataProvider) {
     console.log('NpcProvider******');
@@ -24,6 +27,7 @@ export class NpcProvider {
     this._npc = v;
     this.feedSpeechesList();
     this._greeted = false;
+    this.canSearch = false;
     this._currentSpeech = this.greetPlayer();
   }
   
@@ -92,7 +96,7 @@ export class NpcProvider {
    speech to greet variable. After that it returns an
    ISpeech value. */
   greetPlayer(): ISpeech {
-    let greet: ISpeech = this._speeches[
+    this.currentSpeech = this._speeches[
       this._speeches.findIndex(x => x.id === 4)
     ];
 
@@ -101,28 +105,33 @@ export class NpcProvider {
       let hour = date.getHours();
 
       if (hour >= 5 && hour <= 11) {
-        greet = this._speeches[
+        this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 1)
         ]
       } else if (hour >= 12 && hour <= 17){
-        greet = this._speeches[
+        this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 2)
         ];
       } else if (hour >= 18 && hour <= 19) {
-        greet = this._speeches[
+        this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 3)
         ];
       }
     } else {
-      greet = this._speeches[
+      this.currentSpeech = this._speeches[
         this._speeches.findIndex(x => x.id === 5)
       ];
+      //***** */
     }
-    return greet;
+    return this.currentSpeech;
   }
 
-  answerPlayer(speech: ISpeech) {
-    switch (speech.id) {
+  answer(player: PlayerProvider, location: ILocation): ISpeech {
+    return this.performFirstAproach(player, location);
+  }
+
+  performFirstAproach(player: PlayerProvider, location: ILocation): ISpeech {
+    switch (player.currentSpeech.id) {
       case 1:
       case 2:
       case 3:
@@ -154,20 +163,23 @@ export class NpcProvider {
             this._speeches.findIndex(x => x.id === 9)
           ];
         }
+        this.canSearch = true;
         break;
       case 63:
-        console.log(this._speeches[
-          this._speeches.findIndex(x => x.id === 80)
-        ]);
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 64)
+        ];
         break;
       case 73:
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 74)
         ];
+        // Ends the conversation to get the warrant
         break;
       default:
         break;
     }
+    return this.currentSpeech;
   }
   //#endregion
 
