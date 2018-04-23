@@ -141,7 +141,7 @@ export class NpcProvider {
         ];
         break;
       case 17:
-      this.currentSpeech = this._speeches[
+        this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 18)
         ];
         break;

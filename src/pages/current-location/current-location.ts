@@ -37,17 +37,28 @@ export class PlusMenu {
   ) {};
 
   getWarrant() {
-    if (!this._game.itemProvider.warrantInProcess &&
-      this._npc.canSearch) {
+    if (!this._game.itemProvider.warrantInProcess && 
+      this._npc.canSearch && !this._game.playerProvider.hasWarrant) {
+
       let warrant = this._game.itemProvider.findItem(100);
       this._game.itemProvider.presentAlert('Search warrant', 'It will take up to 30 minutes to be done.');
       this._game.itemProvider.analyseItem(warrant);
       this._game.itemProvider.warrantInProcess = true;
-    } else if (!this._npc.canSearch) {
-      this._game.itemProvider.presentAlert('Search Warrant', `Have a chat with the locals first and see how
-      they can help you. Please, tap on the <b>character</b> to start a chat, then on yours.`);
-    } else {
-      this._game.itemProvider.presentAlert('Search warrant', 'You already have one in process, check you bag of items.');
+    } else { 
+      if (!this._npc.canSearch) {
+
+        this._game.itemProvider.presentAlert('Search Warrant', `Have a chat with the locals first and see how
+        they can help you. Please, tap on the <b>character</b> to start a chat, then on yours.`);
+  
+      } else if (this._game.playerProvider.hasWarrant) {
+  
+        this._game.itemProvider.presentAlert('Search warrant', `You have selected to use yours. 
+        Please, select <b>Search Area</b> in the header menu.`);
+  
+      } else {
+        this._game.itemProvider.presentAlert('Search warrant', `You already have one in process, 
+        check you bag of items.`);
+      }
     }
     this.close();
   }
