@@ -9,7 +9,6 @@ export class LocationProvider {
   
   private _location: ILocation;
   private _items: IItem[] = [];
-  private _needWarrant: boolean = true;
 
   /* LocationProvider constructor
    @param data - type from DataProvider
@@ -38,15 +37,6 @@ export class LocationProvider {
   public set items(v : IItem[]) {
     this._items = v;
   }
-
-  public get needWarrant() : boolean {
-    return this._needWarrant;
-  }
-  
-  public set needWarrant(v : boolean) {
-    this._needWarrant = v;
-  }
-  
   //#endregion
 
   //#region METHODS
