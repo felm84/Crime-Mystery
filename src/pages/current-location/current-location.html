@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{_game.locationProvider.location.name}}</ion-title>
+    <ion-title>{{_location.location.name}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="more"></ion-icon>
@@ -10,23 +10,23 @@
 </ion-header>
 
 <ion-content padding>
+  <div class="chat">
+    <ion-card (tap)="showSpeech('npc')">
+      <ion-card-header>
+        {{_npc.npc.name}}
+      </ion-card-header>
+      <ion-card-content id="npcChat">
+        {{_npcPhrase.phrase}}
+      </ion-card-content>
+    </ion-card>
   
-  <ion-card (tap)="showSpeech('npc')">
-    <ion-card-header>
-      {{_game.npcProvider.npc.name}}
-    </ion-card-header>
-    <ion-card-content id="npcChat">
-      {{_game.npcProvider.currentSpeech.phrase}}
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card (tap)="showSpeech('player')">
-    <ion-card-header>
-      {{_game.playerProvider.player.name}}
-    </ion-card-header>
-    <ion-card-content id="playerChat">
-      {{_game.playerProvider.currentSpeech.phrase}}
-    </ion-card-content>
-  </ion-card>  
-
+    <ion-card (tap)="showSpeech('player')">
+      <ion-card-header>
+        {{_player.player.name}}
+      </ion-card-header>
+      <ion-card-content id="playerChat">
+        {{_playerPhrase.phrase}}
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
