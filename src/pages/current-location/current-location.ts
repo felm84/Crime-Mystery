@@ -170,22 +170,16 @@ export class CurrentLocationPage {
   }
 
   playerTalk() {
-    if (this._npc.currentSpeech.id === 74) {
-      this._alert.presentAlert('Search Warrant', `Search warrant is required for this location. 
-    Please, select <b>Get Warrant</b> in the header menu.`);
-    } else if (this._npc.currentSpeech.id === 64) {
-      this._alert.presentAlert('Search Area', `Now you may search the area by selecting <b>Search 
-      Area</b> in the header menu.`);
-    } else {
-      this._playerPhrase = this._game.playerProvider.answer(this._npc, this._location.location);
 
-      $('#npcChat').fadeOut();
-      $('#playerChat').fadeIn();
-      
-      // Push player currentSpeech into current npcs history[]
-      this._npc.npc.history.push(
-        this._game.playerProvider.player.name + " - " + this._game.playerProvider.currentSpeech.phrase);
-    }
+    this._playerPhrase = this._game.playerProvider.answer(this._npc, this._location.location);
+
+    $('#npcChat').fadeOut();
+    $('#playerChat').fadeIn();
+    
+    // Push player currentSpeech into current npcs history[]
+    this._npc.npc.history.push(
+      this._game.playerProvider.player.name + " - " + this._game.playerProvider.currentSpeech.phrase);
+    
     this._speak = false;
   }
 
