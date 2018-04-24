@@ -8,6 +8,7 @@ import { LocationProvider } from '../location/location';
 import { ILocation } from '../interface/location';
 import { ItemProvider } from '../item/item';
 import { NpcProvider } from '../npc/npc';
+import { AlertProvider } from '../alert/alert';
 
 @Injectable()
 export class PlayerProvider {
@@ -31,7 +32,7 @@ export class PlayerProvider {
     public loadingCtrl: LoadingController,
     private _data: DataProvider,
     private _itemProvider: ItemProvider,
-    private alertCtrl: AlertController
+    private _alert: AlertProvider
   ) {
     console.log('PlayerProvider******');
   }
@@ -88,55 +89,53 @@ export class PlayerProvider {
 
   performFirstQuestions(npc: NpcProvider, location: ILocation): ISpeech {
     switch (npc.currentSpeech.id) {
+      /* Good Morning!, Good Afternoon!, Good Evening!, Good Night! */
       case 1: case 2: case 3: case 4:
         this.currentSpeech = npc.currentSpeech;
         break;
-      case 6:
+      case 6: //How can I help you?
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 17)
-        ];        
+        ];//I'm investigating a crime, have you seen anything or anyone suspicious?
         break;
-      case 18:
+      case 9: //Do you have a search warrant?
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 73)
+        ];//No, but I can get one in 30 minutes!
+        break;
+      case 18://What sort of crime detective?
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 19)
-        ];        
+        ];//I'm afraid I can't give any detailed about it right now.
         break;
-      case 59:
+        
+      case 59://Is there anything I can do to help you?
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 7)
-        ];        
+        ];//What do you do here?
         break;
+        //65 - 71 npc job and self-description, 5-Nice to see you again, what can I do for you?
         case 5: case 65: case 66: case 67: case 68: case 69: case 70: case 71:
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 8)
-        ];        
+        ];//Do you mind if I take a look around?
         break;
-      case 9:
-        this.currentSpeech = this._data.speechesArray[
-          this._data.speechesArray.findIndex(x => x.id === 73)
-        ];
+      case 64://Anytime you need!
+        this._alert.presentAlert('Search Area', `Now you may search the area by selecting <b>Search 
+        Area</b> in the header menu.`);
         break;
-      case 72:
+      case 72://No problem, feel free to search around!
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 63)
-        ];
+        ];//Thank you very much for your help.
+      case 74://No problem, I'll see you next time!
+        this._alert.presentAlert('Search Warrant', `Search warrant is required for this location. 
+        Please, select <b>Get Warrant</b> in the header menu.`);
+        break;
       default:
         break;
     }
     return this.currentSpeech;
-  }
-
-  presentAlert(title: string, message: string) {
-    let alert = this.alertCtrl.create({
-      title: title,
-      message: message,
-      buttons: [
-        {
-          text: 'OK'
-        }
-      ]
-    });
-    alert.present();
   }
 
   /* removeItem(item) method

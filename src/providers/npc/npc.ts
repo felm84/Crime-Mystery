@@ -132,48 +132,48 @@ export class NpcProvider {
 
   performFirstAproach(player: PlayerProvider, location: ILocation): ISpeech {
     switch (player.currentSpeech.id) {
-      case 1:
-      case 2:
-      case 3:
-      case 4:
+      //Good Morning!, Good Afternoon!, Good Evening!, Good Night!
+      case 1: case 2: case 3: case 4:
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 6)
-        ];
+        ];//How can I help you?
         break;
-      case 17:
+      case 17://I'm investigating a crime, have you seen anything or anyone suspicious?
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 18)
-        ];
+        ];//What sort of crime detective?
         break;
-      case 19: case 20:
+      //I'm afraid I can't give any detailed about it right now.
+      case 19:
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 59)
-        ];
+        ];//Is there anything I can do to help you?
         break;
-      case 7:
+      case 7://What do you do here?
         this.currentSpeech = this._speeches[0];
-        break;
-      case 8:
+        break;//npc job and self-description
+      case 8://Do you mind if I take a look around?
         if (this._speeches.findIndex(x => x.id === 9) === -1) {
           this.currentSpeech = this._speeches[
             this._speeches.findIndex(x => x.id === 72)
-          ];
+          ];//No problem, feel free to search around!
         } else {
           this.currentSpeech = this._speeches[
             this._speeches.findIndex(x => x.id === 9)
-          ];
+          ];//Do you have a search warrant?
         }
+        //true = Get Warrant or Search Area may be perfomed, false = keep conversation
         this.canSearch = true;
         break;
-      case 63:
+      case 63://Thank you very much for your help.
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 64)
-        ];
+        ];//Anytime you need!
         break;
-      case 73:
+      case 73://No, but I can get one in 30 minutes!
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 74)
-        ];
+        ];//No problem, I'll see you next time then!
         // Ends the conversation to get the warrant
         break;
       default:
