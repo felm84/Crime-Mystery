@@ -4,6 +4,7 @@ import { IItem } from '../interface/item';
 import { AlertController, LoadingController } from 'ionic-angular';
 import { LocationProvider } from '../location/location';
 import { DataProvider } from '../data/data';
+import { AlertProvider } from '../alert/alert';
 
 @Injectable()
 export class ItemProvider {
@@ -14,9 +15,8 @@ export class ItemProvider {
   public warrantInProcess: boolean = false;
 
   constructor(
-    public loadingCtrl: LoadingController,
-    private _data: DataProvider,
-    private alertCtrl: AlertController
+    private _alert: AlertProvider,
+    private _data: DataProvider
   ) {
     console.log('ItemProvider******');
   }
@@ -27,24 +27,11 @@ export class ItemProvider {
    displayed in the item-list.html  */
   addItemsToColletion(itemsArray: IItem[]) {
     if (itemsArray.length === 0) {
-      this.presentAlert('No more items', 'No more items in this area, please try another location.');
+      this._alert.presentAlert('No more items', 'No more items in this area, please try another location.');
     } else {
       this.collectedItems = this.collectedItems.concat(itemsArray);
-      this.presentAlert('Items found', 'You have found some items. Please, check you bag of items.');
+      this._alert.presentAlert('Items found', 'You have found some items. Please, check you bag of items.');
     }
-  }
-
-  presentAlert(title: string, message: string) {
-    let alert = this.alertCtrl.create({
-      title: title,
-      message: message,
-      buttons: [
-        {
-          text: 'OK'
-        }
-      ]
-    });
-    alert.present();
   }
 
   convertDate(time: number): string {

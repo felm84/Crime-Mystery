@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavParams, PopoverController, ViewController, LoadingController } from 'ionic-angular';
 import { GameProvider } from '../../providers/game/game';
 import { DataProvider } from '../../providers/data/data';
+import { AlertProvider } from '../../providers/alert/alert';
 
 // $ declared to be used as jquery
 declare var $: any;
@@ -32,6 +33,7 @@ export class PlusMenu {
   constructor(
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
+    public alert: AlertProvider,
     private _data: DataProvider,
     private _game: GameProvider
   ) {};
@@ -41,22 +43,22 @@ export class PlusMenu {
       this._npc.canSearch && !this._game.playerProvider.hasWarrant) {
 
       let warrant = this._game.itemProvider.findItem(100);
-      this._game.itemProvider.presentAlert('Search warrant', 'It will take up to 30 minutes to be done.');
+      this.alert.presentAlert('Search warrant', 'It will take up to 30 minutes to be done.');
       this._game.itemProvider.analyseItem(warrant);
       this._game.itemProvider.warrantInProcess = true;
     } else { 
       if (!this._npc.canSearch) {
 
-        this._game.itemProvider.presentAlert('Search Warrant', `Have a chat with the locals first and see how
+        this.alert.presentAlert('Search Warrant', `Have a chat with the locals first and see how
         they can help you. Please, tap on the <b>character</b> to start a chat, then on yours.`);
   
       } else if (this._game.playerProvider.hasWarrant) {
   
-        this._game.itemProvider.presentAlert('Search warrant', `You have selected to use yours. 
+        this.alert.presentAlert('Search warrant', `You have selected to use yours. 
         Please, select <b>Search Area</b> in the header menu.`);
   
       } else {
-        this._game.itemProvider.presentAlert('Search warrant', `You already have one in process, 
+        this.alert.presentAlert('Search warrant', `You already have one in process, 
         check you bag of items.`);
       }
     }
@@ -85,10 +87,10 @@ export class PlusMenu {
       });
       loading.present();      
     } else if (!this._npc.canSearch) {
-      this._game.itemProvider.presentAlert('Search Area', `Have a chat with the locals first and see how
+      this.alert.presentAlert('Search Area', `Have a chat with the locals first and see how
       they can help you. Please, tap on the <b>character</b> to start a chat, then on yours.`);
     } else {
-      this._game.itemProvider.presentAlert('Search Area', `Search warrant is required for this location. 
+      this.alert.presentAlert('Search Area', `Search warrant is required for this location. 
       Please, select <b>Get Warrant</b> in the header menu.`);
     }
     this.close();
@@ -120,6 +122,7 @@ export class CurrentLocationPage {
   constructor( 
     public navParams: NavParams,
     private popoverCtrl: PopoverController,
+    private _alert:AlertProvider,
     private _game: GameProvider
   ) {};
 
@@ -168,10 +171,10 @@ export class CurrentLocationPage {
 
   playerTalk() {
     if (this._npc.currentSpeech.id === 74) {
-      this._game.itemProvider.presentAlert('Search Warrant', `Search warrant is required for this location. 
+      this._alert.presentAlert('Search Warrant', `Search warrant is required for this location. 
     Please, select <b>Get Warrant</b> in the header menu.`);
     } else if (this._npc.currentSpeech.id === 64) {
-      this._game.itemProvider.presentAlert('Search Area', `Now you may search the area by selecting <b>Search 
+      this._alert.presentAlert('Search Area', `Now you may search the area by selecting <b>Search 
       Area</b> in the header menu.`);
     } else {
       this._playerPhrase = this._game.playerProvider.answer(this._npc, this._location.location);
