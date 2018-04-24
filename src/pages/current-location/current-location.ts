@@ -171,8 +171,8 @@ export class CurrentLocationPage {
       this._game.itemProvider.presentAlert('Search Warrant', `Search warrant is required for this location. 
     Please, select <b>Get Warrant</b> in the header menu.`);
     } else if (this._npc.currentSpeech.id === 64) {
-      this._game.itemProvider.presentAlert('Search Area', `Now you may search the area by selecting <b>search 
-      area</b> in the header menu.`);
+      this._game.itemProvider.presentAlert('Search Area', `Now you may search the area by selecting <b>Search 
+      Area</b> in the header menu.`);
     } else {
       this._playerPhrase = this._game.playerProvider.answer(this._npc, this._location.location);
 

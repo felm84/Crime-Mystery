@@ -25,6 +25,7 @@ import { LocationProvider } from '../providers/location/location';
 import { NpcProvider } from '../providers/npc/npc';
 import { GameProvider } from '../providers/game/game';
 import { ItemProvider } from '../providers/item/item';
+import { AlertProvider } from '../providers/alert/alert';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { ItemProvider } from '../providers/item/item';
     LocationProvider,
     NpcProvider,
     GameProvider,
-    ItemProvider
+    ItemProvider,
+    AlertProvider
   ]
 })
 export class AppModule {}
