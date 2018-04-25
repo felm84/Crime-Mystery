@@ -177,6 +177,25 @@ export class NpcProvider {
         // Ends the conversation to get the warrant
         break;
       default:
+        this.currentSpeech = this.performSecondAproach(player, location);
+        break;
+    }
+    return this.currentSpeech;
+  }
+
+  performSecondAproach(player: PlayerProvider, location: ILocation): ISpeech {
+    switch (player.currentSpeech.id) {
+      case 22://I found some items in this place, they may help me to catch the suspect!
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 77)
+        ];//I hope you catch the suspect soon!
+        break;
+      default:
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 100)
+        ];// empty ''
+        //true = Get Warrant or Search Area may be perfomed, false = keep conversation
+        //this.canSearch = true;
         break;
     }
     return this.currentSpeech;

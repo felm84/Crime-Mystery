@@ -77,23 +77,17 @@ export class PlayerProvider {
    answers the npc accordingly to what npc currentSpeech is
    passed as speech parameter */
   answer(npc: NpcProvider, location: ILocation): ISpeech {
-    if (location.items.length === 0) {
-      this.currentSpeech = this._data.speechesArray[
-        this._data.speechesArray.findIndex(x => x.id === 22)
-      ];
-    } else {
-      this.currentSpeech = this.performFirstQuestions(npc, location)
-    }
+      this.currentSpeech = this.performFirstAproach(npc, location)
     return this.currentSpeech;
   }
 
-  performFirstQuestions(npc: NpcProvider, location: ILocation): ISpeech {
+  performFirstAproach(npc: NpcProvider, location: ILocation): ISpeech {
     switch (npc.currentSpeech.id) {
       /* Good Morning!, Good Afternoon!, Good Evening!, Good Night! */
       case 1: case 2: case 3: case 4:
         this.currentSpeech = npc.currentSpeech;
         break;
-      case 6: //How can I help you?
+      case 6://How can I help you?
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 17)
         ];//I'm investigating a crime, have you seen anything or anyone suspicious?
@@ -108,14 +102,13 @@ export class PlayerProvider {
           this._data.speechesArray.findIndex(x => x.id === 19)
         ];//I'm afraid I can't give any detailed about it right now.
         break;
-        
       case 59://Is there anything I can do to help you?
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 7)
         ];//What do you do here?
         break;
         //65 - 71 npc job and self-description, 5-Nice to see you again, what can I do for you?
-        case 5: case 65: case 66: case 67: case 68: case 69: case 70: case 71:
+      case 65: case 66: case 67: case 68: case 69: case 70: case 71:
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 8)
         ];//Do you mind if I take a look around?
@@ -123,16 +116,55 @@ export class PlayerProvider {
       case 64://Anytime you need!
         this._alert.presentAlert('Search Area', `Now you may search the area by selecting <b>Search 
         Area</b> in the header menu.`);
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 100)
+        ];//Empty ''
         break;
       case 72://No problem, feel free to search around!
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 63)
         ];//Thank you very much for your help.
+        this._alert.presentAlert('Search Area', `You may now search the area for items. 
+        Please, select <b>Search Area</b> in the header menu.`);
+        break;
       case 74://No problem, I'll see you next time!
-        this._alert.presentAlert('Search Warrant', `Search warrant is required for this location. 
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 100)
+        ];//Empty ''
+        this._alert.presentAlert('Get Warrant', `Search warrant is required for this location. 
         Please, select <b>Get Warrant</b> in the header menu.`);
         break;
       default:
+        this.currentSpeech = this.performSecondAproach(npc, location);
+        break;
+    }
+    return this.currentSpeech;
+  }
+
+  performSecondAproach(npc: NpcProvider, location: ILocation): ISpeech {
+    switch (npc.currentSpeech.id) {
+      case 5:
+        if (location.items.length > 0) {
+          this.currentSpeech = this._data.speechesArray[
+            this._data.speechesArray.findIndex(x => x.id === 8)
+          ];//Do you mind if I take a look around?
+        } else {
+          this.currentSpeech = this._data.speechesArray[
+            this._data.speechesArray.findIndex(x => x.id === 22)
+          ];//I found some items in this place, they may help me to catch the suspect!
+        }
+        break;
+      /* case 77://I hope you catch the suspect soon!
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 100)
+        ];//Empty''
+        break; */
+      default:
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 100)
+        ];//Empty ''
+        this._alert.presentAlert('Set Location', `Please, set another location in the <b>Map Tab</b> 
+        to continue the investigation`);
         break;
     }
     return this.currentSpeech;
