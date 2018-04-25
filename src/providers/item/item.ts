@@ -26,12 +26,9 @@ export class ItemProvider {
    Adds found items to player's itemList[]. This list is 
    displayed in the item-list.html  */
   addItemsToColletion(itemsArray: IItem[]) {
-    if (itemsArray.length === 0) {
-      this._alert.presentAlert('No more items', 'No more items in this area, please try another location.');
-    } else {
-      this.collectedItems = this.collectedItems.concat(itemsArray);
-      this._alert.presentAlert('Items found', 'You have found some items. Please, check you bag of items.');
-    }
+    this.collectedItems = this.collectedItems.concat(itemsArray);
+    this._alert.presentAlert('Items Found', 'You have found some items. Please, check you bag of items.');
+
   }
 
   convertDate(time: number): string {

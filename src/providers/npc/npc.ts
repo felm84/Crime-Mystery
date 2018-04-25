@@ -174,7 +174,6 @@ export class NpcProvider {
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 74)
         ];//No problem, I'll see you next time then!
-        // Ends the conversation to get the warrant
         break;
       default:
         this.currentSpeech = this.performSecondAproach(player, location);
@@ -189,13 +188,13 @@ export class NpcProvider {
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 77)
         ];//I hope you catch the suspect soon!
+        //true = Get Warrant or Search Area may be perfomed, false = keep conversation
+        this.canSearch = true;
         break;
       default:
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 100)
         ];// empty ''
-        //true = Get Warrant or Search Area may be perfomed, false = keep conversation
-        //this.canSearch = true;
         break;
     }
     return this.currentSpeech;

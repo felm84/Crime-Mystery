@@ -113,21 +113,19 @@ export class PlayerProvider {
           this._data.speechesArray.findIndex(x => x.id === 8)
         ];//Do you mind if I take a look around?
         break;
-      case 64://Anytime you need!
-        this._alert.presentAlert('Search Area', `Now you may search the area by selecting <b>Search 
-        Area</b> in the header menu.`);
+      case 64://Anytime you need! - CALL ALERT
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 100)
         ];//Empty ''
+        this._alert.presentAlert('Search Area', `You may search the area by selecting <b>Search 
+        Area</b> in the header menu.`);
         break;
       case 72://No problem, feel free to search around!
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 63)
         ];//Thank you very much for your help.
-        this._alert.presentAlert('Search Area', `You may now search the area for items. 
-        Please, select <b>Search Area</b> in the header menu.`);
         break;
-      case 74://No problem, I'll see you next time!
+      case 74://No problem, I'll see you next time! NPC wants search warrant - CALL ALERT
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 100)
         ];//Empty ''
@@ -154,17 +152,12 @@ export class PlayerProvider {
           ];//I found some items in this place, they may help me to catch the suspect!
         }
         break;
-      /* case 77://I hope you catch the suspect soon!
-        this.currentSpeech = this._data.speechesArray[
-          this._data.speechesArray.findIndex(x => x.id === 100)
-        ];//Empty''
-        break; */
-      default:
+      default: // Last option each location - CALL ALERT
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 100)
         ];//Empty ''
         this._alert.presentAlert('Set Location', `Please, set another location in the <b>Map Tab</b> 
-        to continue the investigation`);
+        to continue the investigation.`);
         break;
     }
     return this.currentSpeech;
