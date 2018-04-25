@@ -160,27 +160,34 @@ export class CurrentLocationPage {
       this._npcPhrase = this._npc.answer(this._player, this._location.location);
     }
     
-    $('#playerChat').fadeOut();
-    $('#npcChat').fadeIn();
-    // Push npc currentSpeech into its history[]
-    this._npc.npc.history.push(
-      this._npc.npc.name + " - " + this._npc.currentSpeech.phrase);
+    if (this._npcPhrase.phrase) {
+      $('#playerChat').fadeOut();
+      $('#npcChat').fadeIn();
 
-    this._speak = true;
+        // Push npc currentSpeech into its history[]
+        this._npc.npc.history.push(
+          this._npc.npc.name + " - " + this._npc.currentSpeech.phrase);
+      this._speak = true;
+    } else {
+      this.clearChat();
+    }
+    
   }
 
   playerTalk() {
-
     this._playerPhrase = this._game.playerProvider.answer(this._npc, this._location.location);
 
-    $('#npcChat').fadeOut();
-    $('#playerChat').fadeIn();
-    
-    // Push player currentSpeech into current npcs history[]
-    this._npc.npc.history.push(
-      this._game.playerProvider.player.name + " - " + this._game.playerProvider.currentSpeech.phrase);
-    
-    this._speak = false;
+    if (this._playerPhrase.phrase) {
+      $('#npcChat').fadeOut();
+      $('#playerChat').fadeIn();
+      
+      // Push player currentSpeech into current npcs history[]
+      this._npc.npc.history.push(
+        this._game.playerProvider.player.name + " - " + this._game.playerProvider.currentSpeech.phrase);
+      this._speak = false;
+    } else {
+      this.clearChat();
+    }
   }
 
   /* clearChat() method

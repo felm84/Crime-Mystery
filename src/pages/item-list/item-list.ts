@@ -28,11 +28,13 @@ export class ItemListPage {
     let modal = this.modalCtrl.create(ModalContentPage, element, page);
     modal.present();
     modal.onDidDismiss(item => {
-      if (item.id === 100) {
-        let index = this._items.itemsReady.findIndex(x => x.id === item.id);
-        this._items.itemsReady.splice(index, 1);
-        this._items.warrantInProcess = false;
-      } 
+      if (item) {
+        if (item.id === 100) {
+          let index = this._items.itemsReady.findIndex(x => x.id === item.id);
+          this._items.itemsReady.splice(index, 1);
+          this._items.warrantInProcess = false;
+        }
+      }
     });
   }
 
