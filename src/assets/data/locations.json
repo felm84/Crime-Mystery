@@ -2,7 +2,7 @@
   {
       "id": 1,
       "name": "Detective's Office",
-      "img": "detective_office.jpg",
+      "img": "assets/imgs/location/detective_office.jpg",
       "npc": 2,
       "require_warrant": true,
       "description": "Located at one of the busiest street in downtown, Sherlock Holmes' office has been the place for soving crimes in all over the city and helping police to catch the most notorious criminals.",
@@ -11,7 +11,7 @@
     {
       "id": 2,
       "name": "South Garden",
-      "img": "south_garden.jpg",
+      "img": "assets/imgs/location/south_garden.jpg",
       "npc": 5,
       "require_warrant": false,
       "description": "At the south side of the city is located the South Garden. A well-known and visited place by the turists and lovers, the South Garder is known by its natural beauty a strong small from the roses.",
@@ -20,7 +20,7 @@
     {
       "id": 3,
       "name": "Train Station",
-      "img": "train_station.jpg",
+      "img": "assets/imgs/location/train_station.jpg",
       "npc": 6,
       "require_warrant": true,
       "description": "The city's main type of transport, hundreds of people arrive and departure from the Train Station, located at the city's heart, it has been stage of many crimes and suicides, some people say it's haunted at late nights.",
@@ -29,7 +29,7 @@
     {
       "id": 4,
       "name": "Mansion",
-      "img": "mansion.jpg",
+      "img": "assets/imgs/location/mansion.jpg",
       "npc": 3,
       "require_warrant": true,
       "description": "Located at the far north of the city, the Mansion is the most expensive house of its neighborhood, built in the 60's on the of a mountain, this house has a lot of parties and stories.",
@@ -38,7 +38,7 @@
     {
       "id": 5,
       "name": "East-Gate Mall",
-      "img": "mall.jpg",
+      "img": "assets/imgs/location/mall.jpg",
       "npc": 4,
       "require_warrant": true,
       "description": "In the east side of the city is located the most popular mall with all new design and filled with expensive stores. The East-Gate Mall has a reputation of high quality and prices for the most wealthy people.",
@@ -47,7 +47,7 @@
     {
       "id": 6,
       "name": "Downtown",
-      "img": "downtown.jpg",
+      "img": "assets/imgs/location/downtown.jpg",
       "npc": 7,
       "require_warrant": false,
       "description": "Beautiful and busy during the day, but dangers and desert at night. In the city's heart is the place where you may find people from all over the world, good food and coffee, that's the busiest part of town.",
@@ -56,7 +56,7 @@
     {
       "id": 7,
       "name": "Pawnshop",
-      "img": "pawnshop.jpg",
+      "img": "assets/imgs/location/pawnshop.jpg",
       "npc": 8,
       "require_warrant": true,
       "description": "Well-visited by people who want to make some money selling whatever they have or make a burgain when buying used stuff, located in the west side of the city, here you can find most of what you are looking for.",
@@ -65,7 +65,7 @@
     {
       "id": 8,
       "name": "BB Pharmacy",
-      "img": "pharmacy.jpg",
+      "img": "assets/imgs/location/pharmacy.jpg",
       "npc": 9,
       "require_warrant": true,
       "description": "In the south-east is located BB Pharmacy. Stablished in the same location for over 80 years, that's a meetup place for people who are bit sick and elderlies, they really love to spend some time here.",
@@ -74,7 +74,7 @@
     {
       "id": 9,
       "name": "24/7 Petrol Station",
-      "img": "petrol_station.jpg",
+      "img": "assets/imgs/location/petrol_station.jpg",
       "npc": 10,
       "require_warrant": true,
       "description": "A family business from immigrants who came in the 70's refugees from a war in their country. Main store is located in the north-west side of the city, and has mutiple stations around the city.",

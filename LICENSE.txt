@@ -34,6 +34,17 @@ Sherlock Holmes Vector Image
 https://www.flickr.com/photos/vectorportal/6695890353/in/photostream
 
 - Located at src/assets/imgs
+
+detective_office.jpg - https://www.freepik.com/index.php?goto=74&idfoto=1014474
+south_garden.jpg - https://www.freepik.com/index.php?goto=74&idfoto=851995
+train_station.jpg - https://www.freepik.com/index.php?goto=74&idfoto=1112408
+mansion.jpg - https://www.freepik.com/index.php?goto=74&idfoto=1311560
+mall.jpg - https://www.freepik.com/index.php?goto=74&idfoto=1445386
+downtown.jpg - https://www.freepik.com/index.php?goto=74&idfoto=1320598
+pharmacy.jpg - https://www.freepik.com/index.php?goto=74&idfoto=1016210
+petrol_station.jpg - https://www.freepik.com/index.php?goto=74&idfoto=1311089
+
+- Located at src/assets/imgs/location
 -------------------------------------------
 
 All algorithms functionality have been fully created 
