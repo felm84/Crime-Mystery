@@ -15,18 +15,13 @@ export class MyApp {
   constructor(
     platform: Platform,
     statusBar: StatusBar, 
-    splashScreen: SplashScreen,
-    data: DataProvider
+    splashScreen: SplashScreen
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      /* When the app is loaded
-      it will load all the contents
-      to be ready to play */
-      data.loadContent();
     });
   }
 }
