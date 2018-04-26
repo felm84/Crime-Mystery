@@ -35,6 +35,251 @@
     "img": "assets/imgs/item/finger_print.png"
   },
   {
+    "id": 6,
+    "name": "axe",
+    "description": "descripton about the item",
+    "analyse_time": 60,
+    "img": "assets/imgs/item/axe.png"
+  },
+  {
+    "id": 7,
+    "name": "barrel",
+    "description": "descripton about the item",
+    "analyse_time": 720,
+    "img": "assets/imgs/item/barrel.png"
+  },
+  {
+    "id": 8,
+    "name": "cctv mall",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/cctv.png"
+  },
+  {
+    "id": 9,
+    "name": "chainsaw",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/chainsaw.png"
+  },
+  {
+    "id": 10,
+    "name": "cigarette",
+    "description": "descripton about the item",
+    "analyse_time": 60,
+    "img": "assets/imgs/item/cigarette.png"
+  },
+  {
+    "id": 12,
+    "name": "email",
+    "description": "descripton about the item",
+    "analyse_time": 240,
+    "img": "assets/imgs/item/email.png"
+  },
+  {
+    "id": 13,
+    "name": "glasses",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/glasses.png"
+  },
+  {
+    "id": 14,
+    "name": "gloves",
+    "description": "descripton about the item",
+    "analyse_time": 90,
+    "img": "assets/imgs/item/gloves.png"
+  },
+  {
+    "id": 15,
+    "name": "hammer",
+    "description": "descripton about the item",
+    "analyse_time": 60,
+    "img": "assets/imgs/item/hammer.png"
+  },
+  {
+    "id": 16,
+    "name": "hat",
+    "description": "descripton about the item",
+    "analyse_time": 45,
+    "img": "assets/imgs/item/hat.png"
+  },
+  {
+    "id": 17,
+    "name": "id",
+    "description": "descripton about the item",
+    "analyse_time": 20,
+    "img": "assets/imgs/item/id.png"
+  },
+  {
+    "id": 18,
+    "name": "jewelry",
+    "description": "descripton about the item",
+    "analyse_time": 30,
+    "img": "assets/imgs/item/jewelry.png"
+  },
+  {
+    "id": 19,
+    "name": "letter",
+    "description": "descripton about the item",
+    "analyse_time": 50,
+    "img": "assets/imgs/item/letter.png"
+  },
+  {
+    "id": 20,
+    "name": "mask",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/mask.png"
+  },
+  {
+    "id": 21,
+    "name": "match",
+    "description": "descripton about the item",
+    "analyse_time": 20,
+    "img": "assets/imgs/item/match.png"
+  },
+  {
+    "id": 22,
+    "name": "medical report",
+    "description": "descripton about the item",
+    "analyse_time": 180,
+    "img": "assets/imgs/item/medical_report.png"
+  },
+  {
+    "id": 23,
+    "name": "notebook",
+    "description": "descripton about the item",
+    "analyse_time": 1440,
+    "img": "assets/imgs/item/notebook.png"
+  },
+  {
+    "id": 24,
+    "name": "cctv petrol station",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/petrol_camera.png"
+  },
+  {
+    "id": 25,
+    "name": "phone",
+    "description": "descripton about the item",
+    "analyse_time": 30,
+    "img": "assets/imgs/item/phone.png"
+  },
+  {
+    "id": 26,
+    "name": "pill",
+    "description": "descripton about the item",
+    "analyse_time": 1440,
+    "img": "assets/imgs/item/pill.png"
+  },
+  {
+    "id": 27,
+    "name": "pillow",
+    "description": "descripton about the item",
+    "analyse_time": 240,
+    "img": "assets/imgs/item/pillow.png"
+  },
+  {
+    "id": 28,
+    "name": "poison",
+    "description": "descripton about the item",
+    "analyse_time": 2880,
+    "img": "assets/imgs/item/poison.png"
+  },
+  {
+    "id": 29,
+    "name": "ring",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/ring.png"
+  },
+  {
+    "id": 30,
+    "name": "rope",
+    "description": "descripton about the item",
+    "analyse_time": 30,
+    "img": "assets/imgs/item/rope.png"
+  },
+  {
+    "id": 31,
+    "name": "scissor",
+    "description": "descripton about the item",
+    "analyse_time": 1440,
+    "img": "assets/imgs/item/scissor.png"
+  },
+  {
+    "id": 32,
+    "name": "shears",
+    "description": "descripton about the item",
+    "analyse_time": 240,
+    "img": "assets/imgs/item/shears.png"
+  },
+  {
+    "id": 33,
+    "name": "shoe print",
+    "description": "descripton about the item",
+    "analyse_time": 2880,
+    "img": "assets/imgs/item/shoe_print.png"
+  },
+  {
+    "id": 34,
+    "name": "shoes",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/shoes.png"
+  },
+  {
+    "id": 35,
+    "name": "shovel",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/shovel.png"
+  },
+  {
+    "id": 36,
+    "name": "sickle",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/sickle.png"
+  },
+  {
+    "id": 37,
+    "name": "stick",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/stick.png"
+  },
+  {
+    "id": 38,
+    "name": "syringe",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/syringe.png"
+  },
+  {
+    "id": 39,
+    "name": "taser",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/taser.png"
+  },
+  {
+    "id": 40,
+    "name": "ticket",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/ticket.png"
+  },
+  {
+    "id": 41,
+    "name": "tools",
+    "description": "descripton about the item",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/tools.png"
+  },
+  {
     "id": 100,
     "name": "warrant",
     "description": "descripton about the item",
