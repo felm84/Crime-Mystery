@@ -18,6 +18,11 @@ declare var $: any;
         Search Area
       </button>
 
+      <button ion-item icon-lef>
+        <ion-icon name="lock"></ion-icon>
+        Arrest Suspect
+      </button>
+
       <button ion-item icon-lef (click)="close()">
         <ion-icon name="close-circle"></ion-icon>
         Close

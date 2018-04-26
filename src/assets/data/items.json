@@ -4,41 +4,41 @@
     "name": "knife",
     "description": "descripton about the item",
     "analyse_time": 30,
-    "img": "knife.jpg"
+    "img": "assets/imgs/item/knife.png"
   },
   {
     "id": 2,
     "name": "blood",
     "description": "descripton about the item",
     "analyse_time": 1440,
-    "img": "blood.jpg"
+    "img": "assets/imgs/item/blood.png"
   },
   {
     "id": 3,
     "name": "cloth",
     "description": "descripton about the item",
     "analyse_time": 240,
-    "img": "cloth.jpg"
+    "img": "assets/imgs/item/cloth.png"
   },
   {
     "id": 4,
     "name": "gun",
     "description": "descripton about the item",
     "analyse_time": 2880,
-    "img": "gun.jpg"
+    "img": "assets/imgs/item/gun.png"
   },
   {
     "id": 5,
     "name": "finger prints",
     "description": "descripton about the item",
     "analyse_time": 1440,
-    "img": "finger_prints.jpg"
+    "img": "assets/imgs/item/finger_print.png"
   },
   {
     "id": 100,
     "name": "warrant",
     "description": "descripton about the item",
     "analyse_time": 30,
-    "img": "warrant.jpg"
+    "img": "assets/imgs/item/warrant.png"
   }
 ]

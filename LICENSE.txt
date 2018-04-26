@@ -34,6 +34,9 @@ Sherlock Holmes Vector Image
 https://www.flickr.com/photos/vectorportal/6695890353/in/photostream
 
 - Located at src/assets/imgs
+-------------------------------------------
+
+Location Images:
 
 detective_office.jpg - https://www.freepik.com/index.php?goto=74&idfoto=1014474
 south_garden.jpg - https://www.freepik.com/index.php?goto=74&idfoto=851995
@@ -45,6 +48,53 @@ pharmacy.jpg - https://www.freepik.com/index.php?goto=74&idfoto=1016210
 petrol_station.jpg - https://www.freepik.com/index.php?goto=74&idfoto=1311089
 
 - Located at src/assets/imgs/location
+-------------------------------------------
+
+Item Images:
+
+knife - https://icons8.com/icon/17910/army-knife
+gun - https://icons8.com/icon/17907/gun
+finger_print - https://icons8.com/icon/40501/fingerprint
+cloth - https://icons8.com/icon/52035/cloth
+blood - https://icons8.com/icon/26115/drop-of-blood
+shoe_print - https://icons8.com/icon/17611/shoe-print
+cctv - https://icons8.com/icon/16200/bullet-camera
+shovel - https://icons8.com/icon/12994/spade-po
+shears - https://icons8.com/icon/16526/garden-shears
+gloves - https://icons8.com/icon/50391/gauntlet-gloves
+syringe - https://icons8.com/icon/51862/syringe
+pill - https://icons8.com/icon/43179/pill
+mask - https://icons8.com/icon/39084/anonymous-mask
+rope - https://icons8.com/icon/36085/rope
+scissor - https://icons8.com/icon/22252/scissors-outline
+hammer - https://icons8.com/icon/12205/hammer
+id - https://icons8.com/icon/43212/id
+poison - https://icons8.com/icon/32693/experiment
+pillow - https://icons8.com/icon/39889/pillow
+sickle - https://icons8.com/icon/16537/sickle
+barrel - https://icons8.com/icon/26322/oil-industry
+notebook - https://icons8.com/icon/33318/repository
+hat - https://icons8.com/icon/15568/bowler-hat
+stick - https://icons8.com/icon/14896/walking-stick
+glasses - https://icons8.com/icon/57045/glasses
+chainsaw - https://icons8.com/icon/11839/chainsaw
+phone - https://icons8.com/icon/43143/cell-phone
+taser - https://icons8.com/icon/56199/taser
+cigarette - https://icons8.com/icon/34762/smoking
+shoes - https://icons8.com/icon/16615/footwear
+warrant - https://icons8.com/icon/42911/certification
+letter - https://icons8.com/icon/53582/email-document
+email - https://icons8.com/icon/21342/email
+ring - https://icons8.com/icon/37741/silver-ring
+ticket - https://icons8.com/icon/55155/train-ticket
+match - https://icons8.com/icon/40721/match
+medical_report - https://icons8.com/icon/51867/medical-clipboard
+jewelry - https://icons8.com/icon/31139/jewelry
+petrol_camera - https://icons8.com/icon/25227/pan-tilt-zoom-camera
+tools - https://icons8.com/icon/20544/engineer-symbol
+axe - https://icons8.com/icon/20922/small-axe
+
+- Located at src/assets/imgs/item
 -------------------------------------------
 
 All algorithms functionality have been fully created 
