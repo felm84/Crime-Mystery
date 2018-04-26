@@ -32,9 +32,13 @@ export class DataProvider {
    http provides all the get, set, put, delete in a HTTP request.
    HttpClient is a module provide by Angular and it only works
    when HttpClientModule is declared in app.module.ts */
-  constructor(public http: HttpClient) { 
+  constructor(public http: HttpClient) {
+    /* When the app is loaded
+      it will load all the contents
+      to be ready to play */
     this.loadContent();
-    console.log('DataProvider******') };
+    console.log('DataProvider******');
+  };
 
   //#region METHODS
   /* loadContent() method

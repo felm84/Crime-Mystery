@@ -47,4 +47,9 @@ export class GameProvider {
   loadContinueGame() {
 
   }
+
+  // Save data in locastorage
+  saveGame() {
+
+  }
 }
