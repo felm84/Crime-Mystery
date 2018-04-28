@@ -3,6 +3,7 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { IItem } from '../interface/item';
 import { DataProvider } from '../data/data';
 import { AlertProvider } from '../alert/alert';
+import { SaveProvider } from '../save/save';
 
 @Injectable()
 export class ItemProvider {

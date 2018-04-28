@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
-import { GameProvider } from '../../providers/game/game';
+import { SaveProvider } from '../../providers/save/save';
 
 @Component({
   selector: 'page-presentation',
@@ -12,7 +12,7 @@ export class PresentationPage {
   constructor(
     public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
-    private _game: GameProvider
+    private _save: SaveProvider
   ) {}
 
   ionViewDidLoad() {
@@ -20,7 +20,7 @@ export class PresentationPage {
   }
 
   investigateCrime() {
-    this._game.startNewGame();
+    this._save.startNewGame();
     let loading = this.loadingCtrl.create({
       content: 'Loading game...',
       duration: 2000,

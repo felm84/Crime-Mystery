@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { PresentationPage } from '../presentation/presentation';
 import { OptionsPage } from '../options/options';
-import { GameProvider } from '../../providers/game/game';
 import { TabsPage } from '../tabs/tabs';
+import { SaveProvider } from '../../providers/save/save';
 
 @Component({
   selector: 'page-menu',
@@ -26,7 +26,7 @@ export class MenuPage {
   private menu: string[] = ["Start", "Option", "Exit"]; 
 
   constructor(
-    private _game: GameProvider,
+    private _save: SaveProvider,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public actionSheetCtrl: ActionSheetController
@@ -52,7 +52,9 @@ export class MenuPage {
           text: 'Continue',
           role: 'destructive',
           handler: () => {
-            this._game.loadContinueGame();
+            this._save.storage.get(this._save.saveKey)
+            .then(val => this._save.loadGame(JSON.parse(val)))
+            .then(() => this._save.saveGame());
             let loading = this.loadingCtrl.create({
               content: 'Loading game...',
               duration: 2000,

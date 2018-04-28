@@ -3,6 +3,7 @@ import { NavParams, PopoverController, ViewController, LoadingController } from 
 import { GameProvider } from '../../providers/game/game';
 import { DataProvider } from '../../providers/data/data';
 import { AlertProvider } from '../../providers/alert/alert';
+import { SaveProvider } from '../../providers/save/save';
 
 // $ declared to be used as jquery
 declare var $: any;
@@ -39,6 +40,7 @@ export class PlusMenu {
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
     public alert: AlertProvider,
+    private _save: SaveProvider,
     private _data: DataProvider,
     private _game: GameProvider
   ) {};
@@ -54,7 +56,7 @@ export class PlusMenu {
       this._game.itemProvider.analyseItem(warrant, null);
       this._game.itemProvider.warrantInProcess = true;
       // Save game
-      this._game.saveGame();
+      this._save.saveGame();
     } else { 
       if (!this._npc.canSearch) {
 
@@ -100,7 +102,7 @@ export class PlusMenu {
         });
         loading.present();
         // Save game
-        this._game.saveGame();
+        this._save.saveGame();
       } else {
         if (!this._npc.canSearch) {
           this.alert.presentAlert('Search Area', `Have a chat with the locals first and see how
@@ -147,6 +149,7 @@ export class CurrentLocationPage {
   constructor( 
     public navParams: NavParams,
     private popoverCtrl: PopoverController,
+    private _save: SaveProvider,
     private _game: GameProvider
   ) {};
 
@@ -197,7 +200,7 @@ export class CurrentLocationPage {
       this.clearChat();
     }
     //Save game
-    this._game.saveGame();
+    this._save.saveGame();
   }
 
   playerTalk() {
@@ -215,7 +218,7 @@ export class CurrentLocationPage {
       this.clearChat();
     }
     //Save game
-    this._game.saveGame();
+    this._save.saveGame();
   }
 
   /* clearChat() method
