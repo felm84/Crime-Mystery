@@ -53,6 +53,7 @@ export class ModalContentPage {
 
   analyseItem() {
     this._game.itemProvider.analyseItem(this._element, null);
+    this._game.itemProvider.removeItem(this._element);
     this._save.saveGame();
     this.viewCtrl.dismiss(this._element);
   }
