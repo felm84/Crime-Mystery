@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams, PopoverController, ViewController, LoadingController } from 'ionic-angular';
+import { interval } from 'rxjs/observable/interval';
 import { GameProvider } from '../../providers/game/game';
 import { DataProvider } from '../../providers/data/data';
 import { AlertProvider } from '../../providers/alert/alert';
@@ -146,6 +147,9 @@ export class CurrentLocationPage {
   private _npcPhrase = this._npc.currentSpeech;
   //#endregion
 
+  // Every 5 minutes, the game will be saved.
+  private _saveInterval = interval(300000);
+
   constructor( 
     public navParams: NavParams,
     private popoverCtrl: PopoverController,
@@ -159,6 +163,7 @@ export class CurrentLocationPage {
   }
   
   ionViewDidLoad() {
+    this._saveInterval.subscribe(() => this._save.saveGame());
     console.log('ionViewDidLoad CurrentLocationPage'); 
   }
 
