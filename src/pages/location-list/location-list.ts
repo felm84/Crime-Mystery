@@ -16,7 +16,7 @@ export class LocationListPage {
     private player: PlayerProvider, 
     public modalCtrl: ModalController,
     public navCtrl: NavController
-  ) {console.log(this.navCtrl.id)}
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocationListPage');

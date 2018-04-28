@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { NavController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { PresentationPage } from '../presentation/presentation';
 import { OptionsPage } from '../options/options';
+import { GameProvider } from '../../providers/game/game';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-menu',
@@ -24,8 +26,9 @@ export class MenuPage {
   private menu: string[] = ["Start", "Option", "Exit"]; 
 
   constructor(
+    private _game: GameProvider,
+    public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
-    public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController
   ) {}
 
@@ -49,7 +52,16 @@ export class MenuPage {
           text: 'Continue',
           role: 'destructive',
           handler: () => {
-            console.log('Continue');
+            this._game.loadContinueGame();
+            let loading = this.loadingCtrl.create({
+              content: 'Loading game...',
+              duration: 2000,
+              dismissOnPageChange: true
+            });
+            loading.onDidDismiss(() => {
+              this.navCtrl.push(TabsPage);
+            });
+            loading.present();
           }
         },
         {
@@ -78,6 +90,4 @@ export class MenuPage {
         break;
     }
   }
-
-
 }

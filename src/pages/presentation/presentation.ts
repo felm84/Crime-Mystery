@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { GameProvider } from '../../providers/game/game';
 
@@ -10,10 +10,9 @@ import { GameProvider } from '../../providers/game/game';
 export class PresentationPage {
 
   constructor(
+    public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
-    public navParams: NavParams,
-    public viewCtrl: ViewController,
-    private game: GameProvider
+    private _game: GameProvider
   ) {}
 
   ionViewDidLoad() {
@@ -21,8 +20,16 @@ export class PresentationPage {
   }
 
   investigateCrime() {
-    this.game.loadNewGame();
-    this.navCtrl.push(TabsPage);
+    this._game.startNewGame();
+    let loading = this.loadingCtrl.create({
+      content: 'Loading game...',
+      duration: 2000,
+      dismissOnPageChange: true
+    });
+    loading.onDidDismiss(() => {
+      this.navCtrl.push(TabsPage);
+    });
+    loading.present();
   }
 
 }

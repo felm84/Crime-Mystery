@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { IItem } from '../interface/item';
-import { AlertController, LoadingController } from 'ionic-angular';
-import { LocationProvider } from '../location/location';
 import { DataProvider } from '../data/data';
 import { AlertProvider } from '../alert/alert';
 
@@ -48,8 +46,8 @@ export class ItemProvider {
   }
 
   // DONE and WORKING
-  analyseItem(item: IItem): boolean {
-    let finish = Date.now() + (item.analyse_time * 60000);
+  analyseItem(item: IItem, f: number): boolean {
+    let finish = f ? f : Date.now() + (item.analyse_time * 60000);
     let counter = new Observable<number>();
     let subscription = new Subscription();
 
@@ -68,15 +66,12 @@ export class ItemProvider {
       } else {
         subscription.unsubscribe();
         let index = this.analysingItems.findIndex(x => x.item.id === item.id);
-        let ready = this.analysingItems.splice(index, 1);
-        this.itemsReady.push(ready[0].item);
+        let ready = this.analysingItems.splice(index, 1); //Remove from analysingItems[]
+        this.itemsReady.push(ready[0].item); //Push only item: IItem into itemsReady[]
       }
     });
 
     this.analysingItems.push(tempItem);
-    this.removeItem(item);
-
-    console.log(tempItem);
     return true;
   }
 

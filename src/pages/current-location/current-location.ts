@@ -51,8 +51,10 @@ export class PlusMenu {
 
       let warrant = this._game.itemProvider.findItem(100);
       this.alert.presentAlert('Get Warrant', 'It will take up to 30 minutes to be done.');
-      this._game.itemProvider.analyseItem(warrant);
+      this._game.itemProvider.analyseItem(warrant, null);
       this._game.itemProvider.warrantInProcess = true;
+      // Save game
+      this._game.saveGame();
     } else { 
       if (!this._npc.canSearch) {
 
@@ -81,6 +83,9 @@ export class PlusMenu {
     if ((!this._game.locationProvider.location.require_warrant || 
       this._game.playerProvider.hasWarrant) && this._npc.canSearch &&
       this._game.locationProvider.location.items.length > 0) {
+        if (this._game.playerProvider.hasWarrant && this._game.locationProvider.location.require_warrant) {
+          this._game.playerProvider.hasWarrant = false;
+        }
         this._data.locationsArray[
           this._data.locationsArray.findIndex(x => x.id === this._game.locationProvider.location.id)
         ].require_warrant = false;
@@ -94,6 +99,8 @@ export class PlusMenu {
           this._game.itemProvider.addItemsToColletion(items);
         });
         loading.present();
+        // Save game
+        this._game.saveGame();
       } else {
         if (!this._npc.canSearch) {
           this.alert.presentAlert('Search Area', `Have a chat with the locals first and see how
@@ -140,7 +147,6 @@ export class CurrentLocationPage {
   constructor( 
     public navParams: NavParams,
     private popoverCtrl: PopoverController,
-    private _alert:AlertProvider,
     private _game: GameProvider
   ) {};
 
@@ -158,16 +164,17 @@ export class CurrentLocationPage {
     popover.present({ev: ev});
   }
 
-  /* showSpeech(element) method
-   @param element - type from string
-   Shows the npc or player conversation accordingly to
-   the element and speak property value  */
+  /** showSpeech(element) method
+   * @param element - type from string
+   * Shows the npc or player conversation accordingly to
+   * the element and speak property value
+   */
   showSpeech(element) {
     if (this._speak === false && element === 'npc') {
       this.npcTalk();
     } else if (this._speak && element === 'player') {
       this.playerTalk();
-    }    
+    }
   }
 
   npcTalk() {
@@ -189,7 +196,8 @@ export class CurrentLocationPage {
     } else {
       this.clearChat();
     }
-    
+    //Save game
+    this._game.saveGame();
   }
 
   playerTalk() {
@@ -206,6 +214,8 @@ export class CurrentLocationPage {
     } else {
       this.clearChat();
     }
+    //Save game
+    this._game.saveGame();
   }
 
   /* clearChat() method
