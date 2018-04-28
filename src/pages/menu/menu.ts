@@ -57,7 +57,7 @@ export class MenuPage {
             .then(() => this._save.saveGame());
             let loading = this.loadingCtrl.create({
               content: 'Loading game...',
-              duration: 2000,
+              duration: 1000,
               dismissOnPageChange: true
             });
             loading.onDidDismiss(() => {
