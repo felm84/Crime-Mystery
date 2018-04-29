@@ -25,12 +25,17 @@ export class SaveProvider {
     }
   }
 
+  /**
+   * SaveProvider constructor
+   * @param storage type from Storage
+   * @param _game type from GameProvider
+   * All parameter injected into the SaveProvider class, so they can be
+   * used in the methods and properties.
+   */
   constructor(
     public storage: Storage,
     private _game: GameProvider
-  ) {
-    console.log('Hello SaveProvider Provider');
-  }
+  ) {console.log('SaveProvider******');}
 
   /* loadNewGame() method
    Assigns initial location, npc accordingly to location, player, 

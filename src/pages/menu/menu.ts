@@ -25,6 +25,15 @@ export class MenuPage {
   // menu[] holds all menu options to be looped into the template 
   private menu: string[] = ["Start", "Option", "Exit"]; 
 
+  /**
+   * MenuPage contructor
+   * @param _save type from SaveProvider
+   * @param loadingCtrl type from LoadinController
+   * @param navCtrl type from NavController
+   * @param actionSheetCtrl type from ActionSheetController
+   * All parameter injected into the MenuPage class, so they can be
+   * used in the methods and properties.
+   */
   constructor(
     private _save: SaveProvider,
     public loadingCtrl: LoadingController,
@@ -32,11 +41,14 @@ export class MenuPage {
     public actionSheetCtrl: ActionSheetController
   ) {}
 
-  /* presentActionSheet() method
-   Slide up an action sheet with 3 options
-   - Start a new game;
-   - Continue the saved check point and;
-   - Cancel or exit from the action sheet */
+  /**
+   * presentActionSheet() method
+   *  Slide up an action sheet with 3 options:
+   * - New Game: pushes PresentaionPage on top of navCtrl;
+   * - Continue: loads the last saved check point in the game and
+   * pushes TabsPage on top of navCtrl;
+   * - Cancel: exits from the action sheet.
+   */
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'START THE GAME',
@@ -76,10 +88,12 @@ export class MenuPage {
     actionSheet.present();
   }
 
-  /* openPage(index) method
-   @param index - type from number
-   Open a page or present an action sheet according to the index number */
-  openPage(index) {
+  /**
+   * openPage() method
+   * @param index type from number
+   * Opens a page or present an action sheet according to the index number.
+   */
+  openPage(index: number) {
     switch (index) {
       case 1:
         this.navCtrl.push(OptionsPage);

@@ -8,17 +8,25 @@ import { PlayerProvider } from '../player/player';
 @Injectable()
 export class NpcProvider {
   
+  //region PROPERTIES
   private _npc: ICharacter;
   private _speeches: ISpeech[] = [];
   private _currentSpeech: ISpeech;
   private _greeted: boolean;
   public canSearch: boolean = false;
+  //endregion
 
+  /**
+   * NpcProvider constructor
+   * @param _data type from DataProvider
+   * All parameter injected into the NpcProvider class, so they can be
+   * used in the methods and properties.
+   */
   constructor(private _data: DataProvider) {
     console.log('NpcProvider******');
   }
 
-  //#region ENCAPSULATION 
+  //region ENCAPSULATION 
   public get npc() : ICharacter {
     return this._npc;
   }
@@ -57,22 +65,27 @@ export class NpcProvider {
   }
   
   
-  //#endregion
+  //endregion
 
-  //#region METHODS
-  /* findSpeech(id): ISpeech method
-   @param id - type from number
-   searches for the index number that has the same speech id
-   as the id passed as a parameter, then it returns an ICharacter */
+  //region METHODS
+  /**
+   * findSpeech() method
+   * @param id type from number - speech id
+   * @returns type from ISpeech
+   * Searches for the index number that has the same speech id
+   * of parameter's id, then it returns an ICharacter.
+   */
   findSpeech(id: number): ISpeech {
     return this._data.speechesArray[
       this._data.speechesArray.findIndex(speech => speech.id === id)
     ];
   }
 
-  /* feedSpeechesList() method
-   runs a loop in npc.speeches, finds each item, then pushes it
-   into a temp value[] variable to be assigned in speeches[] property */
+  /**
+   * feedSpeechesList() method
+   * Runs a loop in npc.speeches, finds each item, then pushes it 
+   * into a temp value[] variable to be assigned in speeches[] property.
+   */
   feedSpeechesList() {
     let value: ISpeech[] = [];
     for (const speech of this.npc.speeches) {
@@ -81,20 +94,26 @@ export class NpcProvider {
     this._speeches = value;
   }
   
-  /* findNpc(id): ICharacter method
-   @param id - type from number
-   searches for the index number that has the same character id
-   as the id passed as a parameter, then it returns an ICharacter */
+  /**
+   * findNpc() method
+   * @param id type from number - character's id
+   * @returns type from ICharacter
+   * Searches for the index number that has the same character id
+   * of parameter's id, then it returns an ICharacter.
+   */
   findNpc(id: number): ICharacter {
     return this._data.charactersArray[
       this._data.charactersArray.findIndex((element) => element.id === id)
     ];
   }
 
-  /* greetPlayer(): ISpeech
-   gets the current hour of the day to then assign a
-   speech to greet variable. After that it returns an
-   ISpeech value. */
+  /**
+   * greetPlayer() method
+   * @returns type from ISpeech
+   * Gets the current hour of the day to then assign a 
+   * speech to greet variable. After that it returns an 
+   * ISpeech value.
+   */
   greetPlayer(): ISpeech {
     this.currentSpeech = this._speeches[
       this._speeches.findIndex(x => x.id === 4)
@@ -126,11 +145,25 @@ export class NpcProvider {
     return this.currentSpeech;
   }
 
+  /**
+   * answer() method
+   * @param player type from PlayerProvider - to use player's speech
+   * @param location type from ILocation
+   * @returns type from ISpeech - value to be shown in current-location.html
+   */
   answer(player: PlayerProvider, location: ILocation): ISpeech {
-    return this.performFirstAproach(player, location);
+    return this.performFirstApproach(player, location);
   }
 
-  performFirstAproach(player: PlayerProvider, location: ILocation): ISpeech {
+  /**
+   * performFirstApproach() method
+   * @param player type from PlayerProvider - to use player's speech
+   * @param location type from ILocation
+   * @returns type from ISpeech - value to be shown in current-location.html
+   * A range of answers to be used accordingly to what player speech passed as
+   * parameter.
+   */
+  performFirstApproach(player: PlayerProvider, location: ILocation): ISpeech {
     switch (player.currentSpeech.id) {
       //Good Morning!, Good Afternoon!, Good Evening!, Good Night!
       case 1: case 2: case 3: case 4:
@@ -176,13 +209,21 @@ export class NpcProvider {
         ];//No problem, I'll see you next time then!
         break;
       default:
-        this.currentSpeech = this.performSecondAproach(player, location);
+        this.currentSpeech = this.performSecondApproach(player, location);
         break;
     }
     return this.currentSpeech;
   }
 
-  performSecondAproach(player: PlayerProvider, location: ILocation): ISpeech {
+  /**
+   * performSecondApproach() method
+   * @param player type from PlayerProvider - to use player's speech
+   * @param location type from ILocation
+   * @returns type from ISpeech - value to be shown in current-location.html
+   * A range of answers to be used accordingly to what player speech passed as
+   * parameter.
+   */
+  performSecondApproach(player: PlayerProvider, location: ILocation): ISpeech {
     switch (player.currentSpeech.id) {
       case 22://I found some items in this place, they may help me to catch the suspect!
         this.currentSpeech = this._speeches[

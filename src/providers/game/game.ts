@@ -8,15 +8,16 @@ import { ItemProvider } from '../item/item';
 @Injectable()
 export class GameProvider {
 
-  /* GameProvider constructor
-   @param data - type from DataProvider
-   @param locationPvd - type from LocationProvider
-   @param npcPvd - type from NpcProvider
-   @param playerPvd - type from PlayerProvider
-   data provides all Characters, Items, Locations and Speeches when the app
-   was opened.
-   locationPvd, npcPvd, playerPvd provide all their methods and properties to be used in the app
-   through the GameProvider. */
+  /**
+   * GameProvider constructor
+   * @param data type from DataProvider
+   * @param locationProvider type from LocationProvider
+   * @param npcProvider type from NpcProvider
+   * @param playerProvider type from PlayerProvider
+   * @param itemProvider type from ItemProvider
+   * All parameter injected into the DataProvider class, so they can be
+   * used in the methods and properties.
+   */
   constructor(
     public data: DataProvider,
     public locationProvider: LocationProvider,

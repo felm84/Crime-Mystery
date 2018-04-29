@@ -15,7 +15,7 @@
   <div [ngSwitch]="_page" >
 
     <ion-card *ngSwitchCase="'item'">
-      <img src="{{_element.img}}"/>
+      <img src="{{_element.img}}" style="width:100px; height: 100px; margin: 0 auto;"/>
       <ion-card-content>
         <ion-card-title>
           {{_element.name}}
@@ -40,7 +40,7 @@
     </ion-card>
 
     <ion-card *ngSwitchCase="'ready'">
-      <img src="{{_element.img}}"/>
+      <img src="{{_element.img}}" style="width:100px; height: 100px; margin: 0 auto;"/>
       <ion-card-content>
         <ion-card-title>
           {{_element.name}}

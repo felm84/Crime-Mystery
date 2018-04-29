@@ -13,7 +13,7 @@ import { AlertProvider } from '../alert/alert';
 @Injectable()
 export class PlayerProvider {
 
-  //#region PlayerProvider PROPERTIES
+  //region PROPERTIES
   private _player: ICharacter;
   private _currentLocation: ILocation;
   private _currentSpeech: ISpeech;
@@ -26,7 +26,7 @@ export class PlayerProvider {
   };
 
   public hasWarrant: boolean = false;
-  //#endregion
+  //endregion
 
   constructor(
     public loadingCtrl: LoadingController,
@@ -37,7 +37,7 @@ export class PlayerProvider {
     console.log('PlayerProvider******');
   }
 
-  //#region ENCAPSULATION
+  //region ENCAPSULATION
   public get player() : ICharacter {
     return this._player;
   }
@@ -68,20 +68,30 @@ export class PlayerProvider {
   public set currentSpeech(v : ISpeech) {
     this._currentSpeech = v;
   }
-  //#endregion
+  //endregion
 
-  //#region METHODS
+  //region METHODS
 
-  /* answerNpc(speech)
-   @param speech - type from ISpeech
-   answers the npc accordingly to what npc currentSpeech is
-   passed as speech parameter */
+  /**
+   * answerNpc() method
+   * @param speech type from ISpeech - to use npc's speech
+   * @param location type from ILocation
+   * @returns type from ISpeech - value to be shown in current-location.html.
+   */
   answer(npc: NpcProvider, location: ILocation): ISpeech {
-      this.currentSpeech = this.performFirstAproach(npc, location)
+      this.currentSpeech = this.performFirstApproach(npc, location)
     return this.currentSpeech;
   }
 
-  performFirstAproach(npc: NpcProvider, location: ILocation): ISpeech {
+  /**
+   * performFirstApproach() method
+   * @param npc type from NpcProvider - to use player's speech
+   * @param location type from ILocation
+   * @returns type from ISpeech - value to be shown in current-location.html
+   * A range of answers to be used accordingly to what npc speech passed as
+   * parameter.
+   */
+  performFirstApproach(npc: NpcProvider, location: ILocation): ISpeech {
     switch (npc.currentSpeech.id) {
       /* Good Morning!, Good Afternoon!, Good Evening!, Good Night! */
       case 1: case 2: case 3: case 4:
@@ -133,13 +143,21 @@ export class PlayerProvider {
         Please, select <b>Get Warrant</b> in the header menu.`);
         break;
       default:
-        this.currentSpeech = this.performSecondAproach(npc, location);
+        this.currentSpeech = this.performSecondApproach(npc, location);
         break;
     }
     return this.currentSpeech;
   }
 
-  performSecondAproach(npc: NpcProvider, location: ILocation): ISpeech {
+  /**
+   * performSecondApproach() method
+   * @param player type from PlayerProvider - to use player's speech
+   * @param location type from ILocation
+   * @returns type from ISpeech - value to be shown in current-location.html
+   * A range of answers to be used accordingly to what npc speech passed as
+   * parameter.
+   */
+  performSecondApproach(npc: NpcProvider, location: ILocation): ISpeech {
     switch (npc.currentSpeech.id) {
       case 5:
         if (location.items.length > 0) {
@@ -163,23 +181,26 @@ export class PlayerProvider {
     return this.currentSpeech;
   }
 
-  /* removeItem(item) method
-   @param item - type from interface IItem
-   Removes the selected item from player's itemList[].
-   It first identify the item index in the list then
-   slice it off from. */
+  /**
+   * removeItem() method
+   * @param item type from interface IItem
+   * Removes the selected item from player's itemList[].
+   * It first identify the item index in the list then 
+   * slice it off from.
+   */
   removeItem(item: IItem) {
     let start = this.inventory.items.indexOf(item);
     this.inventory.items.slice(start, start + 1);
-    console.log(item.name + ' - removed.')
   }
 
-  /* addLocation(location) method
-   @param location - type from interface ILocation
-   Adds an unlocked location to player's locationList[]. This list is 
-   displayed in the location-list.html
-   It runs a find method to check if the same location already exit
-   in the list, if not, it will be pushed to the list. */
+  /**
+   * addLocation() method
+   * @param location type from interface ILocation
+   * Adds an unlocked location to player's locationList[]. This list is
+   * displayed in the location-list.html.
+   * It runs a find method to check if the same location already exit
+   * in the list, if not, it will be pushed to the list.
+   */
   addLocation(location: ILocation) {
     const found = this.inventory.locations.find(element => element.id === location.id);
     if (found === undefined) {
@@ -188,23 +209,27 @@ export class PlayerProvider {
     }      
   }
 
-  /* removeLocation(location) method
-   @param location - type from interface ILocation
-   Removes the selected location from player's locationList[].
-   It first identify the location index in the list then
-   slice it off from. */
+  /**
+   * removeLocation() method
+   * @param location type from interface ILocation
+   * Removes the selected location from player's locationList[].
+   * It first identify the location index in the list then 
+   * slice it off from.
+   */
   removeLocation(location: ILocation) {
     let start = this.inventory.locations.indexOf(location);
     this.inventory.locations.slice(start, start + 1);
     console.log(location + ' - removed.')
   }
 
-  /* addContact(contact) method
-   @param contact - type from interface ICharacter
-   Adds a visited contact to player's contactList[]. This list is 
-   displayed in the contact-list.html
-   It runs a find method to check if the same contact already exit
-   in the list, if not, it will be pushed to the list. */
+  /**
+   * addContact(contact) method
+   * @param contact type from interface ICharacter
+   * Adds a visited contact to player's contactList[]. This list is 
+   * displayed in the contact-list.html. 
+   * It runs a find method to check if the same contact already exit 
+   * in the list, if not, it will be pushed to the list.
+   */
   addContact(contact: ICharacter) {
     const found = this.inventory.contacts.find((element) => element.id === contact.id);
     if (found === undefined) {
@@ -213,16 +238,18 @@ export class PlayerProvider {
     }
   }
 
-  /* removeContact(contact) method
-   @param contact - type from interface ICharacter
-   Removes the selected contact from player's contactList[].
-   It first identify the contact index in the list then
-   slice it off from. */
+  /**
+   * removeContact() method
+   * @param contact - type from interface ICharacter
+   * Removes the selected contact from player's contactList[].
+   * It first identify the contact index in the list then 
+   * slice it off from.
+   */
   removeContact(contact: ICharacter) {
     let start = this.inventory.contacts.indexOf(contact);
     this.inventory.contacts.slice(start, start + 1);
     console.log(contact.name + ' - removed.');
   }
-  //#endregion
+  //endregion
 
 }

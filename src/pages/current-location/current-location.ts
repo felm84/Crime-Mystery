@@ -35,8 +35,20 @@ declare var $: any;
 
 export class PlusMenu {
 
+  // _npc holds NpcProvider class
   private _npc = this._game.npcProvider;
 
+  /**
+   * PlusMenu constructor
+   * @param viewCtrl type from ViewController
+   * @param loadingCtrl type from LoadingController
+   * @param alert type from AlertProvider
+   * @param _save type from SaveProvider
+   * @param _data type from DataProvider
+   * @param _game type from GameProvider
+   * All parameter injected into the PlusMenu class, so they can be
+   * used in the methods and properties.
+   */
   constructor(
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
@@ -46,7 +58,11 @@ export class PlusMenu {
     private _game: GameProvider
   ) {};
 
-  //DONE and WORKING
+  /**
+   * getWarrant() method
+   * Sets the warrant in analyseItem method if all conditions are met,
+   * otherwise pops up an alert with description of what must be done.
+   */
   getWarrant() {
     if (!this._game.itemProvider.warrantInProcess && 
       this._npc.canSearch && !this._game.playerProvider.hasWarrant &&
@@ -81,7 +97,13 @@ export class PlusMenu {
     this.close();
   }
 
-  //DONE and WORKING
+  /**
+   * searchArea() method
+   * Pulls out all items from the current location and places them
+   * into the collectedItem[] throught addItemsToColletion() in 
+   * ItemProvider if all conditions are met, otherwise pops up an 
+   * alert with description of what must be done.
+   */
   searchArea() {
     if ((!this._game.locationProvider.location.require_warrant || 
       this._game.playerProvider.hasWarrant) && this._npc.canSearch &&
@@ -124,6 +146,10 @@ export class PlusMenu {
     this.close();
   }
 
+  /**
+   * close() method
+   * Dismisses the PlusMenu View
+   */
   close() {
     this.viewCtrl.dismiss();
   }
@@ -137,19 +163,34 @@ export class PlusMenu {
 export class CurrentLocationPage {
 
   //#region PROPERTIES
+  /**
+   * _location, _npc, _player are injected to be used
+   * in the CurrentLocationPage class.
+   */
   private _location = this._game.locationProvider;
   private _npc = this._game.npcProvider;
   private _player = this._game.playerProvider;
 
-  // speak works as a switch (false = npc speaks, true = player speaks)
+  // _speak works as a switch (false = npc speaks, true = player speaks).
   private _speak: boolean = false;
+
+  // _playerPhrase and _npcPhrase hold their phrases to be shown in current-location.html
   private _playerPhrase = this._player.currentSpeech;
   private _npcPhrase = this._npc.currentSpeech;
   //#endregion
 
-  // Every 5 minutes, the game will be saved.
+  // _saveInterval holds 5 minutes interval for the game to be saved.
   private _saveInterval = interval(300000);
 
+  /**
+   * CurrentLocationPage contructor
+   * @param navParams type from NavParams
+   * @param popoverCtrl type from PopoverController
+   * @param _save type from SaveProvider
+   * @param _game type from GameProvider
+   * All parameter injected into the CurrentLocationPage class, so they can be
+   * used in the methods and properties.
+   */
   constructor( 
     public navParams: NavParams,
     private popoverCtrl: PopoverController,
@@ -157,25 +198,40 @@ export class CurrentLocationPage {
     private _game: GameProvider
   ) {};
 
+  /**
+   * ionViewDidLeave() method
+   * Switches _speak to false and clear the chat
+   * when user leaves the page.
+   */
   ionViewDidLeave(){
     this._speak = false;
     this.clearChat();
   }
   
+  /**
+   * ionViewDidLoad() method
+   * Initiates the 5 minute save game interval when the
+   * CurrentLocationPage is loaded.
+   */
   ionViewDidLoad() {
     this._saveInterval.subscribe(() => this._save.saveGame());
     console.log('ionViewDidLoad CurrentLocationPage'); 
   }
 
+  /**
+   * presentPopover() method
+   * @param ev type from any - identify the event location
+   * Pops up the PlusMenu template with its options.
+   */
   presentPopover(ev) {
     let popover = this.popoverCtrl.create(PlusMenu);
     popover.present({ev: ev});
   }
 
-  /** showSpeech(element) method
-   * @param element - type from string
-   * Shows the npc or player conversation accordingly to
-   * the element and speak property value
+  /**
+   * showSpeech() method
+   * @param element type from string - determine npc or player
+   * Chooses which one is turn to speak accordingly to parameter value.
    */
   showSpeech(element) {
     if (this._speak === false && element === 'npc') {
@@ -185,6 +241,11 @@ export class CurrentLocationPage {
     }
   }
 
+  /**
+   * npcTalk() method
+   * Displays npc phrase in current-location.html, pushes
+   * the phrase into npc history[] and save the game.
+   */
   npcTalk() {
     if (!this._npc.greeted) {
       this._npcPhrase = this._npc.greetPlayer();
@@ -208,6 +269,11 @@ export class CurrentLocationPage {
     this._save.saveGame();
   }
 
+  /**
+   * playerTalk() method
+   * Displays player phrase in current-location.html, pushes
+   * the phrase into npc history[] and save the game.
+   */
   playerTalk() {
     this._playerPhrase = this._game.playerProvider.answer(this._npc, this._location.location);
 
@@ -226,8 +292,9 @@ export class CurrentLocationPage {
     this._save.saveGame();
   }
 
-  /* clearChat() method
-   Clear npc and player card-content */
+  /**
+   * clearChat() method
+   * Clears npc and player card-content(phrase) */
   clearChat() {
     $('#npcChat').fadeOut();
     $('#playerChat').fadeOut();

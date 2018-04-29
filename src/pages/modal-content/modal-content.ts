@@ -14,15 +14,17 @@ export class ModalContentPage {
   private _page;
   //#endregion
 
-  /** ModalContentPage constructor
-  * @param navParams - type from NavParams
-  * @param viewCtrl - type from ViewController
-  * @param _save - type from SaveProvider
-  * @param _game - type from GameProvider
-   navParams gets information from openModal method and assigns
-   both element and page to their properties.
-   game provides all informations to be used in this class 
-  */
+  /** 
+   * ModalContentPage constructor
+   * @param navParams type from NavParams
+   * @param viewCtrl type from ViewController
+   * @param _save type from SaveProvider
+   * @param _game type from GameProvider
+   * navParams gets information from openModal method and assigns 
+   * both element and page to their properties.
+   * All parameter injected into the ModaContentPage class, so they can be
+   * used in the methods and properties.
+   */
   constructor(
     public navParams: NavParams, 
     public viewCtrl: ViewController,
@@ -33,15 +35,24 @@ export class ModalContentPage {
     this._page = this.navParams.get('page');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ModalContentPage');
-  }
-
+  /**
+   * useItem() method
+   * It is only used for warrant item
+   * Switches playerProvider hasWarrant to true and
+   * dismisses the View with warrant item as parameter.
+   */
   useItem() {
     this._game.playerProvider.hasWarrant = true;
     this.viewCtrl.dismiss(this._element);
   }
 
+  /**
+   * setLocation()
+   * Sets currentLocationPage with the clicked location,
+   * npc accordingly to current location, adds npc to player's
+   * contact list, saves the game and dimisses the View with
+   * location as parameter.
+   */
   setLocation() {
     this._game.locationProvider.location = this._element;
     this._game.playerProvider.currentLocation = this._element;
@@ -51,6 +62,12 @@ export class ModalContentPage {
     this.viewCtrl.dismiss(this._element);
   }
 
+  /**
+   * analyseItem()
+   * Executes analyseItem() with _element as parameter,
+   * removes it from collectedItems[] in ItemProvider class,
+   * saves the game and dismisses the View with item as parameter.
+   */
   analyseItem() {
     this._game.itemProvider.analyseItem(this._element, null);
     this._game.itemProvider.removeItem(this._element);
@@ -58,13 +75,9 @@ export class ModalContentPage {
     this.viewCtrl.dismiss(this._element);
   }
 
-  checkChat() {
-    console.log('Chat');
-  }
-
   /** dismiss() method
-   Closes the modal contents page
-  */
+   * Closes the modal contents page
+   */
   dismiss() {
     this.viewCtrl.dismiss();
   }

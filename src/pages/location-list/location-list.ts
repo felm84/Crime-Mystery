@@ -12,23 +12,29 @@ export class LocationListPage {
   // locations: ILocation[] holds the player inventory list of visited locations
   public locations = this.player.inventory.locations;
 
+  /**
+   * LocationsLisPage constructor
+   * @param player type from PlayerProvider
+   * @param modalCtrl type from ModalController
+   * @param navCtrl type from NavController
+   * All parameter injected into the LocationsLisPage class, so they can be
+   * used in the methods and properties.
+   */
   constructor(
     private player: PlayerProvider, 
     public modalCtrl: ModalController,
     public navCtrl: NavController
   ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LocationListPage');
-  }
-
-  /* openModal(element, page) method
-   @param element - type from interface ILocation
-   @param page - type from string
-   Creates a modal and presents its content in the modal-content-page.html.
-   It also passes an element and page as parameter to be the content.
-   When modal is dismissed it returns data, if not undefined it takes 
-   player to current location page */
+  /**
+   * openModal()
+   * @param element type from ILocation
+   * @param page type from string
+   * Creates a modal and presents its content in the modal-content-page.html.
+   * It also passes an element and page as parameter to be the content.
+   * When modal is dismissed it returns data, if not undefined it takes
+   * player to current location page
+   */
   openModal(element, page) {
     let modal = this.modalCtrl.create(ModalContentPage, element, page);
     modal.present();

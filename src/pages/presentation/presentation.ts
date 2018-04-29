@@ -9,16 +9,27 @@ import { SaveProvider } from '../../providers/save/save';
 })
 export class PresentationPage {
 
+  /**
+   * PresentationPage constructor
+   * @param loadingCtrl type from LoadingController
+   * @param navCtrl type from NavController
+   * @param _save type from SaveProvider
+   * All parameter injected into the PresentationPage class, so they can be
+   * used in the methods and properties.
+   */
   constructor(
     public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     private _save: SaveProvider
   ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PresentationPage');
-  }
-
+  /**
+   * investigateCrime()
+   * Starts new game by loading and setting all game's
+   * properties, pops up a loading spinner for 1 second
+   * and when it's dismissed pushes TabsPage on top of
+   * navCtrl.
+   */
   investigateCrime() {
     this._save.startNewGame();
     let loading = this.loadingCtrl.create({

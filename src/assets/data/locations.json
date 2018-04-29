@@ -6,7 +6,7 @@
       "npc": 2,
       "require_warrant": true,
       "description": "Located at one of the busiest street in downtown, Sherlock Holmes' office has been the place for soving crimes in all over the city and helping police to catch the most notorious criminals.",
-      "items": [1, 2, 3]
+      "items": []
     },
     {
       "id": 2,
@@ -15,7 +15,7 @@
       "npc": 5,
       "require_warrant": false,
       "description": "At the south side of the city is located the South Garden. A well-known and visited place by the turists and lovers, the South Garder is known by its natural beauty a strong small from the roses.",
-      "items": [1, 2, 3, 4]
+      "items": [9, 32, 33, 35, 36]
     },
     {
       "id": 3,
@@ -24,7 +24,7 @@
       "npc": 6,
       "require_warrant": true,
       "description": "The city's main type of transport, hundreds of people arrive and departure from the Train Station, located at the city's heart, it has been stage of many crimes and suicides, some people say it's haunted at late nights.",
-      "items": [1, 2, 3, 4]
+      "items": [6, 10, 14, 40, 41]
     },
     {
       "id": 4,
@@ -33,7 +33,7 @@
       "npc": 3,
       "require_warrant": true,
       "description": "Located at the far north of the city, the Mansion is the most expensive house of its neighborhood, built in the 60's on the of a mountain, this house has a lot of parties and stories.",
-      "items": [1, 2, 3, 4]
+      "items": [4, 12, 15, 19, 31]
     },
     {
       "id": 5,
@@ -42,7 +42,7 @@
       "npc": 4,
       "require_warrant": true,
       "description": "In the east side of the city is located the most popular mall with all new design and filled with expensive stores. The East-Gate Mall has a reputation of high quality and prices for the most wealthy people.",
-      "items": [1, 2, 3, 4]
+      "items": [1, 8, 13, 17, 39]
     },
     {
       "id": 6,
@@ -51,7 +51,7 @@
       "npc": 7,
       "require_warrant": false,
       "description": "Beautiful and busy during the day, but dangers and desert at night. In the city's heart is the place where you may find people from all over the world, good food and coffee, that's the busiest part of town.",
-      "items": [1, 2, 3, 4]
+      "items": [23, 27, 30, 34, 38]
     },
     {
       "id": 7,
@@ -60,7 +60,7 @@
       "npc": 8,
       "require_warrant": true,
       "description": "Well-visited by people who want to make some money selling whatever they have or make a burgain when buying used stuff, located in the west side of the city, here you can find most of what you are looking for.",
-      "items": [1, 2, 3, 4]
+      "items": [16, 18, 25, 29, 37]
     },
     {
       "id": 8,
@@ -69,7 +69,7 @@
       "npc": 9,
       "require_warrant": true,
       "description": "In the south-east is located BB Pharmacy. Stablished in the same location for over 80 years, that's a meetup place for people who are bit sick and elderlies, they really love to spend some time here.",
-      "items": [1, 2, 3, 4]
+      "items": [2, 22, 24, 26, 28]
     },
     {
       "id": 9,
@@ -78,6 +78,6 @@
       "npc": 10,
       "require_warrant": true,
       "description": "A family business from immigrants who came in the 70's refugees from a war in their country. Main store is located in the north-west side of the city, and has mutiple stations around the city.",
-      "items": [1, 2, 3, 4]
+      "items": [3, 5, 7, 20, 21]
     }
   ]
