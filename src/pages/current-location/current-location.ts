@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavParams, PopoverController, ViewController, LoadingController } from 'ionic-angular';
+import { NavParams, PopoverController, ViewController, LoadingController, NavController, App } from 'ionic-angular';
 import { interval } from 'rxjs/observable/interval';
 import { GameProvider } from '../../providers/game/game';
 import { DataProvider } from '../../providers/data/data';
 import { AlertProvider } from '../../providers/alert/alert';
 import { SaveProvider } from '../../providers/save/save';
+import { HomePage } from '../home/home';
 
 // $ declared to be used as jquery
 declare var $: any;
@@ -50,6 +51,8 @@ export class PlusMenu {
    * used in the methods and properties.
    */
   constructor(
+    public appCtrl: App,
+    public navCtrl: NavController,
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
     public alert: AlertProvider,
@@ -117,7 +120,7 @@ export class PlusMenu {
         let items = this._game.locationProvider.releaseItems();
         let loading = this.loadingCtrl.create({
           content: 'Searching area...',
-          duration: 5000,
+          duration: 5000, //Simulates(not real data loading) detective searching area.
           dismissOnPageChange: true
         });
         loading.onDidDismiss(() => {
@@ -152,6 +155,11 @@ export class PlusMenu {
    */
   close() {
     this.viewCtrl.dismiss();
+    console.log(this.navCtrl.id);
+     //this.navCtrl.getViews();
+    //let root = this.appCtrl.getActiveNavs('n4')[0];
+    
+    //console.log(root);
   }
 }
 
@@ -193,10 +201,17 @@ export class CurrentLocationPage {
    */
   constructor( 
     public navParams: NavParams,
+    public navCtrl: NavController,
     private popoverCtrl: PopoverController,
     private _save: SaveProvider,
     private _game: GameProvider
-  ) {};
+  ) { 
+    // this.navCtrl.parent.viewCtrl.dismiss();
+    // console.log(this.navCtrl.id);
+    // console.log(this.navCtrl);
+    //console.log();
+    //this.navCtrl.goToRoot({animate: true});
+  };
 
   /**
    * ionViewDidLeave() method

@@ -205,7 +205,6 @@ export class PlayerProvider {
     const found = this.inventory.locations.find(element => element.id === location.id);
     if (found === undefined) {
       this.inventory.locations.push(location);
-      console.log(location.name + ' - added.');
     }      
   }
 

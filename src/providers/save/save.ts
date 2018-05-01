@@ -8,7 +8,7 @@ import { GameProvider } from '../game/game';
 export class SaveProvider {
 
   public saveKey: string = 'game';
-  public saveValue: any = {
+  private _saveValue: any = {
     /* Save player property, 
     - get list of locations from this._playerProvider.hasWarrant */
     'has_warrant': false,
@@ -37,22 +37,31 @@ export class SaveProvider {
     private _game: GameProvider
   ) {console.log('SaveProvider******');}
 
-  /* loadNewGame() method
-   Assigns initial location, npc accordingly to location, player, 
-   and player's first response, add the initial location and contact
-   into player's inventory location and contact */
-  startNewGame() {
-    this._game.locationProvider.location = this._game.data.locationsArray[0]; //Detective's office
-    this._game.npcProvider.npc  = this._game.npcProvider.findNpc(this._game.locationProvider.location.npc);
-    this._game.playerProvider.player = this._game.data.charactersArray[0]; //Sherlock Holmes
-    this._game.playerProvider.currentLocation = this._game.data.locationsArray[0];
-    this._game.playerProvider.addContact(this._game.npcProvider.npc);
-    this.saveGame();
+  /**
+   * loadNewGame() method
+   * @returns type from Promise<any>
+   * Assigns initial location, npc accordingly to location, player, 
+   * and player's first response, add the initial location and contact 
+   * into player's inventory location and contact.
+   */
+  startNewGame(): Promise<any> {
+    return new Promise((resolve) => {
+      this._game.locationProvider.location = this._game.data.locationsArray[0]; //Detective's office
+      this._game.npcProvider.npc  = this._game.npcProvider.findNpc(this._game.locationProvider.location.npc);
+      this._game.playerProvider.player = this._game.data.charactersArray[0]; //Sherlock Holmes
+      this._game.playerProvider.currentLocation = this._game.data.locationsArray[0];
+      this._game.playerProvider.addContact(this._game.npcProvider.npc);
+      resolve();
+    });
   }
 
-  // Save data in locastorage
+  /**
+   * saveGame() method
+   * Assigns all values to _saveValue object according its keys, 
+   * then storages it in the mobile sqlite in stringify format 
+   */
   saveGame() {
-    this.saveValue = {
+    this._saveValue = {
       has_warrant: this._game.playerProvider.hasWarrant,
       location: this._game.playerProvider.inventory.locations,
       npc: this._game.playerProvider.inventory.contacts,
@@ -63,31 +72,37 @@ export class SaveProvider {
       }
     };
 
-    this.storage.set(this.saveKey, JSON.stringify(this.saveValue))
-    .then(() => this.storage.get(this.saveKey))
-    .then(() => console.log('*****Game Saved*****'));
+    this.storage.set(this.saveKey, this._saveValue)
+    .then(() => console.log('*****Game Saved*****'));    
   }
 
+  /**
+   * loadGame() method
+   * @param savedGame type from object - JSON.parse(stringify value)
+   * Receives an object JSON format value and assigns all object's values
+   * to their specific location in the game. 
+   */
   loadGame(savedGame: object) {
     if (savedGame) {
-      this.saveValue = savedGame;
+      this._saveValue = savedGame;
 
       this._game.locationProvider.location = this._game.data.locationsArray[0]; //Detective's office
       this._game.npcProvider.npc  = this._game.npcProvider.findNpc(this._game.locationProvider.location.npc);
       this._game.playerProvider.player = this._game.data.charactersArray[0]; //Sherlock Holmes
       this._game.playerProvider.currentLocation = this._game.data.locationsArray[0];
       
-      this._game.playerProvider.hasWarrant = this.saveValue.has_warrant;
-      this._game.playerProvider.inventory.locations = this.saveValue.location;
-      this._game.playerProvider.inventory.contacts = this.saveValue.npc;
+      this._game.playerProvider.hasWarrant = this._saveValue.has_warrant;
+      this._game.playerProvider.inventory.locations = this._saveValue.location;
+      this._game.playerProvider.inventory.contacts = this._saveValue.npc;
 
-      this._game.itemProvider.collectedItems = this.saveValue.items.collected;
-      this._game.itemProvider.itemsReady = this.saveValue.items.ready;
+      this._game.itemProvider.collectedItems = this._saveValue.items.collected;
+      this._game.itemProvider.itemsReady = this._saveValue.items.ready;
 
-      for (const item of this.saveValue.items.analysing) {
+      for (const item of this._saveValue.items.analysing) {
         this._game.itemProvider.analyseItem(item.item, item.finish)
       }
       console.log('*****Game Loaded*****');
+      console.log(savedGame);
     }
   }
 }
