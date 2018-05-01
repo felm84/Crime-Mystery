@@ -64,18 +64,19 @@ export class MenuPage {
           text: 'Continue',
           role: 'destructive',
           handler: () => {
-            this._save.storage.get(this._save.saveKey)
-            .then(val => this._save.loadGame(JSON.parse(val)))
-            .then(() => this._save.saveGame());
-            let loading = this.loadingCtrl.create({
+             let loading = this.loadingCtrl.create({
               content: 'Loading game...',
-              duration: 1000,
               dismissOnPageChange: true
             });
             loading.onDidDismiss(() => {
               this.navCtrl.push(TabsPage);
             });
             loading.present();
+            
+            this._save.storage.get(this._save.saveKey)
+            .then(val => this._save.loadGame(val))
+            .then(() => this._save.saveGame())
+            .then(() => loading.dismiss());
           }
         },
         {

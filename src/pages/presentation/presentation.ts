@@ -21,7 +21,7 @@ export class PresentationPage {
     public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     private _save: SaveProvider
-  ) {}
+  ) {console.log(this.navCtrl.id)}
 
   /**
    * investigateCrime()
@@ -31,16 +31,17 @@ export class PresentationPage {
    * navCtrl.
    */
   investigateCrime() {
-    this._save.startNewGame();
     let loading = this.loadingCtrl.create({
       content: 'Loading game...',
-      duration: 1000,
       dismissOnPageChange: true
     });
     loading.onDidDismiss(() => {
       this.navCtrl.push(TabsPage);
     });
     loading.present();
+    this._save.startNewGame()
+    .then(() => this._save.saveGame())
+    .then(() => loading.dismiss());
   }
 
 }
