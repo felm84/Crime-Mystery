@@ -137,3 +137,58 @@ Crime Mystery Version 1.0 19/03/2018
  - Added popover menu - [author: Felipe Menezes Silva]
  - searchAread() done - [author: Felipe Menezes Silva]
  - Adding warrant functionality - [author: Felipe Menezes Silva]
+
+ 22/04/2018
+----------
+ - Database updated - [author: Felipe Menezes Silva]
+ - Interface updated - [author: Felipe Menezes Silva]
+
+ 23/04/2018
+----------
+ - Database updated - [author: Felipe Menezes Silva]
+ - Deleted unused code - [author: Felipe Menezes Silva]
+ - Extra options implemented in modal - [author: Felipe Menezes Silva]
+ - analyseItem(), counter and convertDate() fully implemented - [author: Felipe Menezes Silva]
+ - getWarrant() and searchArea() extra functions implemented - [author: Felipe Menezes Silva]
+ - Code reorganized to accommodate future data - [author: Felipe Menezes Silva]
+ - Deleted unused code - [author: Felipe Menezes Silva]
+ - Added more paths and updated current_location - [author: Felipe Menezes Silva]
+
+ 24/04/2018
+----------
+ - Added comments - [author: Felipe Menezes Silva]
+ - Removed unnecessary code - [author: Felipe Menezes Silva]
+ - Relocated code to PlayerProvider - [author: Felipe Menezes Silva]
+ - AlertProvider method implemented - [author: Felipe Menezes Silva]
+ - Alertprovider generated - [author: Felipe Menezes Silva]
+ - Bug fixed - [author: Felipe Menezes Silva]
+
+ 26/04/2018
+----------
+ - Installed cordova sqlite-storage and ionic/storage - [author: Felipe Menezes Silva]
+ - Database updated - [author: Felipe Menezes Silva]
+ - Deleted unused code - [author: Felipe Menezes Silva]
+ - Added item images - [author: Felipe Menezes Silva]
+ - Added location images - [author: Felipe Menezes Silva]
+
+ 28/04/2018
+----------
+ - Save to and Load data from storage implemented, and unused code deleted - [author: Felipe Menezes Silva]
+ - Added IonicStorageModule and SaveProvider - [author: Felipe Menezes Silva]
+
+ 29/04/2018
+----------
+ - Added comments - [author: Felipe Menezes Silva]
+ - Decreased loading time - [author: Felipe Menezes Silva]
+ - Added save game interval of 5 minutes - [author: Felipe Menezes Silva]
+ - Bug fixed - [author: Felipe Menezes Silva]
+ - Code reorganized - [author: Felipe Menezes Silva]
+
+ 30/04/2018
+----------
+ - Added icons and splash screens - [author: Felipe Menezes Silva]
+
+ 01/05/2018
+----------
+ - Removed duration time in loading - [author: Felipe Menezes Silva]
+ - Compiled to android - [author: Felipe Menezes Silva]
