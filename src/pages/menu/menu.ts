@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { PresentationPage } from '../presentation/presentation';
-import { OptionsPage } from '../options/options';
 import { TabsPage } from '../tabs/tabs';
 import { SaveProvider } from '../../providers/save/save';
 
@@ -12,8 +11,8 @@ import { SaveProvider } from '../../providers/save/save';
                 <ion-row>
                   <ion-col></ion-col>
                   <ion-col col-8>
-                    <button ion-button block *ngFor="let option of menu; let i = index" 
-                    (click)="openPage(i)">{{option}}</button>
+                    <button ion-button block *ngFor="let option of menu" 
+                    (click)="startGame()">{{option}}</button>
                   </ion-col>
                   <ion-col></ion-col>
                 </ion-row>
@@ -23,7 +22,7 @@ import { SaveProvider } from '../../providers/save/save';
 export class MenuPage {
 
   // menu[] holds all menu options to be looped into the template 
-  private menu: string[] = ["Start", "Option", "Exit"]; 
+  private menu: string[] = ["Start Game"]; 
 
   /**
    * MenuPage contructor
@@ -41,70 +40,27 @@ export class MenuPage {
     public actionSheetCtrl: ActionSheetController
   ) {}
 
-  /**
-   * presentActionSheet() method
-   *  Slide up an action sheet with 3 options:
-   * - New Game: pushes PresentaionPage on top of navCtrl;
-   * - Continue: loads the last saved check point in the game and
-   * pushes TabsPage on top of navCtrl;
-   * - Cancel: exits from the action sheet.
-   */
-  presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'START THE GAME',
-      buttons: [
-        {
-          text: 'New Game',
-          role: 'destructive',
-          handler: () => {
-            this.navCtrl.push(PresentationPage);
-          }
-        },
-        {
-          text: 'Continue',
-          role: 'destructive',
-          handler: () => {
-             let loading = this.loadingCtrl.create({
-              content: 'Loading game...',
-              dismissOnPageChange: true
-            });
-            loading.onDidDismiss(() => {
-              this.navCtrl.push(TabsPage);
-            });
-            loading.present();
-            
-            this._save.storage.get(this._save.saveKey)
-            .then(val => this._save.loadGame(val))
-            .then(() => this._save.saveGame())
-            .then(() => loading.dismiss());
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel'
-        }
-      ]
+  startGame() {
+    this._save.storage.get(this._save.saveKey)
+    .then((val) => {
+      if (val !== null) {
+          let loading = this.loadingCtrl.create({
+          content: 'Loading game...',
+          dismissOnPageChange: true
+        });
+        loading.onDidDismiss(() => {
+          this.navCtrl.push(TabsPage);
+        });
+        loading.present();
+        
+        this._save.storage.get(this._save.saveKey)
+        .then(val => this._save.loadGame(val))
+        .then(() => this._save.saveGame())
+        .then(() => loading.dismiss());
+      } else {
+        this.navCtrl.push(PresentationPage);
+      }
     });
- 
-    actionSheet.present();
   }
 
-  /**
-   * openPage() method
-   * @param index type from number
-   * Opens a page or present an action sheet according to the index number.
-   */
-  openPage(index: number) {
-    switch (index) {
-      case 1:
-        this.navCtrl.push(OptionsPage);
-        break;
-      case 2:
-        
-        break;
-      default:
-        this.presentActionSheet();
-        break;
-    }
-  }
 }
