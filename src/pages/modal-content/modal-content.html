@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Description
+      Details
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -17,7 +17,7 @@
     <ion-card *ngSwitchCase="'item'">
       <img src="{{_element.img}}" style="width:100px; height: 100px; margin: 0 auto;"/>
       <ion-card-content>
-        <ion-card-title>
+        <ion-card-title text-capitalize>
           {{_element.name}}
         </ion-card-title>
         <p>
@@ -42,7 +42,7 @@
     <ion-card *ngSwitchCase="'ready'">
       <img src="{{_element.img}}" style="width:100px; height: 100px; margin: 0 auto;"/>
       <ion-card-content>
-        <ion-card-title>
+        <ion-card-title text-capitalize>
           {{_element.name}}
         </ion-card-title>
         <p>
@@ -67,7 +67,7 @@
     <ion-card *ngSwitchCase="'location'">
       <img src="{{_element.img}}"/>
       <ion-card-content>
-        <ion-card-title>
+        <ion-card-title text-capitalize>
           {{_element.name}}
         </ion-card-title>
         <p>
@@ -92,7 +92,7 @@
     <ion-card *ngSwitchCase="'contact'">
       <img src="{{_element.img}}"/>
       <ion-card-content>
-        <ion-card-title>
+        <ion-card-title text-capitalize>
           {{_element.name}}
         </ion-card-title>
         <p>

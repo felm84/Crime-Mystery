@@ -1,6 +1,11 @@
 page-home {
-    background: #ffb76b; /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover, #ffb76b 0%, #ffa73d 36%, #ff7f04 100%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(center, ellipse cover, #ffb76b 0%,#ffa73d 36%,#ff7f04 100%); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(ellipse at center, #ffb76b 0%,#ffa73d 36%,#ff7f04 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    
 }
+
+ion-content {
+    background: #494949; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #dfdfdf 0%, #b8b8b8 36%, #8b8b8b 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #dfdfdf 0%,#b8b8b8 36%,#8b8b8b 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #dfdfdf 0%,#b8b8b8 36%,#8b8b8b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
