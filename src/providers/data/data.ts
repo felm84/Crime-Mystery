@@ -56,6 +56,12 @@ export class DataProvider {
    * and assign their data to their specified properties.
    */
   loadContent(){
+    // this.loadForBrowser();
+    this.loadForNative();
+    console.log("Content Loaded");
+  }
+
+  loadForNative() {
     for (const file of this._db) {
       this._file.readAsText(`${this._file.applicationDirectory}www/assets/data`, file)
     .then(result => {
@@ -76,12 +82,13 @@ export class DataProvider {
     })
     .catch(err => alert(err));
     }
+  }
 
-    // this.getCharacters().subscribe(data => this.charactersArray = data);
-    // this.getSpeeches().subscribe(data => this.speechesArray = data);
-    // this.getLocations().subscribe(data => this.locationsArray = data);
-    // this.getItems().subscribe(data => this.itemsArray = data);
-    console.log("Content Loaded");
+  loadForBrowser() {
+    this.getCharacters().subscribe(data => this.charactersArray = data);
+    this.getSpeeches().subscribe(data => this.speechesArray = data);
+    this.getLocations().subscribe(data => this.locationsArray = data);
+    this.getItems().subscribe(data => this.itemsArray = data);
   }
 
   /**

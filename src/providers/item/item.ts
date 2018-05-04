@@ -73,31 +73,35 @@ export class ItemProvider {
    * reached, removes from analysingItems[] and pushes into itemsReady[].
    */
   analyseItem(item: IItem, f: number): boolean {
-    let finish = f ? f : Date.now() + (item.analyse_time * 60000);
-    let counter = new Observable<number>();
-    let subscription = new Subscription();
+    const found = this.analysingItems.find((itemInAnalyse) => item.id === itemInAnalyse.item.id);
+    if (found === undefined) {
+    
+      let finish = f ? f : Date.now() + (item.analyse_time * 60000);
+      let counter = new Observable<number>();
+      let subscription = new Subscription();
 
-    let tempItem = {
-      item: item,
-      finish: finish,
-      counter: ''
-    }
-
-    counter = Observable.interval(1000).map(x => {
-      return Math.floor((finish - new Date().getTime()) / 1000);
-    });
-    subscription = counter.subscribe(x => {
-      if (x >= 0) {
-        tempItem.counter = this.convertDate(x)
-      } else {
-        subscription.unsubscribe();
-        let index = this.analysingItems.findIndex(x => x.item.id === item.id);
-        let ready = this.analysingItems.splice(index, 1); //Remove from analysingItems[]
-        this.itemsReady.push(ready[0].item); //Push only item: IItem into itemsReady[]
+      let tempItem = {
+        item: item,
+        finish: finish,
+        counter: ''
       }
-    });
 
-    this.analysingItems.push(tempItem);
+      counter = Observable.interval(1000).map(x => {
+        return Math.floor((finish - new Date().getTime()) / 1000);
+      });
+      subscription = counter.subscribe(x => {
+        if (x >= 0) {
+          tempItem.counter = this.convertDate(x)
+        } else {
+          subscription.unsubscribe();
+          let index = this.analysingItems.findIndex(x => x.item.id === item.id);
+          let ready = this.analysingItems.splice(index, 1); //Remove from analysingItems[]
+          this.itemsReady.push(ready[0].item); //Push only item: IItem into itemsReady[]
+        }
+      });
+
+      this.analysingItems.push(tempItem);
+    }
     return true;
   }
 
