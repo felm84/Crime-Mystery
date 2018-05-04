@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { File } from '@ionic-native/file';
 
 // List of pages (components)
 import { MyApp } from './app.component';
@@ -15,7 +16,6 @@ import { ItemListPage } from '../pages/item-list/item-list';
 import { LocationListPage } from '../pages/location-list/location-list';
 import { ContactListPage } from '../pages/contact-list/contact-list';
 import { MenuPage } from '../pages/menu/menu';
-import { OptionsPage } from '../pages/options/options';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ModalContentPage } from '../pages/modal-content/modal-content';
 
@@ -40,7 +40,6 @@ import { SaveProvider } from '../providers/save/save';
     LocationListPage,
     ContactListPage,
     MenuPage,
-    OptionsPage,
     TabsPage,
     ModalContentPage
   ],
@@ -61,13 +60,13 @@ import { SaveProvider } from '../providers/save/save';
     LocationListPage,
     ContactListPage,
     MenuPage,
-    OptionsPage,
     TabsPage,
     ModalContentPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
     PlayerProvider,

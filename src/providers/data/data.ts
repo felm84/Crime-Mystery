@@ -5,6 +5,7 @@ import { ILocation } from '../interface/location';
 import { IItem } from '../interface/item';
 import { ICharacter } from '../interface/character';
 import { ISpeech } from '../interface/speech';
+import { File } from '@ionic-native/file';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,6 +15,9 @@ const httpOptions = {
 export class DataProvider {
 
   //#region GameProvider URL database addresses
+
+  private _db = ['characters.json', 'speeches.json', 'locations.json', 'items.json'];
+
   private _cUrl = "../../assets/data/characters.json";
   private _sUrl = "../../assets/data/speeches.json";
   private _lUrl = "../../assets/data/locations.json";
@@ -21,7 +25,7 @@ export class DataProvider {
   //#endregion
 
   //#region GameProvider PROPERTY ARRAYS
-  public charactersArray: ICharacter[];
+  public charactersArray;
   public speechesArray;
   public locationsArray;
   public itemsArray;
@@ -34,10 +38,10 @@ export class DataProvider {
     * HttpClient is a module provide by Angular and it only works 
     * when HttpClientModule is declared in app.module.ts
     */
-  constructor(public http: HttpClient) {
-    /* When the app is loaded
-      it will load all the contents
-      to be ready to play */
+  constructor(
+    public http: HttpClient,
+    private _file: File
+  ) {
     this.loadContent();
     console.log('DataProvider******');
   };
@@ -52,10 +56,31 @@ export class DataProvider {
    * and assign their data to their specified properties.
    */
   loadContent(){
-    this.getCharacters().subscribe(data => this.charactersArray = data);
-    this.getSpeeches().subscribe(data => this.speechesArray = data);
-    this.getLocations().subscribe(data => this.locationsArray = data);
-    this.getItems().subscribe(data => this.itemsArray = data);
+    for (const file of this._db) {
+      this._file.readAsText(`${this._file.applicationDirectory}www/assets/data`, file)
+    .then(result => {
+      switch(file) {
+        case 'characters.json':
+          this.charactersArray = JSON.parse(result)
+          break;
+        case 'speeches.json':
+          this.speechesArray = JSON.parse(result)
+          break;
+        case 'locations.json':
+          this.locationsArray = JSON.parse(result)
+          break;
+        case 'items.json':
+          this.itemsArray = JSON.parse(result)
+          break;
+      } 
+    })
+    .catch(err => alert(err));
+    }
+
+    // this.getCharacters().subscribe(data => this.charactersArray = data);
+    // this.getSpeeches().subscribe(data => this.speechesArray = data);
+    // this.getLocations().subscribe(data => this.locationsArray = data);
+    // this.getItems().subscribe(data => this.itemsArray = data);
     console.log("Content Loaded");
   }
 
