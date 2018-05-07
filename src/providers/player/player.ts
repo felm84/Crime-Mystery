@@ -118,7 +118,7 @@ export class PlayerProvider {
         ];//What do you do here?
         break;
         //65 - 71 npc job and self-description, 5-Nice to see you again, what can I do for you?
-      case 65: case 66: case 67: case 68: case 69: case 70: case 71:
+      case 65: case 66: case 67: case 68: case 69: case 70: case 71: case 75:
         this.currentSpeech = this._data.speechesArray[
           this._data.speechesArray.findIndex(x => x.id === 8)
         ];//Do you mind if I take a look around?

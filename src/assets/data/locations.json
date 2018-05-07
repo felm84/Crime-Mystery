@@ -76,7 +76,7 @@
       "name": "24/7 Petrol Station",
       "img": "assets/imgs/location/petrol_station.jpg",
       "npc": 10,
-      "require_warrant": true,
+      "require_warrant": false,
       "description": "A family business from immigrants who came in the 70's refugees from a war in their country. Main store is located in the north-west side of the city, and has mutiple stations around the city.",
       "items": [3, 5, 7, 20, 21]
     }
