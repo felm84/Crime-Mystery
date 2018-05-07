@@ -56,8 +56,8 @@ export class DataProvider {
    * and assign their data to their specified properties.
    */
   loadContent(){
-    // this.loadForBrowser();
-    this.loadForNative();
+    this.loadForBrowser();
+    //this.loadForNative();
     console.log("Content Loaded");
   }
 

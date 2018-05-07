@@ -11,7 +11,7 @@ import { SaveProvider } from '../../providers/save/save';
                 <ion-row>
                   <ion-col></ion-col>
                   <ion-col col-8>
-                    <button ion-button strong round block *ngFor="let option of menu" 
+                    <button ion-button strong block *ngFor="let option of menu" 
                     (click)="startGame()">{{option}}</button>
                   </ion-col>
                   <ion-col></ion-col>
@@ -41,7 +41,7 @@ export class MenuPage {
   ) {}
 
   startGame() {
-    //this._save.storage.clear();
+    this._save.storage.clear();
     this._save.storage.get(this._save.saveKey)
     .then((val) => {
       if (val !== null) {
