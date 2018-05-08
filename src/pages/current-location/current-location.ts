@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, PopoverController, ViewController, LoadingController, NavController, App } from 'ionic-angular';
+import { NavParams, PopoverController, ViewController, LoadingController, NavController } from 'ionic-angular';
 import { interval } from 'rxjs/observable/interval';
 import { GameProvider } from '../../providers/game/game';
 import { DataProvider } from '../../providers/data/data';
@@ -21,7 +21,7 @@ declare var $: any;
         Search Area
       </button>
 
-      <button ion-item icon-lef>
+      <button ion-item icon-lef (click)="makeArrest()">
         <ion-icon name="lock"></ion-icon>
         Arrest Suspect
       </button>
@@ -51,7 +51,6 @@ export class PlusMenu {
    * used in the methods and properties.
    */
   constructor(
-    public appCtrl: App,
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
@@ -149,17 +148,22 @@ export class PlusMenu {
     this.close();
   }
 
+  makeArrest() {
+    if (this._game.itemProvider.itemsReady.length === this._data.itemsArray.length) {
+      //this.navCtrl.push(ArrestPage);
+    } else {
+      this.alert.presentAlert('Arrest Suspect', `You still have items to collect or analyse
+      before make any arrest. Please continue the investigation.`);
+    }
+    this.close();
+  }
+
   /**
    * close() method
    * Dismisses the PlusMenu View
    */
   close() {
     this.viewCtrl.dismiss();
-    console.log(this.navCtrl.id);
-     //this.navCtrl.getViews();
-    //let root = this.appCtrl.getActiveNavs('n4')[0];
-    
-    //console.log(root);
   }
 }
 
@@ -201,7 +205,6 @@ export class CurrentLocationPage {
    */
   constructor( 
     public navParams: NavParams,
-    public navCtrl: NavController,
     private popoverCtrl: PopoverController,
     private _save: SaveProvider,
     private _game: GameProvider
@@ -249,7 +252,7 @@ export class CurrentLocationPage {
    * Chooses which one is turn to speak accordingly to parameter value.
    */
   showSpeech(element) {
-    if (this._speak === false && element === 'npc') {
+    if (!this._speak && element === 'npc') {
       this.npcTalk();
     } else if (this._speak && element === 'player') {
       this.playerTalk();
