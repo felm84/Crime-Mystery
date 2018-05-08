@@ -61,7 +61,7 @@
     },
     {
       "id": 16,
-      "phrase": "Do you want me to analyse it?"
+      "phrase": "Do you have any News about our investigation?"
     },
     {
       "id": 17,
@@ -81,7 +81,7 @@
     },
     {
       "id": 21,
-      "phrase": "A murder last night happened at the Big House"
+      "phrase": "A murder happened last night and the budy still to be found."
     },
     {
       "id": 22,
@@ -306,6 +306,26 @@
     {
       "id": 77,
       "phrase": "I hope you catch the suspect soon!"
+    },
+    {
+      "id": 78,
+      "phrase": "Yes, I'm aware of that, we need to start this investigation as soon as possible!"
+    },
+    {
+      "id": 79,
+      "phrase": "Right! First you need to select a location, talk to the local and search the area for some evidences."
+    },
+    {
+      "id": 80,
+      "phrase": "Fine, lets get this started!"
+    },
+    {
+      "id": 81,
+      "phrase": "Alright!"
+    },
+    {
+      "id": 82,
+      "phrase": "All you need is in you bag!"
     },
     {
       "id": 100,
