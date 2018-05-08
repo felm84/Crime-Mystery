@@ -68,7 +68,8 @@ export class PlusMenu {
   getWarrant() {
     if (!this._game.itemProvider.warrantInProcess && 
       this._npc.canSearch && !this._game.playerProvider.hasWarrant &&
-      this._game.locationProvider.location.require_warrant) {
+      this._game.locationProvider.location.require_warrant &&
+      this._game.locationProvider.location.id !== 1) {
 
       let warrant = this._game.itemProvider.findItem(100);
       this.alert.presentAlert('Get Warrant', 'It will take up to 30 minutes to be done.');
@@ -76,8 +77,11 @@ export class PlusMenu {
       this._game.itemProvider.warrantInProcess = true;
       // Save game
       this._save.saveGame();
-    } else { 
-      if (!this._npc.canSearch) {
+    } else {
+      if (this._game.locationProvider.location.id === 1) {
+        this.alert.presentAlert('Search Area', `This location is not under investigation. 
+        Please, set another location in the <b>Map Tab</b> to continue the investigation.`);
+      } else if (!this._npc.canSearch) {
 
         this.alert.presentAlert('Get Warrant', `Have a chat with the locals first and see how
         they can help you. Please, tap on the <b>character</b> to start a chat, then on yours.`);
@@ -109,7 +113,8 @@ export class PlusMenu {
   searchArea() {
     if ((!this._game.locationProvider.location.require_warrant || 
       this._game.playerProvider.hasWarrant) && this._npc.canSearch &&
-      this._game.locationProvider.location.items.length > 0) {
+      this._game.locationProvider.location.items.length > 0 &&
+      this._game.locationProvider.location.id !== 1) {
         if (this._game.playerProvider.hasWarrant && this._game.locationProvider.location.require_warrant) {
           this._game.playerProvider.hasWarrant = false;
         }
@@ -129,7 +134,10 @@ export class PlusMenu {
         // Save game
         this._save.saveGame();
       } else {
-        if (!this._npc.canSearch) {
+        if (this._game.locationProvider.location.id === 1) {
+          this.alert.presentAlert('Search Area', `This location is not under investigation. 
+          Please, set another location in the <b>Map Tab</b> to continue the investigation.`);
+        } else if (!this._npc.canSearch) {
           this.alert.presentAlert('Search Area', `Have a chat with the locals first and see how
           they can help you. Please, tap on the <b>character</b> to start a chat, then on yours.`);
     
