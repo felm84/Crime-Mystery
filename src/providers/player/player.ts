@@ -31,7 +31,7 @@ export class PlayerProvider {
   constructor(
     public loadingCtrl: LoadingController,
     private _data: DataProvider,
-    private _itemProvider: ItemProvider,
+    private _item: ItemProvider,
     private _alert: AlertProvider
   ) {
     console.log('PlayerProvider******');
@@ -92,59 +92,63 @@ export class PlayerProvider {
    * parameter.
    */
   performFirstApproach(npc: NpcProvider, location: ILocation): ISpeech {
-    switch (npc.currentSpeech.id) {
-      /* Good Morning!, Good Afternoon!, Good Evening!, Good Night! */
-      case 1: case 2: case 3: case 4:
-        this.currentSpeech = npc.currentSpeech;
-        break;
-      case 6://How can I help you?
-        this.currentSpeech = this._data.speechesArray[
-          this._data.speechesArray.findIndex(x => x.id === 17)
-        ];//I'm investigating a crime, have you seen anything or anyone suspicious?
-        break;
-      case 9: //Do you have a search warrant?
-        this.currentSpeech = this._data.speechesArray[
-          this._data.speechesArray.findIndex(x => x.id === 73)
-        ];//No, but I can get one in 30 minutes!
-        break;
-      case 18://What sort of crime detective?
-        this.currentSpeech = this._data.speechesArray[
-          this._data.speechesArray.findIndex(x => x.id === 19)
-        ];//I'm afraid I can't give any detailed about it right now.
-        break;
-      case 59://Is there anything I can do to help you?
-        this.currentSpeech = this._data.speechesArray[
-          this._data.speechesArray.findIndex(x => x.id === 7)
-        ];//What do you do here?
-        break;
-        //65 - 71 npc job and self-description, 5-Nice to see you again, what can I do for you?
-      case 65: case 66: case 67: case 68: case 69: case 70: case 71: case 75:
-        this.currentSpeech = this._data.speechesArray[
-          this._data.speechesArray.findIndex(x => x.id === 8)
-        ];//Do you mind if I take a look around?
-        break;
-      case 64://Anytime you need! - CALL ALERT
-        this.currentSpeech = this._data.speechesArray[
-          this._data.speechesArray.findIndex(x => x.id === 100)
-        ];//Empty ''
-        this._alert.presentAlert('Search Area', `You may search the area by selecting <b>Search 
-        Area</b> in the header menu.`);
-        break;
-      case 72://No problem, feel free to search around!
-        this.currentSpeech = this._data.speechesArray[
-          this._data.speechesArray.findIndex(x => x.id === 63)
-        ];//Thank you very much for your help.
-        break;
-      case 74://No problem, I'll see you next time! NPC wants search warrant - CALL ALERT
-        this.currentSpeech = this._data.speechesArray[
-          this._data.speechesArray.findIndex(x => x.id === 100)
-        ];//Empty ''
-        this._alert.presentAlert('Get Warrant', `Search warrant is required for this location. 
-        Please, select <b>Get Warrant</b> in the header menu.`);
-        break;
-      default:
-        this.currentSpeech = this.performSecondApproach(npc, location);
-        break;
+    if (npc.npc.id === 2) {
+      this.currentSpeech = this.answerWatson(npc);
+    } else {
+      switch (npc.currentSpeech.id) {
+        /* Good Morning!, Good Afternoon!, Good Evening!, Good Night! */
+        case 1: case 2: case 3: case 4:
+          this.currentSpeech = npc.currentSpeech;
+          break;
+        case 6://How can I help you?
+          this.currentSpeech = this._data.speechesArray[
+            this._data.speechesArray.findIndex(x => x.id === 17)
+          ];//I'm investigating a crime, have you seen anything or anyone suspicious?
+          break;
+        case 9: //Do you have a search warrant?
+          this.currentSpeech = this._data.speechesArray[
+            this._data.speechesArray.findIndex(x => x.id === 73)
+          ];//No, but I can get one in 30 minutes!
+          break;
+        case 18://What sort of crime detective?
+          this.currentSpeech = this._data.speechesArray[
+            this._data.speechesArray.findIndex(x => x.id === 19)
+          ];//I'm afraid I can't give any detailed about it right now.
+          break;
+        case 59://Is there anything I can do to help you?
+          this.currentSpeech = this._data.speechesArray[
+            this._data.speechesArray.findIndex(x => x.id === 7)
+          ];//What do you do here?
+          break;
+          //65 - 71 npc job and self-description, 5-Nice to see you again, what can I do for you?
+        case 65: case 66: case 67: case 68: case 69: case 70: case 71: case 75:
+          this.currentSpeech = this._data.speechesArray[
+            this._data.speechesArray.findIndex(x => x.id === 8)
+          ];//Do you mind if I take a look around?
+          break;
+        case 64://Anytime you need! - CALL ALERT
+          this.currentSpeech = this._data.speechesArray[
+            this._data.speechesArray.findIndex(x => x.id === 100)
+          ];//Empty ''
+          this._alert.presentAlert('Search Area', `You may search the area by selecting <b>Search 
+          Area</b> in the header menu.`);
+          break;
+        case 72://No problem, feel free to search around!
+          this.currentSpeech = this._data.speechesArray[
+            this._data.speechesArray.findIndex(x => x.id === 63)
+          ];//Thank you very much for your help.
+          break;
+        case 74://No problem, I'll see you next time! NPC wants search warrant - CALL ALERT
+          this.currentSpeech = this._data.speechesArray[
+            this._data.speechesArray.findIndex(x => x.id === 100)
+          ];//Empty ''
+          this._alert.presentAlert('Get Warrant', `Search warrant is required for this location. 
+          Please, select <b>Get Warrant</b> in the header menu.`);
+          break;
+        default:
+          this.currentSpeech = this.performSecondApproach(npc, location);
+          break;
+      }
     }
     return this.currentSpeech;
   }
@@ -169,6 +173,39 @@ export class PlayerProvider {
             this._data.speechesArray.findIndex(x => x.id === 22)
           ];//I found some items in this place, they may help me to catch the suspect!
         }
+        break;
+      default: // Last option each location - CALL ALERT
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 100)
+        ];//Empty ''
+        this._alert.presentAlert('Set Location', `Please, set another location in the <b>Map Tab</b> 
+        to continue the investigation.`);
+        break;
+    }
+    return this.currentSpeech;
+  }
+
+  answerWatson(npc: NpcProvider): ISpeech {
+    switch (npc.currentSpeech.id) {
+      /* Good Morning!, Good Afternoon!, Good Evening!, Good Night! */
+      case 1: case 2: case 3: case 4:
+        this.currentSpeech = npc.currentSpeech;
+        break;
+      case 5: //Nice to see you again, what can I do for you?
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 16)
+        ]; //Do you have any News about our investigation?
+        break;
+      case 21:
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 78)
+        ]; //Yes, I'm aware of that, we need to start this investigation as soon as possible!
+        break;
+      case 79:/* Right! First we need to select a location, 
+      talk to the local and search the area for some evidences. */
+        this.currentSpeech = this._data.speechesArray[
+          this._data.speechesArray.findIndex(x => x.id === 80)
+        ]; //Fine, lets get this started!
         break;
       default: // Last option each location - CALL ALERT
         this.currentSpeech = this._data.speechesArray[

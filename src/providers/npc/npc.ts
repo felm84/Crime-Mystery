@@ -4,6 +4,7 @@ import { ICharacter } from '../interface/character';
 import { ISpeech } from '../interface/speech';
 import { ILocation } from '../interface/location';
 import { PlayerProvider } from '../player/player';
+import { ItemProvider } from '../item/item';
 
 @Injectable()
 export class NpcProvider {
@@ -19,10 +20,14 @@ export class NpcProvider {
   /**
    * NpcProvider constructor
    * @param _data type from DataProvider
+   * @param _item type from ItemProvider
    * All parameter injected into the NpcProvider class, so they can be
    * used in the methods and properties.
    */
-  constructor(private _data: DataProvider) {
+  constructor(
+    private _data: DataProvider,
+    private _item: ItemProvider
+  ) {
     console.log('NpcProvider******');
   }
 
@@ -63,8 +68,6 @@ export class NpcProvider {
   public set greeted(v : boolean) {
     this._greeted = v;
   }
-  
-  
   //endregion
 
   //region METHODS
@@ -116,7 +119,7 @@ export class NpcProvider {
    */
   greetPlayer(): ISpeech {
     this.currentSpeech = this._speeches[
-      this._speeches.findIndex(x => x.id === 4)
+      this._speeches.findIndex(x => x.id === 4) //Good Night!
     ];
 
     if (this.npc.history.length === 0) {
@@ -126,21 +129,20 @@ export class NpcProvider {
       if (hour >= 5 && hour <= 11) {
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 1)
-        ]
+        ]; //Good Morning!
       } else if (hour >= 12 && hour <= 17){
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 2)
-        ];
+        ]; //Good Afternoon!
       } else if (hour >= 18 && hour <= 19) {
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 3)
-        ];
+        ]; //Good Evening!
       }
     } else {
       this.currentSpeech = this._speeches[
         this._speeches.findIndex(x => x.id === 5)
-      ];
-      //***** */
+      ]; //Nice to see you again, what can I do for you?
     }
     return this.currentSpeech;
   }
@@ -152,6 +154,9 @@ export class NpcProvider {
    * @returns type from ISpeech - value to be shown in current-location.html
    */
   answer(player: PlayerProvider, location: ILocation): ISpeech {
+    if (this._npc.id === 2) {
+      return this.performWatsonApproach(player);
+    }
     return this.performFirstApproach(player, location);
   }
 
@@ -231,6 +236,48 @@ export class NpcProvider {
         ];//I hope you catch the suspect soon!
         //true = Get Warrant or Search Area may be perfomed, false = keep conversation
         this.canSearch = true;
+        break;
+      default:
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 100)
+        ];// empty ''
+        break;
+    }
+    return this.currentSpeech;
+  }
+
+  performWatsonApproach(player: PlayerProvider): ISpeech {
+    switch (player.currentSpeech.id) {
+      //Good Morning!, Good Afternoon!, Good Evening!, Good Night!
+      case 1: case 2: case 3: case 4:
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 21)
+        ];//A murder happened last night at the Big House
+        break;
+      case 16: //Do you have any News about our investigation?
+        if (this._item.collectedItems.length > 0 || 
+            this._item.analysingItems.length > 0 ||
+            this._item.itemsReady.length > 0) {
+          this.currentSpeech = this._speeches[
+            this._speeches.findIndex(x => x.id === 82)
+          ]; //All you need is in you bag!
+        } else {
+          this.currentSpeech = this._speeches[
+            this._speeches.findIndex(x => x.id === 79)
+          ];/* Right! First you need to select a location, 
+          talk to the local and search the area for some evidences. */
+        }
+        break;
+      case 78: //Yes, I'm aware of that, we need to start this investigation as soon as possible!
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 79)
+        ]; /* Right! First you need to select a location, 
+            talk to the local and search the area for some evidences. */
+        break;
+      case 80: //Fine, lets get this started!
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 81)
+        ]; //Alright!
         break;
       default:
         this.currentSpeech = this._speeches[
