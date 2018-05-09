@@ -192,3 +192,26 @@ Crime Mystery Version 1.0 19/03/2018
 ----------
  - Removed duration time in loading - [author: Felipe Menezes Silva]
  - Compiled to android - [author: Felipe Menezes Silva]
+
+ 04/05/2018
+----------
+ - Style added - [author: Felipe Menezes Silva]
+ - Load DB method from local files added - [author: Felipe Menezes Silva]
+ - cordova_plugin_file added - [author: Felipe Menezes Silva]
+
+ 07/05/2018
+----------
+ - More style added - [author: Felipe Menezes Silva]
+ - Bug fixed - [author: Felipe Menezes Silva]
+ - Hidden status bar - [author: Felipe Menezes Silva]
+
+ 08/05/2018
+----------
+ - More style added - [author: Felipe Menezes Silva]
+ - Database updated - [author: Felipe Menezes Silva]
+ - Added arrest option - [author: Felipe Menezes Silva]
+ - Added Watson conversation - [author: Felipe Menezes Silva]
+
+ 09/05/2018
+----------
+ - Database updated - [author: Felipe Menezes Silva]
