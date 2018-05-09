@@ -24,7 +24,7 @@
       "npc": 6,
       "require_warrant": true,
       "description": "The city's main type of transport, hundreds of people arrive and departure from the Train Station, located at the city's heart, it has been stage of many crimes and suicides, some people say it's haunted at late nights.",
-      "items": [6, 10, 14, 40, 41]
+      "items": [6, 10, 11, 14, 40]
     },
     {
       "id": 4,

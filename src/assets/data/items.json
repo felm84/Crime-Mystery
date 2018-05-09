@@ -2,287 +2,287 @@
   {
     "id": 1,
     "name": "knife",
-    "description": "descripton about the item",
+    "description": "This object contains some blood trace which might be from the victim. It was found hidden in the mall.",
     "analyse_time": 30,
     "img": "assets/imgs/item/knife.png"
   },
   {
     "id": 2,
     "name": "blood",
-    "description": "descripton about the item",
+    "description": "A sample collected from the victim at the pharmacy may help to identify and match blood found in other items.",
     "analyse_time": 1440,
     "img": "assets/imgs/item/blood.png"
   },
   {
     "id": 3,
     "name": "cloth",
-    "description": "descripton about the item",
+    "description": "A piece of cloth with a small trace of blood, which might be from the victim was found at the petrol station.",
     "analyse_time": 240,
     "img": "assets/imgs/item/cloth.png"
   },
   {
     "id": 4,
     "name": "gun",
-    "description": "descripton about the item",
+    "description": "This object has some trace of gunpowder, this means it could've been used to murder the victim, was found inside the mansion.",
     "analyse_time": 2880,
     "img": "assets/imgs/item/gun.png"
   },
   {
     "id": 5,
     "name": "finger prints",
-    "description": "descripton about the item",
+    "description": "Some finger prints were found in various place at the petrol station, some are from the victim and suspects.",
     "analyse_time": 1440,
     "img": "assets/imgs/item/finger_print.png"
   },
   {
     "id": 6,
     "name": "axe",
-    "description": "descripton about the item",
+    "description": "Used in case of emergency to open train's stuck doors, this object may also be used to harm or kill the victim.",
     "analyse_time": 60,
     "img": "assets/imgs/item/axe.png"
   },
   {
     "id": 7,
     "name": "barrel",
-    "description": "descripton about the item",
+    "description": "Petrol barrel with enough size to hide a body is missing from the petrol station.",
     "analyse_time": 720,
     "img": "assets/imgs/item/barrel.png"
   },
   {
     "id": 8,
     "name": "cctv mall",
-    "description": "descripton about the item",
+    "description": "An image of a day before the victim's murder shows someone following him in the mall's car park.",
     "analyse_time": 120,
     "img": "assets/imgs/item/cctv.png"
   },
   {
     "id": 9,
     "name": "chainsaw",
-    "description": "descripton about the item",
+    "description": "Used to trim tree branches, this object was found in the bushes under the bridge in the park.",
     "analyse_time": 120,
     "img": "assets/imgs/item/chainsaw.png"
   },
   {
     "id": 10,
     "name": "cigarette",
-    "description": "descripton about the item",
+    "description": "Some cigarette butts were found at the train station, these objects might help to get some DNAs.",
     "analyse_time": 60,
     "img": "assets/imgs/item/cigarette.png"
   },
   {
+    "id": 11,
+    "name": "tools",
+    "description": "A pliers and some screwdrivers found with the train operator may be used to torture the victim.",
+    "analyse_time": 120,
+    "img": "assets/imgs/item/tools.png"
+  },
+  {
     "id": 12,
     "name": "email",
-    "description": "descripton about the item",
+    "description": "Emails from many people who threated to kill the victim were found in his computer at the mansion.",
     "analyse_time": 240,
     "img": "assets/imgs/item/email.png"
   },
   {
     "id": 13,
     "name": "glasses",
-    "description": "descripton about the item",
+    "description": "The victim's glasses were found at the mall's car park where the cameras could not reach.",
     "analyse_time": 120,
     "img": "assets/imgs/item/glasses.png"
   },
   {
     "id": 14,
     "name": "gloves",
-    "description": "descripton about the item",
+    "description": "Similar gloves were found at the train station, were also used by the same suspect following the victim in the mall's car park.",
     "analyse_time": 90,
     "img": "assets/imgs/item/gloves.png"
   },
   {
     "id": 15,
     "name": "hammer",
-    "description": "descripton about the item",
+    "description": "This object was found in the mansion inside the maid's purse, and it was washed out.",
     "analyse_time": 60,
     "img": "assets/imgs/item/hammer.png"
   },
   {
     "id": 16,
     "name": "hat",
-    "description": "descripton about the item",
+    "description": "The victim's $5.000 hat was for sale at the pawnshop, in order to pay some depts.",
     "analyse_time": 45,
     "img": "assets/imgs/item/hat.png"
   },
   {
     "id": 17,
     "name": "id",
-    "description": "descripton about the item",
+    "description": "A fake id with a photo of the victim was found in the mall's toilet.",
     "analyse_time": 20,
     "img": "assets/imgs/item/id.png"
   },
   {
     "id": 18,
     "name": "jewelry",
-    "description": "descripton about the item",
+    "description": "The victim's late wife red diamond necklace worth $100.00 was for sale at the pawnshop, in order to pay some depts.",
     "analyse_time": 30,
     "img": "assets/imgs/item/jewelry.png"
   },
   {
     "id": 19,
     "name": "letter",
-    "description": "descripton about the item",
+    "description": "A letter from the victim fearing for his life was written a night before his murder, was found in his bed at the mansion.",
     "analyse_time": 50,
     "img": "assets/imgs/item/letter.png"
   },
   {
     "id": 20,
     "name": "mask",
-    "description": "descripton about the item",
+    "description": "Found with the petrol station's owner, this object might be used to hide the suspect identity.",
     "analyse_time": 120,
     "img": "assets/imgs/item/mask.png"
   },
   {
     "id": 21,
     "name": "match",
-    "description": "descripton about the item",
+    "description": "A used match found close to the barrels could be used by the same suspect who smokes cigarette.",
     "analyse_time": 20,
     "img": "assets/imgs/item/match.png"
   },
   {
     "id": 22,
     "name": "medical report",
-    "description": "descripton about the item",
+    "description": "Victim's medical information about his health. The victim has been sufering from memory loss and depression.",
     "analyse_time": 180,
     "img": "assets/imgs/item/medical_report.png"
   },
   {
     "id": 23,
     "name": "notebook",
-    "description": "descripton about the item",
+    "description": "Victim's notebook found in downtown, was stolen and then abandoned with a homeless.",
     "analyse_time": 1440,
     "img": "assets/imgs/item/notebook.png"
   },
   {
     "id": 24,
     "name": "cctv petrol station",
-    "description": "descripton about the item",
+    "description": "An image of a night before the victim's murder shows someone stelling a barrel from the petrol station.",
     "analyse_time": 120,
     "img": "assets/imgs/item/petrol_camera.png"
   },
   {
     "id": 25,
     "name": "phone",
-    "description": "descripton about the item",
+    "description": "Stolen phone from the victim was on sale at the pawnshop, contained unidentified threat messages.",
     "analyse_time": 30,
     "img": "assets/imgs/item/phone.png"
   },
   {
     "id": 26,
     "name": "pill",
-    "description": "descripton about the item",
+    "description": "Victim's memory loss pill was altered in order to progress his disease, found at the pharmacy.",
     "analyse_time": 1440,
     "img": "assets/imgs/item/pill.png"
   },
   {
     "id": 27,
     "name": "pillow",
-    "description": "descripton about the item",
+    "description": "The victim's hair strand was found on the pillow used by the homeless. The victim could've been suffocated.",
     "analyse_time": 240,
     "img": "assets/imgs/item/pillow.png"
   },
   {
     "id": 28,
     "name": "poison",
-    "description": "descripton about the item",
+    "description": "Toxic substance capable of killing someone was being developed by the pharmaceutical. It might be used to kill the victim.",
     "analyse_time": 2880,
     "img": "assets/imgs/item/poison.png"
   },
   {
     "id": 29,
     "name": "ring",
-    "description": "descripton about the item",
+    "description": "Diamond ring from victim's late wife worth $10.000 in order to pay depts was found for sale at the pawnshop.",
     "analyse_time": 120,
     "img": "assets/imgs/item/ring.png"
   },
   {
     "id": 30,
     "name": "rope",
-    "description": "descripton about the item",
+    "description": "Used to carry the homeless stuff around in downtown, this object could've been used to hang the victim.",
     "analyse_time": 30,
     "img": "assets/imgs/item/rope.png"
   },
   {
     "id": 31,
     "name": "scissor",
-    "description": "descripton about the item",
+    "description": "Some traces of blood from the victim were found on this object buried in the mansion's garden.",
     "analyse_time": 1440,
     "img": "assets/imgs/item/scissor.png"
   },
   {
     "id": 32,
     "name": "shears",
-    "description": "descripton about the item",
+    "description": "Found in the south garden, this object was hidden in the same location as the chainsaw.",
     "analyse_time": 240,
     "img": "assets/imgs/item/shears.png"
   },
   {
     "id": 33,
     "name": "shoe print",
-    "description": "descripton about the item",
+    "description": "Shoe prints found close to the bridge in the park, have some common patern of a shoe sold at the mall.",
     "analyse_time": 2880,
     "img": "assets/imgs/item/shoe_print.png"
   },
   {
     "id": 34,
     "name": "shoes",
-    "description": "descripton about the item",
+    "description": "These shoes have similar patern of a shoe sold at the mall. They were found in downtown worn by the homeless.",
     "analyse_time": 120,
     "img": "assets/imgs/item/shoes.png"
   },
   {
     "id": 35,
     "name": "shovel",
-    "description": "descripton about the item",
+    "description": "Found in the park, this object has traces 2 types of soil. It might be used somewhere else.",
     "analyse_time": 120,
     "img": "assets/imgs/item/shovel.png"
   },
   {
     "id": 36,
     "name": "sickle",
-    "description": "descripton about the item",
+    "description": "This object is not commonly used in a garden, its use is more common in harvest. It also might be used to harm or kill the victim.",
     "analyse_time": 120,
     "img": "assets/imgs/item/sickle.png"
   },
   {
     "id": 37,
     "name": "stick",
-    "description": "descripton about the item",
+    "description": "For sale at the pawnshop, the victim's stick was left there by a stinky skinny guy in order to get some money.",
     "analyse_time": 120,
     "img": "assets/imgs/item/stick.png"
   },
   {
     "id": 38,
     "name": "syringe",
-    "description": "descripton about the item",
+    "description": "This object has 2 types of chemical, one for sleep and another for pain. It could've been used against the victim, was found in downtown.",
     "analyse_time": 120,
     "img": "assets/imgs/item/syringe.png"
   },
   {
     "id": 39,
     "name": "taser",
-    "description": "descripton about the item",
+    "description": "Mall security's missing taser found in the mall car park. It could've been used to stun the victim.",
     "analyse_time": 120,
     "img": "assets/imgs/item/taser.png"
   },
   {
     "id": 40,
     "name": "ticket",
-    "description": "descripton about the item",
+    "description": "A ticket was used hours before the murder. Its route was from train station to a station near the mansion.",
     "analyse_time": 120,
     "img": "assets/imgs/item/ticket.png"
   },
   {
-    "id": 41,
-    "name": "tools",
-    "description": "descripton about the item",
-    "analyse_time": 120,
-    "img": "assets/imgs/item/tools.png"
-  },
-  {
     "id": 100,
     "name": "warrant",
-    "description": "descripton about the item",
+    "description": "This warrant can only be used once in order to search a place. Another warrant is required after this one is used.",
     "analyse_time": 30,
     "img": "assets/imgs/item/warrant.png"
   }
