@@ -25,7 +25,7 @@ export class DataProvider {
   //#endregion
 
   //#region GameProvider PROPERTY ARRAYS
-  public charactersArray;
+  public charactersArray: ICharacter[];
   public speechesArray;
   public locationsArray;
   public itemsArray;

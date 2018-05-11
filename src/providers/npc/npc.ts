@@ -13,7 +13,6 @@ export class NpcProvider {
   private _npc: ICharacter;
   private _speeches: ISpeech[] = [];
   private _currentSpeech: ISpeech;
-  private _greeted: boolean;
   public canSearch: boolean = false;
   //endregion
 
@@ -39,9 +38,10 @@ export class NpcProvider {
   public set npc(v : ICharacter) {
     this._npc = v;
     this.feedSpeechesList();
-    this._greeted = false;
     this.canSearch = false;
-    this._currentSpeech = this.greetPlayer();
+    this._currentSpeech = this._speeches[
+      this._speeches.findIndex(x => x.id === 4) //Good Night!
+    ];
   }
   
   public get speeches() : ISpeech[] {
@@ -60,14 +60,7 @@ export class NpcProvider {
   public set currentSpeech(v : ISpeech) {
     this._currentSpeech = v;
   }
- 
-  public get greeted() : boolean {
-    return this._greeted;
-  }
-  
-  public set greeted(v : boolean) {
-    this._greeted = v;
-  }
+
   //endregion
 
   //region METHODS
@@ -118,32 +111,22 @@ export class NpcProvider {
    * ISpeech value.
    */
   greetPlayer(): ISpeech {
-    this.currentSpeech = this._speeches[
-      this._speeches.findIndex(x => x.id === 4) //Good Night!
-    ];
+    let date = new Date();
+    let hour = date.getHours();
 
-    if (this.npc.history.length === 0) {
-      let date = new Date();
-      let hour = date.getHours();
-
-      if (hour >= 5 && hour <= 11) {
-        this.currentSpeech = this._speeches[
-          this._speeches.findIndex(x => x.id === 1)
-        ]; //Good Morning!
-      } else if (hour >= 12 && hour <= 17){
-        this.currentSpeech = this._speeches[
-          this._speeches.findIndex(x => x.id === 2)
-        ]; //Good Afternoon!
-      } else if (hour >= 18 && hour <= 19) {
-        this.currentSpeech = this._speeches[
-          this._speeches.findIndex(x => x.id === 3)
-        ]; //Good Evening!
-      }
-    } else {
+    if (hour >= 5 && hour <= 11) {
       this.currentSpeech = this._speeches[
-        this._speeches.findIndex(x => x.id === 5)
-      ]; //Nice to see you again, what can I do for you?
-    }
+        this._speeches.findIndex(x => x.id === 1)
+      ]; //Good Morning!
+    } else if (hour >= 12 && hour <= 17){
+      this.currentSpeech = this._speeches[
+        this._speeches.findIndex(x => x.id === 2)
+      ]; //Good Afternoon!
+    } else if (hour >= 18 && hour <= 19) {
+      this.currentSpeech = this._speeches[
+        this._speeches.findIndex(x => x.id === 3)
+      ]; //Good Evening!
+    }    
     return this.currentSpeech;
   }
 
@@ -154,10 +137,21 @@ export class NpcProvider {
    * @returns type from ISpeech - value to be shown in current-location.html
    */
   answer(player: PlayerProvider, location: ILocation): ISpeech {
-    if (this._npc.id === 2) {
-      return this.performWatsonApproach(player);
+    let visits = player.inventory.contacts[
+      player.inventory.contacts.findIndex(c => c.id === this.npc.id)
+    ].visits;
+    switch (visits) {
+      case 0:
+        this.currentSpeech = this.performFirstApproach(player, location);
+        break;
+      case 1:
+        this.currentSpeech = this.performSecondApproach(player, location);
+        break;
+      default:
+        break;
     }
-    return this.performFirstApproach(player, location);
+
+    return this.currentSpeech;
   }
 
   /**
@@ -170,6 +164,9 @@ export class NpcProvider {
    */
   performFirstApproach(player: PlayerProvider, location: ILocation): ISpeech {
     switch (player.currentSpeech.id) {
+      case 99://...
+        this.currentSpeech = this.greetPlayer();
+        break;
       //Good Morning!, Good Afternoon!, Good Evening!, Good Night!
       case 1: case 2: case 3: case 4:
         this.currentSpeech = this._speeches[
@@ -191,7 +188,7 @@ export class NpcProvider {
         this.currentSpeech = this._speeches[0];
         break;//npc job and self-description
       case 8://Do you mind if I take a look around?
-        if (this._speeches.findIndex(x => x.id === 9) === -1) {
+        if (!location.require_warrant) {
           this.currentSpeech = this._speeches[
             this._speeches.findIndex(x => x.id === 72)
           ];//No problem, feel free to search around!
@@ -207,14 +204,22 @@ export class NpcProvider {
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 64)
         ];//Anytime you need!
+        this._data.charactersArray[
+          this._data.charactersArray.findIndex((element) => element.id === this._npc.id)
+        ].visits = 1;
         break;
       case 73://No, but I can get one in 30 minutes!
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 74)
         ];//No problem, I'll see you next time then!
+        this._data.charactersArray[
+          this._data.charactersArray.findIndex((element) => element.id === this._npc.id)
+        ].visits = 1;
         break;
       default:
-        this.currentSpeech = this.performSecondApproach(player, location);
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 100)
+        ];//Empty''
         break;
     }
     return this.currentSpeech;
@@ -230,12 +235,18 @@ export class NpcProvider {
    */
   performSecondApproach(player: PlayerProvider, location: ILocation): ISpeech {
     switch (player.currentSpeech.id) {
+      case 99://...
+        this.currentSpeech = this._speeches[
+          this._speeches.findIndex(x => x.id === 5)
+        ];//Nice to see you again, what can I do for you?
+        break;
+      case 8: case 63: case 73:
+        this.currentSpeech = this.performFirstApproach(player, location);
+        break;
       case 22://I found some items in this place, they may help me to catch the suspect!
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 77)
         ];//I hope you catch the suspect soon!
-        //true = Get Warrant or Search Area may be perfomed, false = keep conversation
-        this.canSearch = true;
         break;
       default:
         this.currentSpeech = this._speeches[

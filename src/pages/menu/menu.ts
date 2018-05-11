@@ -41,7 +41,7 @@ export class MenuPage {
   ) {}
 
   startGame() {
-    this._save.storage.clear();
+    //this._save.storage.clear();
     this._save.storage.get(this._save.saveKey)
     .then((val) => {
       if (val !== null) {

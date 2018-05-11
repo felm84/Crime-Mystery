@@ -45,8 +45,8 @@ export class PlayerProvider {
   public set player(v : ICharacter) {
     this._player = v;
     this._currentSpeech = this._data.speechesArray[
-      this._data.speechesArray.findIndex(x => x.id === 1)
-    ];
+      this._data.speechesArray.findIndex(x => x.id === 99)
+    ]; //...
     for (const location of this._data.locationsArray) {
       this.addLocation(location);
     }
@@ -163,7 +163,7 @@ export class PlayerProvider {
    */
   performSecondApproach(npc: NpcProvider, location: ILocation): ISpeech {
     switch (npc.currentSpeech.id) {
-      case 5:
+      case 5: //Nice to see you again, what can I do for you?
         if (location.items.length > 0) {
           this.currentSpeech = this._data.speechesArray[
             this._data.speechesArray.findIndex(x => x.id === 8)

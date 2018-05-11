@@ -6,4 +6,5 @@ export interface ICharacter {
     description: string;
     speeches: number[];
     history: string[];
+    visits: number;
 }

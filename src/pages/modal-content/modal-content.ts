@@ -58,6 +58,9 @@ export class ModalContentPage {
     this._game.playerProvider.currentLocation = this._element;
     this._game.npcProvider.npc = this._game.npcProvider.findNpc(this._element.npc);
     this._game.playerProvider.addContact(this._game.npcProvider.npc);
+    this._game.playerProvider.currentSpeech = this._game.data.speechesArray[
+      this._game.data.speechesArray.findIndex(x => x.id === 99)
+    ]; //...(initial speech)
     this._save.saveGame();
     this.viewCtrl.dismiss(this._element);
   }

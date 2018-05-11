@@ -190,6 +190,7 @@ export class CurrentLocationPage {
   private _location = this._game.locationProvider;
   private _npc = this._game.npcProvider;
   private _player = this._game.playerProvider;
+  private _history;
 
   // _speak works as a switch (false = npc speaks, true = player speaks).
   private _speak: boolean = false;
@@ -260,6 +261,9 @@ export class CurrentLocationPage {
    * Chooses which one is turn to speak accordingly to parameter value.
    */
   showSpeech(element) {
+    this._history = this._player.inventory.contacts[
+        this._player.inventory.contacts.findIndex(c => c.id === this._npc.npc.id)
+      ].history;
     if (!this._speak && element === 'npc') {
       this.npcTalk();
     } else if (this._speak && element === 'player') {
@@ -273,26 +277,22 @@ export class CurrentLocationPage {
    * the phrase into npc history[] and save the game.
    */
   npcTalk() {
-    if (!this._npc.greeted) {
-      this._npcPhrase = this._npc.greetPlayer();
-      this._npc.greeted = true;
-    } else {      
-      this._npcPhrase = this._npc.answer(this._player, this._location.location);
-    }
-    
+    this._npcPhrase = this._npc.answer(this._player, this._location.location);
+    this._speak = true;
     if (this._npcPhrase.phrase) {
       $('#playerChat').fadeOut();
       $('#npcChat').fadeIn();
-
-        // Push npc currentSpeech into its history[]
-        this._npc.npc.history.push(
-          this._npc.npc.name + " - " + this._npc.currentSpeech.phrase);
-      this._speak = true;
+      
+      // Push npc currentSpeech into its history[]
+      this._history.push(
+        `${this._npc.npc.name} 
+        - ${this._npc.currentSpeech.phrase}`);
+      
+    //Save game
+    this._save.saveGame();
     } else {
       this.clearChat();
     }
-    //Save game
-    this._save.saveGame();
   }
 
   /**
@@ -302,20 +302,21 @@ export class CurrentLocationPage {
    */
   playerTalk() {
     this._playerPhrase = this._game.playerProvider.answer(this._npc, this._location.location);
-
+    this._speak = false;
     if (this._playerPhrase.phrase) {
       $('#npcChat').fadeOut();
       $('#playerChat').fadeIn();
       
       // Push player currentSpeech into current npcs history[]
-      this._npc.npc.history.push(
-        this._game.playerProvider.player.name + " - " + this._game.playerProvider.currentSpeech.phrase);
-      this._speak = false;
+      this._history.push(
+        `${this._game.playerProvider.player.name} 
+        - ${this._game.playerProvider.currentSpeech.phrase}`);
+      
+      //Save game
+      this._save.saveGame();
     } else {
       this.clearChat();
     }
-    //Save game
-    this._save.saveGame();
   }
 
   /**
