@@ -19,7 +19,7 @@
   </ion-card>
 
   <ion-list *ngIf="_items.collectedItems.length > 0">
-    <ion-list-header text-center>
+    <ion-list-header color="primary" text-center>
       Collected
     </ion-list-header>
     <a ion-item *ngFor="let item of _items.collectedItems" (click)="openModal({element: item, page: 'item'})">
@@ -31,7 +31,7 @@
   </ion-list>
   <br>
   <ion-list *ngIf="_items.analysingItems.length > 0">
-    <ion-list-header text-center>
+    <ion-list-header color="primary" text-center>
       Analysing
     </ion-list-header>
     <ion-item *ngFor="let item of _items.analysingItems">
@@ -44,7 +44,7 @@
   </ion-list>
   <br>
   <ion-list *ngIf="_items.itemsReady.length > 0">
-    <ion-list-header text-center>
+    <ion-list-header color="primary" text-center>
       Ready
     </ion-list-header>
     <a ion-item *ngFor="let item of _items.itemsReady" (click)="openModal({element: item, page: 'ready'})">
