@@ -51,6 +51,7 @@ export class SaveProvider {
       this._game.playerProvider.player = this._game.data.charactersArray[0]; //Sherlock Holmes
       this._game.playerProvider.currentLocation = this._game.data.locationsArray[0];
       this._game.playerProvider.addContact(this._game.npcProvider.npc);
+      this.storage.set('murderer', this._game.setMurderer());
       resolve();
     });
   }
@@ -102,7 +103,6 @@ export class SaveProvider {
         this._game.itemProvider.analyseItem(item.item, item.finish)
       }
       console.log('*****Game Loaded*****');
-      console.log(savedGame);
     }
   }
 }

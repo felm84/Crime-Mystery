@@ -27,4 +27,11 @@ export class GameProvider {
   ) {
     console.log('GameProvider******');
   }
+
+  setMurderer(): number {
+    let max = this.data.charactersArray.length;
+    let min = 3;
+    let index = Math.floor(Math.random() * (max - min) + min);
+    return this.data.charactersArray[index].id;
+  }
 }
