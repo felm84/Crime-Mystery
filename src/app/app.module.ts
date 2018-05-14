@@ -18,7 +18,6 @@ import { ContactListPage } from '../pages/contact-list/contact-list';
 import { MenuPage } from '../pages/menu/menu';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ModalContentPage } from '../pages/modal-content/modal-content';
-import { ArrestPage } from '../pages/arrest/arrest';
 import { FinalPage } from '../pages/final/final';
 
 // List of providers - provide services to the app
@@ -43,7 +42,6 @@ import { SaveProvider } from '../providers/save/save';
     ContactListPage,
     MenuPage,
     TabsPage,
-    ArrestPage,
     FinalPage,
     ModalContentPage
   ],
@@ -65,6 +63,7 @@ import { SaveProvider } from '../providers/save/save';
     ContactListPage,
     MenuPage,
     TabsPage,
+    FinalPage,
     ModalContentPage
   ],
   providers: [
