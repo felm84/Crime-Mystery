@@ -1,3 +1,26 @@
 page-final {
 
 }
+
+ion-title {
+    text-align: center;
+}
+
+.final p {
+    color: #585858;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #f1750f;
+    box-shadow: 5px 5px 5px #703505
+}
+
+.final {
+    margin-top: -95px;
+    text-align: center;
+    position: relative;
+    top: 45%;
+}
+
+.final button {
+    height: 50px;
+}
