@@ -215,3 +215,24 @@ Crime Mystery Version 1.0 19/03/2018
  09/05/2018
 ----------
  - Database updated - [author: Felipe Menezes Silva]
+
+ 11/05/2018
+----------
+ - Database updated - [author: Felipe Menezes Silva]
+ - Bug fixed - [author: Felipe Menezes Silva]
+
+ 13/05/2018
+----------
+ - Final Page generated - [author: Felipe Menezes Silva]
+
+ 14/05/2018
+----------
+ - setMurderer method added - [author: Felipe Menezes Silva]
+ - Added story to presentation - [author: Felipe Menezes Silva]
+ - Added style - [author: Felipe Menezes Silva]
+
+ 15/05/2018
+----------
+ - Fixed bugs - [author: Felipe Menezes Silva]
+ - FinalPage fully implemented - [author: Felipe Menezes Silva]
+ - Added style - [author: Felipe Menezes Silva]
