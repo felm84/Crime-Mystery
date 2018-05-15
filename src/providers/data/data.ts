@@ -6,6 +6,7 @@ import { IItem } from '../interface/item';
 import { ICharacter } from '../interface/character';
 import { ISpeech } from '../interface/speech';
 import { File } from '@ionic-native/file';
+import { Platform } from 'ionic-angular';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -40,7 +41,8 @@ export class DataProvider {
     */
   constructor(
     public http: HttpClient,
-    private _file: File
+    private _file: File,
+    public platform: Platform
   ) {
     this.loadContent();
     console.log('DataProvider******');
@@ -56,9 +58,12 @@ export class DataProvider {
    * and assign their data to their specified properties.
    */
   loadContent(){
-    this.loadForBrowser();
-    //this.loadForNative();
-    console.log("Content Loaded");
+    if (this.platform.is('core') || this.platform.is('mobileweb')) {
+      this.loadForBrowser();
+    } else {
+      this.loadForNative();
+    }
+    console.log(`****Content Loaded****`);
   }
 
   loadForNative() {
