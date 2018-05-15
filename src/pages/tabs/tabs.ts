@@ -3,7 +3,6 @@ import { CurrentLocationPage } from './../current-location/current-location';
 import { ItemListPage } from '../item-list/item-list';
 import { LocationListPage } from '../location-list/location-list';
 import { ContactListPage } from '../contact-list/contact-list';
-import { NavController, ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-tabs',
@@ -28,15 +27,11 @@ export class TabsPage {
    * TabsPage constructor
    * Initializes all properties to be used in the template
    */
-  constructor(
-    public navCtrl: NavController,
-    public viewCtrl: ViewController
-  ) {
+  constructor() {
     this._location = CurrentLocationPage;
     this._items = ItemListPage;
     this._maps = LocationListPage;
     this._contacts = ContactListPage;
-    console.log(this.navCtrl.id);
   }
 
 }

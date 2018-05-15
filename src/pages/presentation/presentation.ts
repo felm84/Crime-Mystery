@@ -21,7 +21,7 @@ export class PresentationPage {
     public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     private _save: SaveProvider
-  ) {console.log(this.navCtrl.id)}
+  ) {console.log(`Presentation - ${this.navCtrl.id}`);}
 
   /**
    * investigateCrime()

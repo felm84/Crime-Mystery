@@ -38,7 +38,9 @@ export class MenuPage {
     public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public actionSheetCtrl: ActionSheetController
-  ) {}
+  ) {
+    console.log(`Menu - ${this.navCtrl.id}`);
+  }
 
   startGame() {
     //this._save.storage.clear();
