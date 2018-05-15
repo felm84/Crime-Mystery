@@ -137,20 +137,23 @@ export class NpcProvider {
    * @returns type from ISpeech - value to be shown in current-location.html
    */
   answer(player: PlayerProvider, location: ILocation): ISpeech {
-    let visits = player.inventory.contacts[
-      player.inventory.contacts.findIndex(c => c.id === this.npc.id)
-    ].visits;
-    switch (visits) {
-      case 0:
-        this.currentSpeech = this.performFirstApproach(player, location);
-        break;
-      case 1:
-        this.currentSpeech = this.performSecondApproach(player, location);
-        break;
-      default:
-        break;
+    if (this.npc.id === 2) {
+      this.currentSpeech = this.performWatsonApproach(player)
+    } else {
+      let visits = player.inventory.contacts[
+        player.inventory.contacts.findIndex(c => c.id === this.npc.id)
+      ].visits;
+      switch (visits) {
+        case 0:
+          this.currentSpeech = this.performFirstApproach(player, location);
+          break;
+        case 1:
+          this.currentSpeech = this.performSecondApproach(player, location);
+          break;
+        default:
+          break;
+      }
     }
-
     return this.currentSpeech;
   }
 
@@ -212,8 +215,8 @@ export class NpcProvider {
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 74)
         ];//No problem, I'll see you next time then!
-        this._data.charactersArray[
-          this._data.charactersArray.findIndex((element) => element.id === this._npc.id)
+        player.inventory.contacts[
+          player.inventory.contacts.findIndex(c => c.id === this.npc.id)
         ].visits = 1;
         break;
       default:
@@ -221,7 +224,7 @@ export class NpcProvider {
           this._speeches.findIndex(x => x.id === 100)
         ];//Empty''
         break;
-    }
+    }    
     return this.currentSpeech;
   }
 
@@ -258,12 +261,24 @@ export class NpcProvider {
   }
 
   performWatsonApproach(player: PlayerProvider): ISpeech {
+    let visit = player.inventory.contacts[
+      player.inventory.contacts.findIndex(c => c.id === this.npc.id)
+    ].visits;
     switch (player.currentSpeech.id) {
+      case 99://...
+        if (visit === 0) {
+          this.currentSpeech = this.greetPlayer();
+        } else {
+          this.currentSpeech = this._speeches[
+            this._speeches.findIndex(x => x.id === 5)
+          ]; //Nice to see you again, what can I do for you?
+        }
+        break;
       //Good Morning!, Good Afternoon!, Good Evening!, Good Night!
       case 1: case 2: case 3: case 4:
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 21)
-        ];//A murder happened last night at the Big House
+        ];//A murder happened last night at the Mansion
         break;
       case 16: //Do you have any News about our investigation?
         if (this._item.collectedItems.length > 0 || 
@@ -289,6 +304,10 @@ export class NpcProvider {
         this.currentSpeech = this._speeches[
           this._speeches.findIndex(x => x.id === 81)
         ]; //Alright!
+
+        player.inventory.contacts[
+          player.inventory.contacts.findIndex(c => c.id === this.npc.id)
+        ].visits = 1;
         break;
       default:
         this.currentSpeech = this._speeches[

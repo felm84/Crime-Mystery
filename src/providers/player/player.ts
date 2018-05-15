@@ -28,6 +28,13 @@ export class PlayerProvider {
   public hasWarrant: boolean = false;
   //endregion
 
+  /**
+   * PlayerProvider constructor
+   * @param loadingCtrl type from LoadingController
+   * @param _data type from DataProvider
+   * @param _item type from ItemProvider
+   * @param _alert type from AlertProvider
+   */
   constructor(
     public loadingCtrl: LoadingController,
     private _data: DataProvider,
@@ -47,9 +54,6 @@ export class PlayerProvider {
     this._currentSpeech = this._data.speechesArray[
       this._data.speechesArray.findIndex(x => x.id === 99)
     ]; //...
-    for (const location of this._data.locationsArray) {
-      this.addLocation(location);
-    }
   }
   
   public get currentLocation() : ILocation {
@@ -72,6 +76,19 @@ export class PlayerProvider {
 
   //region METHODS
 
+  /**
+   * makeArrest() method
+   * @param suspectId type from number - npc id
+   * @param murdererId type from number - murderer storaged id
+   * Compares the current npc id to the storaged one.
+   */
+  makeArrest(suspectId: number, murdererId: number): boolean {
+    if (suspectId === murdererId) {
+      return true;
+    }
+    return false;
+  }
+  
   /**
    * answerNpc() method
    * @param speech type from ISpeech - to use npc's speech

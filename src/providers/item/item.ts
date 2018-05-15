@@ -75,7 +75,9 @@ export class ItemProvider {
   analyseItem(item: IItem, f: number): boolean {
     const found = this.analysingItems.find((itemInAnalyse) => item.id === itemInAnalyse.item.id);
     if (found === undefined) {
-    
+      if(item.id === 100) {
+        this.warrantInProcess = true;
+      }
       let finish = f ? f : Date.now() + (item.analyse_time * 60000);
       let counter = new Observable<number>();
       let subscription = new Subscription();

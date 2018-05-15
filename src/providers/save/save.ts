@@ -11,17 +11,17 @@ export class SaveProvider {
   private _saveValue: any = {
     /* Save player property, 
     - get list of locations from this._playerProvider.hasWarrant */
-    'has_warrant': false,
+    has_warrant: false,
     /* Save Locations, 
     - get list of locations from this._playerProvider.inventory.locations */
-    'locations': [],
+    locations: [],
     /* Save Npcs, 
     - get list of contacts from this._playerProvider.inventory.contacts */
-    'npc': [], 
-    'items': {
-      'collected': [], //[] = this.itemProvider.collectedItems[x]
-      'analysing': [], //[] = this.itemProvider.analysingItems[x]
-      'ready': [] //[] = this.itemProvider.itemsReady[x]
+    npcs: [], 
+    items: {
+      collected: [], //[] = this.itemProvider.collectedItems[x]
+      analysing: [], //[] = this.itemProvider.analysingItems[x]
+      ready: [] //[] = this.itemProvider.itemsReady[x]
     }
   }
 
@@ -51,6 +51,9 @@ export class SaveProvider {
       this._game.playerProvider.player = this._game.data.charactersArray[0]; //Sherlock Holmes
       this._game.playerProvider.currentLocation = this._game.data.locationsArray[0];
       this._game.playerProvider.addContact(this._game.npcProvider.npc);
+      for (const location of this._game.data.locationsArray) {
+        this._game.playerProvider.addLocation(location);
+      }
       this.storage.set('murderer', this._game.setMurderer());
       resolve();
     });
@@ -64,8 +67,8 @@ export class SaveProvider {
   saveGame() {
     this._saveValue = {
       has_warrant: this._game.playerProvider.hasWarrant,
-      location: this._game.playerProvider.inventory.locations,
-      npc: this._game.playerProvider.inventory.contacts,
+      locations: this._game.playerProvider.inventory.locations,
+      npcs: this._game.playerProvider.inventory.contacts,
       items: {
         collected: this._game.itemProvider.collectedItems,
         analysing: this._game.itemProvider.analysingItems,
@@ -93,11 +96,15 @@ export class SaveProvider {
       this._game.playerProvider.currentLocation = this._game.data.locationsArray[0];
       
       this._game.playerProvider.hasWarrant = this._saveValue.has_warrant;
-      this._game.playerProvider.inventory.locations = this._saveValue.location;
-      this._game.playerProvider.inventory.contacts = this._saveValue.npc;
+      this._game.playerProvider.inventory.locations = this._saveValue.locations;
+      this._game.playerProvider.inventory.contacts = this._saveValue.npcs;
 
       this._game.itemProvider.collectedItems = this._saveValue.items.collected;
       this._game.itemProvider.itemsReady = this._saveValue.items.ready;
+
+      for (const location of this._saveValue.locations) {
+        this._game.playerProvider.addLocation(location);
+      }
 
       for (const item of this._saveValue.items.analysing) {
         this._game.itemProvider.analyseItem(item.item, item.finish)
