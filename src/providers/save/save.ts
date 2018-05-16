@@ -38,7 +38,7 @@ export class SaveProvider {
   ) {console.log('SaveProvider******');}
 
   /**
-   * loadNewGame() method
+   * startNewGame() method
    * @returns type from Promise<any>
    * Assigns initial location, npc accordingly to location, player, 
    * and player's first response, add the initial location and contact 
@@ -111,5 +111,27 @@ export class SaveProvider {
       }
       console.log('*****Game Loaded*****');
     }
+  }
+
+<<<<<<< HEAD
+  /**
+   * clearGmame() method
+   * Clears the local storage data, then clears all the required
+   * providers to start a new game.
+   */
+=======
+>>>>>>> 562d8eceba0801f012fabc069a7442855dbfdefb
+  clearGame() {
+    this.storage.clear()
+    .then(() => {
+      this._game.data.loadContent();
+      this._game.itemProvider.collectedItems = [];
+      this._game.itemProvider.analysingItems = [];
+      this._game.itemProvider.itemsReady = [];
+      this._game.playerProvider.hasWarrant = false;
+      this._game.playerProvider.inventory.contacts = [];
+      this._game.playerProvider.inventory.items = [];
+      this._game.playerProvider.inventory.locations = [];
+    }).then(() => console.log(`****Game Cleared****`));
   }
 }

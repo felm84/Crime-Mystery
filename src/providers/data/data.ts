@@ -66,6 +66,10 @@ export class DataProvider {
     console.log(`****Content Loaded****`);
   }
 
+  /**
+   * loadForNative() method
+   * Loads all database files accordingly to the native device
+   */
   loadForNative() {
     for (const file of this._db) {
       this._file.readAsText(`${this._file.applicationDirectory}www/assets/data`, file)
@@ -89,6 +93,10 @@ export class DataProvider {
     }
   }
 
+  /**
+   * loadForBrowser() method
+   * Loads all database files when browser simulator is in use
+   */
   loadForBrowser() {
     this.getCharacters().subscribe(data => this.charactersArray = data);
     this.getSpeeches().subscribe(data => this.speechesArray = data);
@@ -98,7 +106,7 @@ export class DataProvider {
 
   /**
    * getChracters() method
-   * Using the Observable to return ICharacter type, 
+   * @returns Observable to return ICharacter type, 
    * this method makes the get request and convert the 
    * data to its type.
    */
@@ -108,7 +116,7 @@ export class DataProvider {
 
   /**
    * getSpeeches() method
-   * Using the Observable to return ISpecch type,
+   * @returns Observable to return ISpecch type,
    * this method makes the get request and convert the
    * data to its type.
    */
@@ -118,7 +126,7 @@ export class DataProvider {
 
   /**
    * getLocations() method
-   * Using the Observable to return ILocation type,
+   * @returns Observable to return ILocation type,
    * this method makes the get request and convert the
    * data to its type
    */
@@ -128,7 +136,7 @@ export class DataProvider {
 
   /**
    * getItems() method
-   * Using the Observable to return IItems type,
+   * @returns Observable to return IItems type,
    * this method makes the get request and convert the
    * data to its type.
    */

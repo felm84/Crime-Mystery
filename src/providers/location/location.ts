@@ -44,7 +44,7 @@ export class LocationProvider {
   //#region METHODS
 
   /**
-   * findItem(id): IItem method
+   * findItem(): IItem method
    * @param id type from number - location id
    * @returns type from IItem
    * Searches for the index number that has the same location id

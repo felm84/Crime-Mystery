@@ -29,7 +29,7 @@ export class ItemProvider {
     console.log('ItemProvider******');
   }
 
-  /** addItem(itemsArray) method
+  /** addItem() method
    * @param item - type from interface IItem
    * Adds all found items to player's itemList[]. This list is 
    * displayed in the item-list.html.
@@ -108,7 +108,7 @@ export class ItemProvider {
   }
 
   /**
-   * findItem(id): IItem method
+   * findItem(): IItem method
    * @param id type from number - item id number
    * @returns type from IItem
    * Searches for the index number that has the same item id
@@ -121,7 +121,7 @@ export class ItemProvider {
   }
 
   /**
-   * removeItem(item) method
+   * removeItem() method
    * @param item type from interface IItem
    * Removes the selected item from player's itemList[].
    * It first identify the item index in the list then

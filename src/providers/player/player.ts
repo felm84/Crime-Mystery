@@ -172,7 +172,7 @@ export class PlayerProvider {
 
   /**
    * performSecondApproach() method
-   * @param player type from PlayerProvider - to use player's speech
+   * @param npc type from NpcProvider - to use player's speech
    * @param location type from ILocation
    * @returns type from ISpeech - value to be shown in current-location.html
    * A range of answers to be used accordingly to what npc speech passed as
@@ -202,6 +202,13 @@ export class PlayerProvider {
     return this.currentSpeech;
   }
 
+  /**
+   * answerWatson() method
+   * @param npc type from NpcProvider - to use player's speech
+   * @returns type from ISpeech - value to be shown in current-location.html
+   * A range of answers to be used accordingly to what npc speech passed as
+   * parameter.
+   */
   answerWatson(npc: NpcProvider): ISpeech {
     switch (npc.currentSpeech.id) {
       /* Good Morning!, Good Afternoon!, Good Evening!, Good Night! */

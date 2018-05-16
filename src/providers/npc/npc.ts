@@ -260,6 +260,14 @@ export class NpcProvider {
     return this.currentSpeech;
   }
 
+  /**
+   * performWatsonApproach() method
+   * @param player type from PlayerProvider - to use player's speech
+   * @param location type from ILocation
+   * @returns type from ISpeech - value to be shown in current-location.html
+   * A range of answers to be used accordingly to what player speech passed as
+   * parameter.
+   */
   performWatsonApproach(player: PlayerProvider): ISpeech {
     let visit = player.inventory.contacts[
       player.inventory.contacts.findIndex(c => c.id === this.npc.id)

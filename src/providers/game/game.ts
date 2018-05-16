@@ -28,6 +28,11 @@ export class GameProvider {
     console.log('GameProvider******');
   }
 
+  /**
+   * setMurderer() method
+   * @returns type from number - npc id
+   * Randomly assigns a murder to the game when a new game is started.
+   */
   setMurderer(): number {
     let max = this.data.charactersArray.length;
     let min = 3;
