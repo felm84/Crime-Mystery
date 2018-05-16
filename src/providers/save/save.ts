@@ -113,17 +113,11 @@ export class SaveProvider {
     }
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   /**
    * clearGmame() method
    * Clears the local storage data, then clears all the required
    * providers to start a new game.
    */
-=======
->>>>>>> 562d8eceba0801f012fabc069a7442855dbfdefb
-=======
->>>>>>> 562d8eceba0801f012fabc069a7442855dbfdefb
   clearGame() {
     this.storage.clear()
     .then(() => {
