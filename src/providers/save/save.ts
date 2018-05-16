@@ -112,4 +112,18 @@ export class SaveProvider {
       console.log('*****Game Loaded*****');
     }
   }
+
+  clearGame() {
+    this.storage.clear()
+    .then(() => {
+      this._game.data.loadContent();
+      this._game.itemProvider.collectedItems = [];
+      this._game.itemProvider.analysingItems = [];
+      this._game.itemProvider.itemsReady = [];
+      this._game.playerProvider.hasWarrant = false;
+      this._game.playerProvider.inventory.contacts = [];
+      this._game.playerProvider.inventory.items = [];
+      this._game.playerProvider.inventory.locations = [];
+    }).then(() => console.log(`****Game Cleared****`));
+  }
 }

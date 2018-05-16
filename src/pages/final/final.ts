@@ -37,7 +37,7 @@ export class FinalPage {
 
   ionViewDidLoad() {
     console.log(`Final - ${this.navCtrl}`);
-    this._save.storage.clear();
+    this._save.clearGame();
   }
 
   /**
@@ -49,19 +49,18 @@ export class FinalPage {
     if (this._criminal) {
       this._config = {
         title: 'CONGRATULATIONS',
-        phrase: 'You have solved the crime in: timer'
+        phrase: 'You have solved the crime. Be ready for more by playing again!'
       }
     }
   }
 
   /**
-   * closeApp() method
+   * playAgain() method
    * Closes the application
    */
-  closeApp() {
-    this.platform.exitApp();
-    /* this.appCtrl.getRootNavById('n4').getAllChildNavs()[0].parent.popToRoot().then(
-      _ => this.navCtrl.pop()
-    ); */
+  playAgain() {
+    this.appCtrl.getRootNavById('n4').getAllChildNavs()[0].parent.popToRoot().then(
+      () => this.navCtrl.pop()
+    );
   }
 }

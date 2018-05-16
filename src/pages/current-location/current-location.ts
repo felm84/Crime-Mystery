@@ -96,7 +96,6 @@ export class PlusMenu {
         Please, select <b>Search Area</b> in the header menu.`);
 
       } else if (this._game.playerProvider.hasWarrant) {
-  
         this.alert.presentAlert('Search Area', `You have selected to use yours. 
         Please, select <b>Search Area</b> in the header menu.`);
   
@@ -151,9 +150,10 @@ export class PlusMenu {
         if (this._location.id === 1) {
           this.alert.presentAlert('Search Area', `This location is not under investigation. 
           Please, set another location in the <b>Map Tab</b> to continue the investigation.`);
+
         } else if (!this._npc.canSearch) {
-          this.alert.presentAlert('Search Area', `Have a chat with the locals first and see how
-          they can help you. Please, tap on the <b>character</b> to start a chat, then on yours.`);
+          this.alert.presentAlert('Search Area', `Have a chat with the local first and see how
+          it can help you. Please, tap on the <b>character</b> to start a chat, then on yours.`);
     
         } else if (this._location.require_warrant && 
           !this._game.playerProvider.hasWarrant) {
@@ -170,19 +170,26 @@ export class PlusMenu {
     this.close();
   }
 
+  /**
+   * makeArrest() method
+   * Checks if the current location is not the detective's office
+   * and all items have been collected before make any arrest of
+   * the current npc.
+   */
   makeArrest() {
-    if (this._game.locationProvider.location.id === 1) {
-      this.alert.presentAlert('Arrest Suspect', `This person is not under investigation. 
-      Please, set another location in the <b>Map Tab</b> to continue the investigation.`);
-    } else {
-      if (this._game.itemProvider.itemsReady.length === this._data.itemsArray.length) {
+    if (this._location.id !== 1 && this._location.items.length === 0) {
         this.confirmArrest();
+    } else {
+      if (this._game.locationProvider.location.id === 1) {
+        this.alert.presentAlert('Arrest Suspect', `This person is not under investigation. 
+        Please, set another location in the <b>Map Tab</b> to continue the investigation.`);
+
       } else {
-        this.alert.presentAlert('Arrest Suspect', `You still have items to collect or analyse
-        before make any arrest. Please continue the investigation.`);
+        this.alert.presentAlert('Arrest Suspect', `You need to search the area and collect
+        some proves before you make any arrest. Please, select <b>Search Area</b> in the header menu.`);
+
       }
-    }
-    
+    }    
     this.close();
   }
 
@@ -194,6 +201,13 @@ export class PlusMenu {
     this.viewCtrl.dismiss();
   }
 
+  /**
+   * cornfirmArrest() method
+   * Pops up an alert asking if player wants to confirm the arrest
+   * if so it sends the player to the final page where it should
+   * present congratulation or game over accordingly to player's
+   * choice
+   */
   confirmArrest() {
     let confirm = this.alertCtrl.create({
       title: 'Arrest Suspect',
@@ -298,13 +312,16 @@ export class CurrentLocationPage {
    * Chooses which one is turn to speak accordingly to parameter value.
    */
   showSpeech(element) {
+    let dateTime = new Date();
+    let fullDate = `${dateTime.toLocaleDateString()} - ${dateTime.toLocaleTimeString()}`;
+
     this._history = this._player.inventory.contacts[
         this._player.inventory.contacts.findIndex(c => c.id === this._npc.npc.id)
       ].history;
     if (!this._speak && element === 'npc') {
-      this.npcTalk();
+      this.npcTalk(fullDate);
     } else if (this._speak && element === 'player') {
-      this.playerTalk();
+      this.playerTalk(fullDate);
     }
   }
 
@@ -313,7 +330,7 @@ export class CurrentLocationPage {
    * Displays npc phrase in current-location.html, pushes
    * the phrase into npc history[] and save the game.
    */
-  npcTalk() {
+  npcTalk(date) {
     this._npcPhrase = this._npc.answer(this._player, this._location.location);
     this._speak = true;
     if (this._npcPhrase.phrase) {
@@ -322,7 +339,7 @@ export class CurrentLocationPage {
       
       // Push npc currentSpeech into its history[]
       this._history.push(
-        `${this._npc.npc.name} 
+        `${date} :: (${this._npc.npc.name}) 
         - ${this._npc.currentSpeech.phrase}`);
       
     //Save game
@@ -337,7 +354,7 @@ export class CurrentLocationPage {
    * Displays player phrase in current-location.html, pushes
    * the phrase into npc history[] and save the game.
    */
-  playerTalk() {
+  playerTalk(date) {
     this._playerPhrase = this._game.playerProvider.answer(this._npc, this._location.location);
     this._speak = false;
     if (this._playerPhrase.phrase) {
@@ -346,7 +363,7 @@ export class CurrentLocationPage {
       
       // Push player currentSpeech into current npcs history[]
       this._history.push(
-        `${this._game.playerProvider.player.name} 
+        `${date} :: (${this._game.playerProvider.player.name}) 
         - ${this._game.playerProvider.currentSpeech.phrase}`);
       
       //Save game
